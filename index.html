@@ -16,7 +16,42 @@
         <div class="shooting-star"></div>
     </div>
 
-    <!-- 音乐按钮占位 -->
+    <!-- 樱花飘落 -->
+    <div class="sakura-container">
+        <div class="sakura"></div>
+        <div class="sakura"></div>
+        <div class="sakura"></div>
+        <div class="sakura"></div>
+        <div class="sakura"></div>
+        <div class="sakura"></div>
+        <div class="sakura"></div>
+        <div class="sakura"></div>
+        <div class="sakura"></div>
+        <div class="sakura"></div>
+    </div>
+
+    <!-- 纸飞机 -->
+    <div class="paper-plane-container">
+        <div class="paper-plane"></div>
+        <div class="paper-plane"></div>
+        <div class="paper-plane"></div>
+    </div>
+
+    <!-- 背景音乐 -->
+    <audio id="bgMusic" loop preload="auto">
+        <!-- 使用一首免费公共域轻音乐，可替换为您喜欢的音乐URL -->
+        <source src="https://cdn.pixabay.com/audio/2022/10/18/audio_3c7e30ed93.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- 音乐引导弹层（首次触屏播放） -->
+    <div class="music-overlay" id="musicOverlay">
+        <div class="music-overlay-box">
+            <div class="play-icon" id="playIcon"></div>
+            <p>点击播放背景音乐</p>
+        </div>
+    </div>
+
+    <!-- 音乐按钮 -->
     <button id="musicBtn" class="music-btn" aria-label="背景音乐开关">
         <span class="note">♪</span>
     </button>
@@ -26,15 +61,29 @@
         <!-- ========== 第 1 屏：封面 ========== -->
         <section class="page page-cover">
             <div class="cover-frame">
+                <!-- 四角装饰 -->
+                <div class="corner corner-tl"></div>
+                <div class="corner corner-tr"></div>
+                <div class="corner corner-bl"></div>
+                <div class="corner corner-br"></div>
+
                 <div class="cover-top">
                     <div class="brand">渊 学 通 · 杭 州 校 区</div>
                     <div class="brand-en">YUAN XUE TONG · HANGZHOU</div>
                 </div>
 
-                <div class="cap">
-                    <div class="cap-top"></div>
-                    <div class="cap-base"></div>
-                    <div class="cap-tassel"></div>
+                <!-- 学士帽 SVG -->
+                <div class="cap-icon">
+                    <svg viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="50,5 95,30 50,55 5,30" fill="#d9b86a" opacity="0.9"/>
+                        <rect x="35" y="38" width="30" height="18" rx="2" fill="#d9b86a" opacity="0.7"/>
+                        <line x1="50" y1="30" x2="50" y2="70" stroke="#f5e6b8" stroke-width="1.5">
+                            <animate attributeName="x2" values="50;54;48;50" dur="3s" repeatCount="indefinite"/>
+                        </line>
+                        <circle cx="50" cy="72" r="4" fill="#f5e6b8">
+                            <animate attributeName="cx" values="50;54;48;50" dur="3s" repeatCount="indefinite"/>
+                        </circle>
+                    </svg>
                 </div>
 
                 <h1 class="cover-title">
@@ -60,7 +109,7 @@
         <!-- ========== 第 2 屏：致辞 ========== -->
         <section class="page page-words">
             <div class="words-wrap reveal">
-                <div class="chapter">&mdash; 致 每 一 位 追 光 者 &mdash;</div>
+                <div class="chapter">致 每 一 位 追 光 者</div>
                 <p>三年寒暑，几度春秋，</p>
                 <p>你们从懵懂走向坚定，</p>
                 <p>从书桌前的低头苦读，</p>
@@ -70,6 +119,15 @@
                 <p>拨冗出席这场属于我们的</p>
                 <p class="highlight">仲夏毕业之约</p>
             </div>
+
+            <!-- 书本装饰 SVG -->
+            <svg class="book-deco" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 50 L10 15 Q30 10 30 15 L30 50 Q30 45 10 50Z" fill="#d9b86a" opacity="0.3"/>
+                <path d="M50 50 L50 15 Q30 10 30 15 L30 50 Q30 45 50 50Z" fill="#d9b86a" opacity="0.2"/>
+                <line x1="15" y1="22" x2="27" y2="20" stroke="#f5e6b8" stroke-width="0.5" opacity="0.4"/>
+                <line x1="15" y1="28" x2="27" y2="26" stroke="#f5e6b8" stroke-width="0.5" opacity="0.4"/>
+                <line x1="15" y1="34" x2="27" y2="32" stroke="#f5e6b8" stroke-width="0.5" opacity="0.4"/>
+            </svg>
         </section>
 
         <!-- ========== 第 3 屏：时间地点 ========== -->
@@ -85,7 +143,7 @@
                     <div class="label">时　间</div>
                     <div class="value">
                         <div class="date-big">2026 . 06 . 13</div>
-                        <div class="date-sub">星期六 &nbsp;|&nbsp; 15:00 &mdash; 17:00</div>
+                        <div class="date-sub">星期六 &nbsp;|&nbsp; 15:00 — 17:00</div>
                     </div>
                 </div>
 
@@ -163,19 +221,38 @@
         <!-- ========== 第 5 屏：期待 ========== -->
         <section class="page page-end">
             <div class="end-wrap reveal">
-                <div class="laurel laurel-left"></div>
-                <div class="laurel laurel-right"></div>
+                <!-- 月桂花环 SVG -->
+                <div class="laurel laurel-left">
+                    <svg viewBox="0 0 40 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M35 110 Q30 90 25 70 Q20 50 25 30 Q28 15 30 5" stroke="#d9b86a" stroke-width="1" fill="none" opacity="0.6"/>
+                        <ellipse cx="22" cy="20" rx="6" ry="10" fill="#d9b86a" opacity="0.3" transform="rotate(-20 22 20)"/>
+                        <ellipse cx="18" cy="38" rx="6" ry="10" fill="#d9b86a" opacity="0.25" transform="rotate(-10 18 38)"/>
+                        <ellipse cx="17" cy="56" rx="5" ry="9" fill="#d9b86a" opacity="0.3" transform="rotate(5 17 56)"/>
+                        <ellipse cx="19" cy="74" rx="6" ry="10" fill="#d9b86a" opacity="0.25" transform="rotate(10 19 74)"/>
+                        <ellipse cx="23" cy="92" rx="5" ry="9" fill="#d9b86a" opacity="0.3" transform="rotate(15 23 92)"/>
+                    </svg>
+                </div>
+                <div class="laurel laurel-right">
+                    <svg viewBox="0 0 40 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 110 Q10 90 15 70 Q20 50 15 30 Q12 15 10 5" stroke="#d9b86a" stroke-width="1" fill="none" opacity="0.6"/>
+                        <ellipse cx="18" cy="20" rx="6" ry="10" fill="#d9b86a" opacity="0.3" transform="rotate(20 18 20)"/>
+                        <ellipse cx="22" cy="38" rx="6" ry="10" fill="#d9b86a" opacity="0.25" transform="rotate(10 22 38)"/>
+                        <ellipse cx="23" cy="56" rx="5" ry="9" fill="#d9b86a" opacity="0.3" transform="rotate(-5 23 56)"/>
+                        <ellipse cx="21" cy="74" rx="6" ry="10" fill="#d9b86a" opacity="0.25" transform="rotate(-10 21 74)"/>
+                        <ellipse cx="17" cy="92" rx="5" ry="9" fill="#d9b86a" opacity="0.3" transform="rotate(-15 17 92)"/>
+                    </svg>
+                </div>
 
                 <div class="end-title">期 待 与 您 相 逢</div>
                 <div class="end-en">SEE YOU THERE</div>
 
                 <p class="end-p">愿所有星光不被辜负，</p>
                 <p class="end-p">愿每一次回望都温暖有光。</p>
-                <p class="end-p gap">&mdash; 渊学通杭州校区 敬邀 &mdash;</p>
+                <p class="end-p gap">— 渊学通杭州校区 敬邀 —</p>
 
                 <button class="rsvp-btn" id="rsvpBtn">我 将 如 约 而 至</button>
 
-                <div class="end-foot">2026 &nbsp;·&nbsp; Hangzhou</div>
+                <div class="end-foot">2026 · Hangzhou</div>
             </div>
         </section>
 
