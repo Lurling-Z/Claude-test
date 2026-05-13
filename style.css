@@ -1,0 +1,612 @@
+/* =========================================================
+   渊学通杭州校区 · 毕业典礼邀请函
+   深蓝夜空 + 金色点缀 | 移动端优先 H5
+   ========================================================= */
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+    width: 100%;
+    background: #0a1a33;
+    color: #f5e6b8;
+    font-family: "PingFang SC", "Microsoft YaHei", "Noto Serif SC", serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+:root {
+    --gold:        #d9b86a;
+    --gold-light:  #f5e6b8;
+    --gold-soft:   rgba(217, 184, 106, 0.35);
+    --navy:        #0a1a33;
+    --navy-deep:   #050d1f;
+    --navy-soft:   #12244a;
+}
+
+/* ---------- 星空背景 ---------- */
+.sky {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background:
+        radial-gradient(ellipse at 50% 0%, #1a3066 0%, #0a1a33 55%, #050d1f 100%);
+    overflow: hidden;
+}
+.stars, .stars2 {
+    position: absolute; inset: 0;
+    background-image:
+        radial-gradient(1px 1px at 20% 30%, #fff 50%, transparent 100%),
+        radial-gradient(1px 1px at 70% 20%, #fff 50%, transparent 100%),
+        radial-gradient(1.2px 1.2px at 40% 70%, #fff 50%, transparent 100%),
+        radial-gradient(1px 1px at 80% 80%, #fff 50%, transparent 100%),
+        radial-gradient(1px 1px at 15% 85%, #fff 50%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 55% 40%, #ffe8a3 50%, transparent 100%),
+        radial-gradient(1px 1px at 90% 50%, #fff 50%, transparent 100%),
+        radial-gradient(1px 1px at 30% 55%, #fff 50%, transparent 100%);
+    background-size: 600px 600px;
+    animation: twinkle 4s infinite ease-in-out alternate;
+    opacity: 0.8;
+}
+.stars2 {
+    background-size: 900px 900px;
+    animation-duration: 6s;
+    opacity: 0.5;
+}
+@keyframes twinkle {
+    0%   { opacity: 0.3; }
+    100% { opacity: 0.9; }
+}
+
+.shooting-star {
+    position: absolute;
+    top: 12%;
+    left: -15%;
+    width: 140px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #fff, #ffe8a3);
+    filter: drop-shadow(0 0 4px #fff);
+    transform: rotate(18deg);
+    animation: shoot 7s infinite ease-in;
+    opacity: 0;
+}
+@keyframes shoot {
+    0%   { transform: translate(0, 0) rotate(18deg); opacity: 0; }
+    5%   { opacity: 1; }
+    40%  { transform: translate(130vw, 40vh) rotate(18deg); opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* ---------- 音乐按钮 ---------- */
+.music-btn {
+    position: fixed;
+    top: 18px; right: 18px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    background: rgba(10, 26, 51, 0.6);
+    color: var(--gold);
+    z-index: 50;
+    backdrop-filter: blur(4px);
+    animation: spin 6s linear infinite;
+    animation-play-state: paused;
+    cursor: pointer;
+}
+.music-btn.on { animation-play-state: running; }
+.music-btn .note { font-size: 18px; line-height: 34px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- 页面容器（纵向滚动/吸附） ---------- */
+.pages {
+    position: relative;
+    z-index: 1;
+    scroll-snap-type: y mandatory;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.page {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    width: 100%;
+    padding: 40px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* ---------- 滚动进入动画 ---------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================================
+   第 1 屏：封面
+   ========================================================= */
+.cover-frame {
+    width: 100%;
+    max-width: 360px;
+    padding: 48px 20px 40px;
+    border: 1px solid var(--gold-soft);
+    position: relative;
+    text-align: center;
+}
+.cover-frame::before,
+.cover-frame::after {
+    content: "";
+    position: absolute;
+    left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.cover-frame::before { top: 6px; }
+.cover-frame::after  { bottom: 6px; }
+
+.brand {
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 4px;
+}
+.brand-en {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold-soft);
+    margin-bottom: 28px;
+}
+
+/* 学士帽 */
+.cap {
+    width: 90px;
+    height: 70px;
+    margin: 0 auto 24px;
+    position: relative;
+}
+.cap-top {
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 70px; height: 70px;
+    background: var(--gold);
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(217, 184, 106, 0.4);
+}
+.cap-base {
+    position: absolute;
+    top: 30px; left: 50%;
+    transform: translateX(-50%);
+    width: 56px; height: 22px;
+    background: var(--gold);
+    border-radius: 4px 4px 10px 10px;
+}
+.cap-tassel {
+    position: absolute;
+    top: 20px; left: 50%;
+    width: 2px; height: 34px;
+    background: var(--gold-light);
+    transform-origin: top center;
+    animation: tassel 3s ease-in-out infinite;
+}
+.cap-tassel::after {
+    content: "";
+    position: absolute;
+    bottom: -6px; left: -4px;
+    width: 10px; height: 10px;
+    background: var(--gold-light);
+    border-radius: 50%;
+}
+@keyframes tassel {
+    0%,100% { transform: rotate(-6deg); }
+    50%     { transform: rotate(8deg); }
+}
+
+.cover-title {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    font-size: 34px;
+    font-weight: 500;
+    color: var(--gold-light);
+    text-shadow: 0 0 12px rgba(217, 184, 106, 0.5);
+    margin: 8px 0 10px;
+}
+.cover-title span {
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+}
+.cover-title span:nth-child(2) { animation-delay: 0.2s; }
+.cover-title span:nth-child(3) { animation-delay: 0.4s; }
+.cover-title span:nth-child(4) { animation-delay: 0.6s; }
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-6px); }
+}
+
+.cover-sub {
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: var(--gold);
+    margin-bottom: 28px;
+}
+
+.cover-year {
+    display: flex; align-items: center; justify-content: center;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+.y-line {
+    width: 40px; height: 1px;
+    background: var(--gold);
+}
+.y-text {
+    font-size: 26px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    font-family: "Times New Roman", serif;
+}
+
+.cover-invite {
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--gold-light);
+    opacity: 0.85;
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: -64px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: var(--gold-soft);
+    text-align: center;
+    letter-spacing: 3px;
+}
+.arrow {
+    width: 10px; height: 10px;
+    margin: 10px auto 0;
+    border-right: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    transform: rotate(45deg);
+    animation: bounce 1.8s infinite;
+}
+@keyframes bounce {
+    0%,100% { transform: translateY(0) rotate(45deg); opacity: 0.4; }
+    50%     { transform: translateY(8px) rotate(45deg); opacity: 1; }
+}
+
+/* =========================================================
+   第 2 屏：致辞
+   ========================================================= */
+.words-wrap {
+    text-align: center;
+    max-width: 340px;
+    line-height: 2.2;
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+}
+.chapter {
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 4px;
+    margin-bottom: 28px;
+}
+.words-wrap .gap { margin-top: 20px; }
+.words-wrap .highlight {
+    margin-top: 18px;
+    font-size: 22px;
+    color: var(--gold);
+    letter-spacing: 6px;
+    text-shadow: 0 0 10px rgba(217, 184, 106, 0.4);
+}
+
+/* =========================================================
+   第 3 屏：时间地点卡
+   ========================================================= */
+.card {
+    width: 100%;
+    max-width: 340px;
+    padding: 36px 24px 80px;
+    border: 1px solid var(--gold-soft);
+    background: rgba(255, 255, 255, 0.03);
+    position: relative;
+    backdrop-filter: blur(2px);
+}
+.card::before, .card::after {
+    content: "";
+    position: absolute;
+    width: 14px; height: 14px;
+    border: 1px solid var(--gold);
+}
+.card::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.card::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+.card-title {
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+.deco-line {
+    width: 34px; height: 1px;
+    background: var(--gold);
+}
+
+.info-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 6px 4px;
+}
+.label {
+    flex: 0 0 48px;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    padding-top: 6px;
+}
+.value { flex: 1; }
+.date-big, .place-big {
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+    margin-bottom: 6px;
+}
+.date-sub, .place-sub {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--gold-soft);
+}
+
+.divider {
+    height: 1px;
+    margin: 22px 0;
+    background: linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+}
+
+.map-pin {
+    position: absolute;
+    bottom: 24px; left: 50%;
+    transform: translateX(-50%);
+    width: 20px; height: 20px;
+}
+.pin {
+    position: absolute;
+    left: 50%; top: 0;
+    transform: translateX(-50%);
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 10px var(--gold);
+}
+.pin-ring {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px; height: 20px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    animation: pinpulse 2s infinite;
+}
+@keyframes pinpulse {
+    0%   { transform: translate(-50%, -50%) scale(0.6); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(2.2); opacity: 0; }
+}
+
+/* =========================================================
+   第 4 屏：活动流程
+   ========================================================= */
+.agenda-wrap {
+    width: 100%;
+    max-width: 360px;
+}
+.timeline {
+    list-style: none;
+    position: relative;
+    padding: 10px 0;
+    margin-top: 10px;
+}
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 88px; top: 10px; bottom: 10px;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, var(--gold-soft), transparent);
+}
+.timeline li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 80px 18px 1fr;
+    gap: 0;
+    align-items: flex-start;
+    padding: 14px 0;
+}
+.t-time {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-align: right;
+    padding-right: 4px;
+    padding-top: 4px;
+    font-family: "Times New Roman", serif;
+}
+.t-dot {
+    position: relative;
+    width: 18px; height: 18px;
+    margin-top: 4px;
+}
+.t-dot::before {
+    content: "";
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 8px var(--gold);
+}
+.t-dot::after {
+    content: "";
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px; height: 16px;
+    border: 1px solid var(--gold-soft);
+    border-radius: 50%;
+}
+.t-text { padding-left: 10px; }
+.t-text h4 {
+    font-size: 15px;
+    color: var(--gold-light);
+    letter-spacing: 3px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+.t-text p {
+    font-size: 12px;
+    color: var(--gold-soft);
+    letter-spacing: 1px;
+}
+
+/* =========================================================
+   第 5 屏：尾页
+   ========================================================= */
+.end-wrap {
+    text-align: center;
+    max-width: 340px;
+    position: relative;
+    padding: 40px 10px;
+}
+
+.laurel {
+    position: absolute;
+    top: 20px;
+    width: 40px; height: 120px;
+    background: radial-gradient(circle at 50% 20%, var(--gold) 2px, transparent 3px),
+                radial-gradient(circle at 20% 40%, var(--gold) 2px, transparent 3px),
+                radial-gradient(circle at 80% 40%, var(--gold) 2px, transparent 3px),
+                radial-gradient(circle at 20% 70%, var(--gold) 2px, transparent 3px),
+                radial-gradient(circle at 80% 70%, var(--gold) 2px, transparent 3px),
+                radial-gradient(circle at 50% 95%, var(--gold) 2px, transparent 3px);
+    opacity: 0.7;
+}
+.laurel-left  { left: -10px;  transform: rotate(-20deg); }
+.laurel-right { right: -10px; transform: rotate(20deg) scaleX(-1); }
+
+.end-title {
+    font-size: 26px;
+    letter-spacing: 8px;
+    color: var(--gold-light);
+    text-shadow: 0 0 12px rgba(217, 184, 106, 0.4);
+    margin-bottom: 6px;
+}
+.end-en {
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: var(--gold);
+    margin-bottom: 30px;
+}
+.end-p {
+    font-size: 14px;
+    line-height: 2.2;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+}
+.end-p.gap {
+    margin-top: 28px;
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.rsvp-btn {
+    margin-top: 36px;
+    padding: 14px 36px;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: var(--navy-deep);
+    background: linear-gradient(135deg, #f5e6b8 0%, #d9b86a 100%);
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 6px 20px rgba(217, 184, 106, 0.4);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.rsvp-btn:active {
+    transform: scale(0.97);
+    box-shadow: 0 3px 10px rgba(217, 184, 106, 0.4);
+}
+
+.end-foot {
+    margin-top: 34px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold-soft);
+}
+
+/* =========================================================
+   RSVP 弹层
+   ========================================================= */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 13, 31, 0.85);
+    backdrop-filter: blur(6px);
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+.modal.show { display: flex; }
+.modal-box {
+    width: 100%;
+    max-width: 300px;
+    background: var(--navy);
+    border: 1px solid var(--gold);
+    padding: 36px 24px 28px;
+    text-align: center;
+    color: var(--gold-light);
+    animation: popIn 0.35s ease;
+}
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to   { opacity: 1; transform: scale(1); }
+}
+.modal-title {
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 16px;
+}
+.modal-box p {
+    font-size: 13px;
+    line-height: 2;
+    letter-spacing: 1px;
+}
+.modal-close {
+    margin-top: 22px;
+    padding: 10px 30px;
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    font-size: 13px;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+
+/* ---------- 小屏适配 ---------- */
+@media (max-height: 640px) {
+    .cover-title { font-size: 28px; }
+    .y-text      { font-size: 22px; }
+    .end-title   { font-size: 22px; letter-spacing: 6px; }
+}
