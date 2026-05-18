@@ -886,3 +886,168 @@ html, body {
     .card { max-width: 400px; }
     .agenda-wrap { max-width: 420px; }
 }
+
+
+/* =========================================================
+   第 5 屏：着装建议 (Dress Code)
+   ========================================================= */
+.page-dress { background: radial-gradient(ellipse at 50% 50%, rgba(100, 180, 255, 0.05) 0%, transparent 60%); }
+
+.dress-wrap {
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.dress-en {
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: var(--gold-soft);
+    margin-top: -16px;
+    margin-bottom: 28px;
+}
+
+/* 主题色色卡 */
+.theme-colors {
+    margin-bottom: 28px;
+    padding: 18px 16px;
+    border: 1px solid var(--gold-soft);
+    background: rgba(255, 255, 255, 0.02);
+    position: relative;
+}
+.theme-label {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 14px;
+}
+.color-swatches {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+.swatch-dot {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    box-shadow: 0 0 12px rgba(217, 184, 106, 0.3);
+}
+.swatch-blue  .swatch-dot { background: linear-gradient(135deg, #1a3d8c 0%, #0a1a33 100%); }
+.swatch-gold  .swatch-dot { background: linear-gradient(135deg, #f5e6b8 0%, #d9b86a 100%); }
+.swatch-black .swatch-dot { background: linear-gradient(135deg, #2a2a2a 0%, #050505 100%); }
+.swatch-name {
+    font-size: 13px;
+    color: var(--gold-light);
+    letter-spacing: 2px;
+}
+
+/* 男女着装并排卡片 */
+.dress-cards {
+    display: flex;
+    align-items: stretch;
+    gap: 14px;
+    margin-bottom: 30px;
+}
+.dress-card {
+    flex: 1;
+    padding: 18px 10px 16px;
+    border: 1px solid var(--gold-soft);
+    background: rgba(255, 255, 255, 0.02);
+    text-align: center;
+    position: relative;
+}
+.dress-icon {
+    width: 56px;
+    height: 64px;
+    margin: 0 auto 12px;
+}
+.dress-icon svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 8px rgba(217, 184, 106, 0.25));
+}
+.dress-role {
+    font-size: 14px;
+    letter-spacing: 6px;
+    color: var(--gold);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--gold-soft);
+}
+.dress-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.dress-tags span {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+    border: 1px solid var(--gold-soft);
+    border-radius: 12px;
+    background: rgba(217, 184, 106, 0.05);
+}
+.dress-tags-text {
+    flex-direction: column;
+    gap: 6px;
+}
+.dress-tags-text span {
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 5px 8px;
+}
+
+.dress-divider-v {
+    width: 1px;
+    background: linear-gradient(180deg, transparent, var(--gold-soft), transparent);
+    flex: 0 0 1px;
+}
+
+/* 家长邀请语 */
+.dress-invite {
+    text-align: center;
+    padding: 20px 10px 4px;
+}
+.dress-invite-line {
+    width: 60%;
+    height: 1px;
+    margin: 0 auto;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.7;
+}
+.dress-invite-main {
+    margin: 14px 0 6px;
+    font-size: 18px;
+    letter-spacing: 8px;
+    color: var(--gold);
+    text-shadow: 0 0 12px rgba(217, 184, 106, 0.4);
+}
+.dress-invite-sub {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--gold-light);
+    opacity: 0.9;
+    margin-bottom: 14px;
+}
+
+@media (max-height: 640px) {
+    .dress-icon       { width: 48px; height: 56px; }
+    .dress-invite-main { font-size: 16px; letter-spacing: 6px; }
+    .theme-colors     { padding: 14px 12px; margin-bottom: 20px; }
+    .swatch-dot       { width: 28px; height: 28px; }
+}
+@media (min-width: 768px) {
+    .dress-wrap { max-width: 420px; }
+}
