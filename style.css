@@ -1,0 +1,844 @@
+/* =========================================================
+   渊学通杭州校区 · 毕业典礼邀请函
+   青春毕业主题 | 深蓝渐变 + 金色 + 樱花/纸飞机/学士帽装饰
+   ========================================================= */
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+    width: 100%;
+    background: #0a1a33;
+    color: #f5e6b8;
+    font-family: "PingFang SC", "Microsoft YaHei", "Noto Serif SC", serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+:root {
+    --gold:        #d9b86a;
+    --gold-light:  #f5e6b8;
+    --gold-soft:   rgba(217, 184, 106, 0.35);
+    --navy:        #0a1a33;
+    --navy-deep:   #050d1f;
+    --navy-soft:   #12244a;
+    --pink:        #ffb7c5;
+    --pink-soft:   rgba(255, 183, 197, 0.25);
+    --blue-glow:   rgba(100, 180, 255, 0.15);
+}
+
+/* =========================================================
+   全局背景 - 星空 + 渐变光晕
+   ========================================================= */
+.sky {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background:
+        radial-gradient(ellipse at 30% 20%, rgba(100, 160, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(255, 183, 197, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 0%, #1a3066 0%, #0a1a33 55%, #050d1f 100%);
+    overflow: hidden;
+}
+.stars, .stars2 {
+    position: absolute; inset: 0;
+    background-image:
+        radial-gradient(1px 1px at 10% 15%, #fff 50%, transparent 100%),
+        radial-gradient(1px 1px at 25% 45%, #fff 50%, transparent 100%),
+        radial-gradient(1.2px 1.2px at 40% 70%, #fff 50%, transparent 100%),
+        radial-gradient(1px 1px at 60% 25%, #fff 50%, transparent 100%),
+        radial-gradient(1px 1px at 75% 55%, #fff 50%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 55% 40%, #ffe8a3 50%, transparent 100%),
+        radial-gradient(1px 1px at 90% 80%, #fff 50%, transparent 100%),
+        radial-gradient(1px 1px at 5% 90%, #fff 50%, transparent 100%),
+        radial-gradient(1px 1px at 85% 10%, #fff 50%, transparent 100%),
+        radial-gradient(1.2px 1.2px at 35% 85%, #ffe8a3 50%, transparent 100%);
+    background-size: 500px 500px;
+    animation: twinkle 4s infinite ease-in-out alternate;
+    opacity: 0.8;
+}
+.stars2 {
+    background-size: 800px 800px;
+    animation-duration: 6s;
+    opacity: 0.5;
+}
+@keyframes twinkle {
+    0%   { opacity: 0.25; }
+    100% { opacity: 0.95; }
+}
+
+/* 流星 */
+.shooting-star {
+    position: absolute;
+    top: 8%;
+    left: -10%;
+    width: 160px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #fff, #ffe8a3);
+    filter: drop-shadow(0 0 6px #fff);
+    transform: rotate(15deg);
+    animation: shoot 8s infinite ease-in;
+    opacity: 0;
+}
+@keyframes shoot {
+    0%   { transform: translate(0, 0) rotate(15deg); opacity: 0; }
+    4%   { opacity: 1; }
+    35%  { transform: translate(120vw, 35vh) rotate(15deg); opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* =========================================================
+   樱花飘落 (CSS-only 粒子)
+   ========================================================= */
+.sakura-container {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+.sakura {
+    position: absolute;
+    top: -30px;
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle at 30% 30%, var(--pink), rgba(255, 183, 197, 0.4));
+    border-radius: 50% 0 50% 50%;
+    opacity: 0.7;
+    animation: fall linear infinite, sway ease-in-out infinite;
+}
+.sakura:nth-child(1)  { left: 5%;  animation-duration: 8s, 3s;  animation-delay: 0s;   width: 10px; height: 10px; }
+.sakura:nth-child(2)  { left: 15%; animation-duration: 10s, 4s; animation-delay: 1s;   width: 8px; height: 8px; opacity: 0.5; }
+.sakura:nth-child(3)  { left: 25%; animation-duration: 9s, 3.5s; animation-delay: 2s;  width: 12px; height: 12px; }
+.sakura:nth-child(4)  { left: 35%; animation-duration: 11s, 4s; animation-delay: 0.5s; width: 9px; height: 9px; opacity: 0.6; }
+.sakura:nth-child(5)  { left: 48%; animation-duration: 8.5s, 3s; animation-delay: 3s;  width: 11px; height: 11px; }
+.sakura:nth-child(6)  { left: 58%; animation-duration: 10s, 4.5s; animation-delay: 1.5s; width: 7px; height: 7px; opacity: 0.4; }
+.sakura:nth-child(7)  { left: 68%; animation-duration: 9.5s, 3s; animation-delay: 2.5s; width: 10px; height: 10px; }
+.sakura:nth-child(8)  { left: 78%; animation-duration: 12s, 4s; animation-delay: 0.8s; width: 8px; height: 8px; opacity: 0.5; }
+.sakura:nth-child(9)  { left: 88%; animation-duration: 8s, 3.5s; animation-delay: 4s;  width: 12px; height: 12px; }
+.sakura:nth-child(10) { left: 95%; animation-duration: 10s, 4s; animation-delay: 1.2s; width: 9px; height: 9px; opacity: 0.6; }
+
+@keyframes fall {
+    0%   { top: -30px; transform: rotate(0deg); }
+    100% { top: 110vh; transform: rotate(360deg); }
+}
+@keyframes sway {
+    0%, 100% { margin-left: 0; }
+    25%      { margin-left: 20px; }
+    75%      { margin-left: -20px; }
+}
+
+/* =========================================================
+   纸飞机动画
+   ========================================================= */
+.paper-plane-container {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+.paper-plane {
+    position: absolute;
+    top: 20%;
+    left: -60px;
+    width: 0; height: 0;
+    border-left: 24px solid var(--gold-light);
+    border-top: 8px solid transparent;
+    border-bottom: 10px solid transparent;
+    opacity: 0.6;
+    filter: drop-shadow(0 0 4px rgba(245, 230, 184, 0.5));
+    animation: fly 16s linear infinite;
+}
+.paper-plane::after {
+    content: "";
+    position: absolute;
+    top: -2px; left: -24px;
+    width: 0; height: 0;
+    border-left: 16px solid rgba(245, 230, 184, 0.4);
+    border-top: 4px solid transparent;
+    border-bottom: 6px solid transparent;
+}
+.paper-plane:nth-child(2) {
+    top: 55%;
+    animation-duration: 20s;
+    animation-delay: 6s;
+    opacity: 0.4;
+    transform: scale(0.7);
+}
+.paper-plane:nth-child(3) {
+    top: 75%;
+    animation-duration: 14s;
+    animation-delay: 10s;
+    opacity: 0.3;
+    transform: scale(0.5);
+}
+@keyframes fly {
+    0%   { left: -60px; top: 20%; transform: rotate(0deg); }
+    25%  { top: 15%; transform: rotate(-3deg); }
+    50%  { top: 22%; transform: rotate(2deg); }
+    75%  { top: 18%; transform: rotate(-2deg); }
+    100% { left: 110vw; top: 12%; transform: rotate(0deg); }
+}
+
+
+
+/* =========================================================
+   音乐按钮
+   ========================================================= */
+.music-btn {
+    position: fixed;
+    top: 18px; right: 18px;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    background: rgba(10, 26, 51, 0.7);
+    color: var(--gold);
+    z-index: 50;
+    backdrop-filter: blur(4px);
+    animation: spin 4s linear infinite;
+    animation-play-state: paused;
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(217, 184, 106, 0.3);
+}
+.music-btn.on { animation-play-state: running; }
+.music-btn .note { font-size: 18px; line-height: 36px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* =========================================================
+   页面容器（纵向滚动/吸附）
+   ========================================================= */
+.pages {
+    position: relative;
+    z-index: 2;
+    scroll-snap-type: y mandatory;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.page {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    width: 100%;
+    padding: 40px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* 每屏独立渐变叠加 */
+.page-cover  { background: radial-gradient(ellipse at 50% 30%, rgba(26, 48, 102, 0.4) 0%, transparent 70%); }
+.page-words  { background: radial-gradient(ellipse at 50% 50%, rgba(255, 183, 197, 0.05) 0%, transparent 60%); }
+.page-when   { background: radial-gradient(ellipse at 50% 60%, rgba(100, 180, 255, 0.06) 0%, transparent 60%); }
+.page-agenda { background: radial-gradient(ellipse at 30% 50%, rgba(217, 184, 106, 0.04) 0%, transparent 60%); }
+.page-end    { background: radial-gradient(ellipse at 50% 40%, rgba(255, 183, 197, 0.06) 0%, transparent 50%); }
+
+/* =========================================================
+   滚动进入动画
+   ========================================================= */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================================
+   第 1 屏：封面
+   ========================================================= */
+.cover-frame {
+    width: 100%;
+    max-width: 360px;
+    padding: 48px 20px 40px;
+    border: 1px solid var(--gold-soft);
+    position: relative;
+    text-align: center;
+    background: rgba(10, 26, 51, 0.3);
+    backdrop-filter: blur(2px);
+}
+.cover-frame::before,
+.cover-frame::after {
+    content: "";
+    position: absolute;
+    left: 8%; right: 8%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.cover-frame::before { top: 6px; }
+.cover-frame::after  { bottom: 6px; }
+
+/* 四角花纹 */
+.corner {
+    position: absolute;
+    width: 30px; height: 30px;
+    border: 1.5px solid var(--gold);
+    opacity: 0.7;
+}
+.corner-tl { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.corner-tr { top: -1px; right: -1px; border-left: none; border-bottom: none; }
+.corner-bl { bottom: -1px; left: -1px; border-right: none; border-top: none; }
+.corner-br { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+.brand {
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 4px;
+}
+.brand-en {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold-soft);
+    margin-bottom: 28px;
+}
+
+/* 学士帽 (SVG inline 替代) */
+.cap-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cap-icon svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 12px rgba(217, 184, 106, 0.5));
+}
+
+.cover-title {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--gold-light);
+    text-shadow: 0 0 16px rgba(217, 184, 106, 0.6);
+    margin: 8px 0 10px;
+}
+.cover-title span {
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+}
+.cover-title span:nth-child(2) { animation-delay: 0.2s; }
+.cover-title span:nth-child(3) { animation-delay: 0.4s; }
+.cover-title span:nth-child(4) { animation-delay: 0.6s; }
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-6px); }
+}
+
+.cover-sub {
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: var(--gold);
+    margin-bottom: 28px;
+}
+
+.cover-year {
+    display: flex; align-items: center; justify-content: center;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+.y-line {
+    width: 40px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.y-text {
+    font-size: 26px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    font-family: "Times New Roman", serif;
+}
+
+.cover-invite {
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--gold-light);
+    opacity: 0.85;
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: -64px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: var(--gold-soft);
+    text-align: center;
+    letter-spacing: 3px;
+}
+.arrow {
+    width: 10px; height: 10px;
+    margin: 10px auto 0;
+    border-right: 1.5px solid var(--gold);
+    border-bottom: 1.5px solid var(--gold);
+    transform: rotate(45deg);
+    animation: bounce 1.8s infinite;
+}
+@keyframes bounce {
+    0%,100% { transform: translateY(0) rotate(45deg); opacity: 0.4; }
+    50%     { transform: translateY(8px) rotate(45deg); opacity: 1; }
+}
+
+
+
+/* =========================================================
+   第 2 屏：致辞 — 带书本装饰
+   ========================================================= */
+.page-words { position: relative; }
+.page-words::before {
+    content: "";
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(255, 183, 197, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.words-wrap {
+    text-align: center;
+    max-width: 340px;
+    line-height: 2.4;
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+}
+.chapter {
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 4px;
+    margin-bottom: 28px;
+    position: relative;
+}
+.chapter::before, .chapter::after {
+    content: "✦";
+    margin: 0 8px;
+    font-size: 8px;
+    vertical-align: middle;
+}
+.words-wrap .gap { margin-top: 20px; }
+.words-wrap .highlight {
+    margin-top: 18px;
+    font-size: 22px;
+    color: var(--gold);
+    letter-spacing: 6px;
+    text-shadow: 0 0 14px rgba(217, 184, 106, 0.5);
+    position: relative;
+}
+.words-wrap .highlight::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 20%; right: 20%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* 书本 SVG 装饰 */
+.book-deco {
+    position: absolute;
+    bottom: 60px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    opacity: 0.15;
+}
+
+/* =========================================================
+   第 3 屏：时间地点卡
+   ========================================================= */
+.card {
+    width: 100%;
+    max-width: 340px;
+    padding: 36px 24px 80px;
+    border: 1px solid var(--gold-soft);
+    background: rgba(255, 255, 255, 0.03);
+    position: relative;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.3);
+}
+.card::before, .card::after {
+    content: "";
+    position: absolute;
+    width: 18px; height: 18px;
+    border: 1.5px solid var(--gold);
+}
+.card::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.card::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+.card-title {
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+.deco-line {
+    width: 34px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.info-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 6px 4px;
+}
+.label {
+    flex: 0 0 48px;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    padding-top: 6px;
+}
+.value { flex: 1; }
+.date-big, .place-big {
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+    margin-bottom: 6px;
+}
+.date-sub, .place-sub {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--gold-soft);
+}
+
+.divider {
+    height: 1px;
+    margin: 22px 0;
+    background: linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+}
+
+.map-pin {
+    position: absolute;
+    bottom: 24px; left: 50%;
+    transform: translateX(-50%);
+    width: 20px; height: 20px;
+}
+.pin {
+    position: absolute;
+    left: 50%; top: 0;
+    transform: translateX(-50%);
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 12px var(--gold);
+}
+.pin-ring {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px; height: 20px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    animation: pinpulse 2s infinite;
+}
+@keyframes pinpulse {
+    0%   { transform: translate(-50%, -50%) scale(0.6); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(2.4); opacity: 0; }
+}
+
+/* =========================================================
+   第 4 屏：活动流程
+   ========================================================= */
+.agenda-wrap {
+    width: 100%;
+    max-width: 360px;
+}
+.timeline {
+    list-style: none;
+    position: relative;
+    padding: 10px 0;
+    margin-top: 10px;
+}
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 88px; top: 10px; bottom: 10px;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, var(--gold-soft), var(--gold), var(--gold-soft), transparent);
+}
+.timeline li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 80px 18px 1fr;
+    gap: 0;
+    align-items: flex-start;
+    padding: 16px 0;
+}
+.t-time {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-align: right;
+    padding-right: 4px;
+    padding-top: 4px;
+    font-family: "Times New Roman", serif;
+}
+.t-dot {
+    position: relative;
+    width: 18px; height: 18px;
+    margin-top: 4px;
+}
+.t-dot::before {
+    content: "";
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 10px var(--gold);
+}
+.t-dot::after {
+    content: "";
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 18px; height: 18px;
+    border: 1.5px solid var(--gold-soft);
+    border-radius: 50%;
+    animation: dotpulse 2.5s ease-out infinite;
+}
+@keyframes dotpulse {
+    0%   { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+    100% { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
+}
+.t-text { padding-left: 10px; }
+.t-text h4 {
+    font-size: 15px;
+    color: var(--gold-light);
+    letter-spacing: 3px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+.t-text p {
+    font-size: 12px;
+    color: var(--gold-soft);
+    letter-spacing: 1px;
+}
+
+
+
+/* =========================================================
+   第 5 屏：尾页 — 月桂花环 + 光芒
+   ========================================================= */
+.page-end { position: relative; }
+.page-end::before {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(217, 184, 106, 0.06) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.end-wrap {
+    text-align: center;
+    max-width: 340px;
+    position: relative;
+    padding: 40px 10px;
+}
+
+.laurel {
+    position: absolute;
+    top: -10px;
+    width: 60px; height: 140px;
+    opacity: 0.5;
+}
+.laurel-left  { left: -20px; }
+.laurel-right { right: -20px; }
+.laurel svg { width: 100%; height: 100%; }
+
+.end-title {
+    font-size: 26px;
+    letter-spacing: 8px;
+    color: var(--gold-light);
+    text-shadow: 0 0 16px rgba(217, 184, 106, 0.5);
+    margin-bottom: 6px;
+}
+.end-en {
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: var(--gold);
+    margin-bottom: 30px;
+}
+.end-p {
+    font-size: 14px;
+    line-height: 2.4;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+}
+.end-p.gap {
+    margin-top: 28px;
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.rsvp-btn {
+    margin-top: 36px;
+    padding: 14px 40px;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: var(--navy-deep);
+    background: linear-gradient(135deg, #f5e6b8 0%, #d9b86a 100%);
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 6px 24px rgba(217, 184, 106, 0.5);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+.rsvp-btn::after {
+    content: "";
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.3) 50%, transparent 60%);
+    animation: shimmer 3s infinite;
+}
+@keyframes shimmer {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+.rsvp-btn:active {
+    transform: scale(0.97);
+    box-shadow: 0 3px 12px rgba(217, 184, 106, 0.4);
+}
+
+.end-foot {
+    margin-top: 34px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold-soft);
+}
+
+/* =========================================================
+   RSVP 弹层
+   ========================================================= */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 13, 31, 0.88);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+.modal.show { display: flex; }
+.modal-box {
+    width: 100%;
+    max-width: 300px;
+    background: var(--navy);
+    border: 1px solid var(--gold);
+    padding: 36px 24px 28px;
+    text-align: center;
+    color: var(--gold-light);
+    animation: popIn 0.35s ease;
+    box-shadow: 0 0 40px rgba(217, 184, 106, 0.15);
+}
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to   { opacity: 1; transform: scale(1); }
+}
+.modal-title {
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 16px;
+}
+.modal-box p {
+    font-size: 13px;
+    line-height: 2;
+    letter-spacing: 1px;
+}
+.modal-close {
+    margin-top: 22px;
+    padding: 10px 30px;
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    font-size: 13px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.modal-close:active {
+    background: rgba(217, 184, 106, 0.1);
+}
+
+/* =========================================================
+   音乐提示弹层
+   ========================================================= */
+.music-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 13, 31, 0.92);
+    backdrop-filter: blur(6px);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+.music-overlay.hidden { display: none; }
+.music-overlay-box {
+    text-align: center;
+    animation: popIn 0.4s ease;
+}
+.music-overlay-box .play-icon {
+    width: 70px; height: 70px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 20px rgba(217, 184, 106, 0.3);
+}
+.music-overlay-box .play-icon:active {
+    transform: scale(0.95);
+}
+.music-overlay-box .play-icon::after {
+    content: "";
+    width: 0; height: 0;
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+    border-left: 22px solid var(--gold);
+    margin-left: 4px;
+}
+.music-overlay-box p {
+    font-size: 14px;
+    color: var(--gold-light);
+    letter-spacing: 3px;
+}
+
+/* =========================================================
+   响应式
+   ========================================================= */
+@media (max-height: 640px) {
+    .cover-title { font-size: 28px; }
+    .y-text      { font-size: 22px; }
+    .end-title   { font-size: 22px; letter-spacing: 6px; }
+}
+@media (min-width: 768px) {
+    .cover-frame { max-width: 420px; padding: 56px 30px 50px; }
+    .card { max-width: 400px; }
+    .agenda-wrap { max-width: 420px; }
+}
