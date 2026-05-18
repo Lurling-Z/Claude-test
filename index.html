@@ -10,7 +10,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="渊学通杭州校区 · 毕业典礼邀请函" />
     <meta property="og:description" content="夏风予信，共赴云天 —— 2026.06.13 诚邀您共赴这场仲夏毕业之约" />
-    <meta property="og:image" content="https://lurling-z.github.io/Claude-test/cover-page/1.png" />
+    <meta property="og:image" content="https://lurling-z.github.io/Claude-test/cover-page/1.jpg" />
     <meta property="og:url" content="https://lurling-z.github.io/Claude-test/" />
     <link rel="stylesheet" href="./style.css" />
     <!-- 艺术感字体：ZCOOL XiaoWei (站酷小薇) -->
@@ -21,7 +21,7 @@
 <body>
 
     <!-- 预加载首张主视觉，避免首屏白底 -->
-    <link rel="preload" as="image" href="./cover-page/1.png" />
+    <link rel="preload" as="image" href="./cover-page/1.jpg" />
 
     <!-- 背景星空 -->
     <div class="sky">
@@ -51,8 +51,8 @@
         <div class="paper-plane"></div>
     </div>
 
-    <!-- 背景音乐 -->
-    <audio id="bgMusic" loop preload="auto" autoplay playsinline>
+    <!-- 背景音乐（用户点击开屏后再加载） -->
+    <audio id="bgMusic" loop preload="none" playsinline>
         <source src="./%E6%AF%95%E4%B8%9Abgm.mp3" type="audio/mpeg" />
     </audio>
 
@@ -68,7 +68,7 @@
         <!-- ========== 第 1 屏：封面 ========== -->
         <section class="page page-cover">
             <!-- 本屏独立背景图 -->
-            <div class="page-bg" style="background-image: url('./cover-page/1.png');"></div>
+            <div class="page-bg" style="background-image: url('./cover-page/1.jpg');"></div>
             <div class="page-bg-mask"></div>
 
             <div class="cover-frame">
@@ -120,7 +120,7 @@
 
         <!-- ========== 第 2 屏：致辞 ========== -->
         <section class="page page-words">
-            <div class="page-bg" style="background-image: url('./cover-page/2.png');"></div>
+            <div class="page-bg" style="background-image: url('./cover-page/2.jpg');"></div>
             <div class="page-bg-mask"></div>
             <div class="words-wrap reveal">
                 <div class="chapter">致 每 一 位 追 光 者</div>
@@ -146,7 +146,7 @@
 
         <!-- ========== 第 3 屏：时间地点 ========== -->
         <section class="page page-when">
-            <div class="page-bg" style="background-image: url('./cover-page/3.png');"></div>
+            <div class="page-bg" style="background-image: url('./cover-page/3.jpg');"></div>
             <div class="page-bg-mask"></div>
             <div class="card reveal">
                 <div class="card-title">
@@ -182,7 +182,7 @@
 
         <!-- ========== 第 4 屏：活动流程 ========== -->
         <section class="page page-agenda">
-            <div class="page-bg" style="background-image: url('./cover-page/4.png');"></div>
+            <div class="page-bg" style="background-image: url('./cover-page/4.jpg');"></div>
             <div class="page-bg-mask"></div>
             <div class="agenda-wrap reveal">
                 <div class="card-title">
@@ -238,7 +238,7 @@
 
         <!-- ========== 第 5 屏：着装建议 ========== -->
         <section class="page page-dress">
-            <div class="page-bg" style="background-image: url('./cover-page/5.png');"></div>
+            <div class="page-bg" style="background-image: url('./cover-page/5.jpg');"></div>
             <div class="page-bg-mask"></div>
             <div class="dress-wrap reveal">
                 <div class="card-title">
@@ -320,7 +320,7 @@
 
         <!-- ========== 第 6 屏：期待 ========== -->
         <section class="page page-end">
-            <div class="page-bg" style="background-image: url('./cover-page/6.png');"></div>
+            <div class="page-bg" style="background-image: url('./cover-page/6.jpg');"></div>
             <div class="page-bg-mask"></div>
             <div class="end-wrap reveal">
                 <!-- 月桂花环 SVG -->
@@ -370,12 +370,12 @@
         </div>
     </div>
 
-    <!-- 音乐启动弹层：需要用户点击才能播放音频 -->
+    <!-- 开屏弹层：点击后开启邀请 + 播放音乐 -->
     <div class="music-overlay" id="musicOverlay">
         <div class="music-overlay-box">
             <div class="play-icon" id="playIcon"></div>
-            <p>点击播放音乐</p>
-            <p style="font-size:12px; opacity:0.6; margin-top:8px; letter-spacing:2px;">开启毕业典礼之旅</p>
+            <p>点 击 开 启 邀 请</p>
+            <p style="font-size:12px; opacity:0.6; margin-top:8px; letter-spacing:2px;">渊学通杭州校区 · 毕业典礼</p>
         </div>
     </div>
 

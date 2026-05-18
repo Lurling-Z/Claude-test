@@ -27,6 +27,8 @@
     function playMusic() {
         if (!bgMusic) return;
         bgMusic.volume = 0.4;
+        // 用户点击后再加载音频
+        try { bgMusic.load(); } catch (e) {}
         const p = bgMusic.play();
         if (p !== undefined) {
             p.then(() => {
@@ -57,6 +59,8 @@
             musicOverlay.classList.add('hidden');
         }
         playMusic();
+        // 用户点击后再触发图片预加载，加速后续滚动浏览体验
+        preloadAllImages();
     }
 
     if (playIcon) {
@@ -127,14 +131,16 @@
     });
 
     // =====================================================
-    // 5. 封面图片预加载（每屏独立背景，无轮播）
+    // 5. 封面图片预加载（用户点击开屏后才预加载，加速首屏）
     // =====================================================
-    document.querySelectorAll('.page-bg').forEach((bg) => {
-        const url = bg.style.backgroundImage.replace(/^url\(['"]?/, '').replace(/['"]?\)$/, '');
-        if (url) {
-            const img = new Image();
-            img.src = url;
-        }
-    });
+    function preloadAllImages() {
+        document.querySelectorAll('.page-bg').forEach((bg) => {
+            const url = bg.style.backgroundImage.replace(/^url\(['"]?/, '').replace(/['"]?\)$/, '');
+            if (url) {
+                const img = new Image();
+                img.src = url;
+            }
+        });
+    }
 
 })();
