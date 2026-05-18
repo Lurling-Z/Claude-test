@@ -1,0 +1,268 @@
+{
+  "templates": [
+    {
+      "num": "1",
+      "title": "经典让步开头",
+      "scene": "Agree / Disagree 题型，需要先让步再反驳",
+      "sentence": "While it is true that ___, this view overlooks the fact that ___.",
+      "how": "前半句承认对方观点的合理性，后半句用 overlook the fact that 把对方没看到的关键点拎出来，自然过渡到自己的论点。",
+      "example": "While it is true that online learning saves time, this view overlooks the fact that students lose the chance to develop social skills in real classrooms.",
+      "pitfall": "overlook 后必须接 the fact that + 完整句子，不要直接接名词。",
+      "category": "concession"
+    },
+    {
+      "num": "2",
+      "title": "部分同意句",
+      "scene": "题目要求 To what extent，需要表达'部分同意'",
+      "sentence": "I partly agree with this statement: although ___ does have some merit, the underlying issue lies in ___.",
+      "how": "考官特别看重 partly / to some extent 这种程度副词。前半承认对方的合理之处，后半用 the underlying issue 引出真正问题。",
+      "example": "I partly agree with this statement: although raising taxes on junk food does have some merit, the underlying issue lies in people's lack of nutritional awareness.",
+      "pitfall": "underlying issue 后接的是'根本问题'，不要写成具体例子。",
+      "category": "concession"
+    },
+    {
+      "num": "3",
+      "title": "反驳过渡句",
+      "scene": "让步之后，正式开始反驳",
+      "sentence": "However, such reasoning fails to take into account ___, which is arguably the most decisive factor in this debate.",
+      "how": "fails to take into account 比 but / however 更有逻辑感。arguably the most decisive 自然带出本段要论证的核心。",
+      "example": "However, such reasoning fails to take into account long-term mental health, which is arguably the most decisive factor in this debate.",
+      "pitfall": "decisive factor 后面这一段必须真的论证它'为什么是 decisive'，否则空话扣分。",
+      "category": "concession"
+    },
+    {
+      "num": "4",
+      "title": "二选一题型让步",
+      "scene": "Discuss both views and give your own opinion",
+      "sentence": "Both perspectives carry weight, yet upon closer examination, the case for ___ proves more compelling.",
+      "how": "Both perspectives carry weight 表示两边都看了，upon closer examination 引出'我仔细想过之后倾向哪一边'，比直接说 I think 更有学术感。",
+      "example": "Both perspectives carry weight, yet upon closer examination, the case for stricter government regulation proves more compelling.",
+      "pitfall": "后半句之后必须给出至少 2 个理由说明为什么 more compelling，否则结构不完整。",
+      "category": "concession"
+    },
+    {
+      "num": "5",
+      "title": "案例分析句",
+      "scene": "举一个具体国家 / 公司 / 现象作为论据",
+      "sentence": "Take ___ as a case in point. Over the past decade, ___, which clearly demonstrates that ___.",
+      "how": "前半句抛出案例，中间补背景或数据，最后用 which clearly demonstrates that 强制自己回扣观点。",
+      "example": "Take Singapore as a case in point. Over the past decade, the country has invested heavily in public transport, which clearly demonstrates that government intervention can effectively reduce traffic congestion.",
+      "pitfall": "which 后面接的句子必须是'对应你这段的核心论点'，不要写成新论点。",
+      "category": "example"
+    },
+    {
+      "num": "6",
+      "title": "研究 / 数据引用句",
+      "scene": "想引用研究但又不知道具体出处时使用",
+      "sentence": "A growing body of research suggests that ___, with recent studies showing that ___.",
+      "how": "A growing body of research suggests 是安全的'虚指'，考官不会要求你写出具体出处，但能让段落显得有据可依。",
+      "example": "A growing body of research suggests that working from home boosts productivity, with recent studies showing that remote employees complete 13% more tasks per day.",
+      "pitfall": "数据可以编一个合理范围，但语气要稳，不要写 99% 这种夸张数字。",
+      "category": "example"
+    },
+    {
+      "num": "7",
+      "title": "个人观察句",
+      "scene": "实在想不出例子时，用'普遍现象'代替",
+      "sentence": "It is not uncommon to see ___ in today's society, and this trend can be traced back to ___.",
+      "how": "It is not uncommon to see 是观察类例子的安全开头，this trend can be traced back to 自然引出原因分析。",
+      "example": "It is not uncommon to see teenagers spending hours on short-video apps in today's society, and this trend can be traced back to the algorithm-driven design of these platforms.",
+      "pitfall": "Task 2 用观察类例子最多 1 次，多了会显得论证薄。",
+      "category": "example"
+    },
+    {
+      "num": "8",
+      "title": "反例句（拉分关键）",
+      "scene": "需要论证'如果不这样做会怎样'",
+      "sentence": "Consider, by contrast, what happens when ___: ___ becomes inevitable, undermining the very goal we set out to achieve.",
+      "how": "Consider, by contrast 提示考官'我现在要给反例了'。undermining the very goal 这种结构在 LR（词汇）一项很加分。",
+      "example": "Consider, by contrast, what happens when schools eliminate physical education: childhood obesity becomes inevitable, undermining the very goal of producing well-rounded students we set out to achieve.",
+      "pitfall": "反例和正例之间的逻辑必须能闭环，否则考官看不出你想说什么。",
+      "category": "example"
+    },
+    {
+      "num": "9",
+      "title": "长短期对比句",
+      "scene": "想说'短期看着好，长期看不行'或反之",
+      "sentence": "Although ___ does carry some short-term appeal, its long-term consequences are far more concerning.",
+      "how": "套这一句之后，下一句立刻展开 long-term consequences 是什么。时间维度的论证是雅思 7+ 作文的常见特征。",
+      "example": "Although banning private cars in city centers does carry some short-term appeal, its long-term consequences for small businesses are far more concerning.",
+      "pitfall": "写完这句后，下一句必须真的解释'为什么长期看不行'，不要立刻又跳到新话题。",
+      "category": "contrast"
+    },
+    {
+      "num": "10",
+      "title": "因果递进句",
+      "scene": "从一个现象推导到更深的原因或结果",
+      "sentence": "What lies beneath this phenomenon is ___, which in turn gives rise to ___.",
+      "how": "What lies beneath 比 The reason is 更有深度感，which in turn 推出连锁反应，体现因果链。",
+      "example": "What lies beneath this phenomenon is the widening income gap, which in turn gives rise to social tensions that no government policy alone can resolve.",
+      "pitfall": "因果链最多推 2 层，再多就显得绕，考官会扣 CC。",
+      "category": "contrast"
+    },
+    {
+      "num": "11",
+      "title": "多角度切换句",
+      "scene": "段落之间需要切换论证角度（经济 -> 社会 -> 环境等）",
+      "sentence": "Beyond the economic dimension, the issue also unfolds on a social level, where ___.",
+      "how": "Beyond the ___ dimension 是非常自然的角度切换。the issue also unfolds on a ___ level 暗示你要从新角度论证。",
+      "example": "Beyond the economic dimension, the issue also unfolds on a social level, where increasing automation reshapes the way people define their identity and self-worth.",
+      "pitfall": "切换角度后必须真的从新角度论证，不要换汤不换药。",
+      "category": "contrast"
+    },
+    {
+      "num": "12",
+      "title": "权衡式结尾",
+      "scene": "Agree / Disagree 题型的标准结尾",
+      "sentence": "Weighing both sides, I would argue that the benefits of ___ outweigh its drawbacks, particularly when ___ is taken into account.",
+      "how": "Weighing both sides 暗示你前文真的讨论了双方。particularly when ___ is taken into account 抛出最后一个支撑点，把结尾立住。",
+      "example": "Weighing both sides, I would argue that the benefits of remote work outweigh its drawbacks, particularly when employee well-being and productivity are taken into account.",
+      "pitfall": "particularly when 之后接的内容应该是文章里出现过的，不要凭空冒一个新概念。",
+      "category": "conclusion"
+    },
+    {
+      "num": "13",
+      "title": "政策建议式结尾",
+      "scene": "题目问'是否应该 / 政府该怎么做'",
+      "sentence": "Rather than treating ___ as a quick fix, policymakers should focus on ___, which addresses the root cause of the problem.",
+      "how": "Rather than treating ___ as a quick fix 暗示你看穿了表面方案。addresses the root cause 让结尾显得有深度。",
+      "example": "Rather than treating heavy taxation as a quick fix, policymakers should focus on improving public education, which addresses the root cause of the problem.",
+      "pitfall": "结尾不要提全新的论点，policymakers should focus on 后面的内容建议是文章里讨论过的方向。",
+      "category": "conclusion"
+    },
+    {
+      "num": "14",
+      "title": "展望式结尾",
+      "scene": "话题涉及未来 / 趋势 / 科技",
+      "sentence": "Looking ahead, the question is no longer whether ___, but how we can ___ in a way that benefits the broader society.",
+      "how": "Looking ahead 把视角拉到未来。the question is no longer whether ___, but how 是非常高级的议题升华句式。",
+      "example": "Looking ahead, the question is no longer whether AI will replace human jobs, but how we can integrate it into the workforce in a way that benefits the broader society.",
+      "pitfall": "升华要建立在前文论证基础上，不要为了升华而升华。",
+      "category": "conclusion"
+    },
+    {
+      "num": "15",
+      "title": "双对象趋势句",
+      "scene": "图表中有两条曲线 / 两类对象",
+      "sentence": "Overall, ___ witnessed a steady increase, whereas ___ experienced a noticeable decline over the period.",
+      "how": "witnessed / experienced 都是拟人化动词，比单调的 went up / went down 高级。whereas 把对比关系写明。",
+      "example": "Overall, the consumption of bottled water witnessed a steady increase, whereas that of carbonated drinks experienced a noticeable decline over the period.",
+      "pitfall": "Overall 之后必须真的是'全局趋势'，不要把某一段细节当作 overall 来写。",
+      "category": "task1_overview"
+    },
+    {
+      "num": "16",
+      "title": "多对象趋势句",
+      "scene": "图表有 3 条以上数据线",
+      "sentence": "Overall, while ___ and ___ both saw upward trends, ___ moved in the opposite direction, leaving ___ as the most stable category throughout.",
+      "how": "把 3-4 条数据按'上升 / 下降 / 稳定'分组，比逐条罗列清晰得多。",
+      "example": "Overall, while online sales and mobile orders both saw upward trends, in-store purchases moved in the opposite direction, leaving phone orders as the most stable category throughout.",
+      "pitfall": "分组要准确，不要把上升的和稳定的归到一起。",
+      "category": "task1_overview"
+    },
+    {
+      "num": "17",
+      "title": "静态图概述句",
+      "scene": "饼图 / 表格 / 静态地图（非时间序列）",
+      "sentence": "Overall, ___ accounted for the largest proportion, while ___ made up only a small share, reflecting a clear imbalance across categories.",
+      "how": "饼图 / 表格用 accounted for / made up 比 had / occupied 更地道。reflecting a clear imbalance 自然引出对比。",
+      "example": "Overall, electricity accounted for the largest proportion of household energy use, while solar power made up only a small share, reflecting a clear imbalance across categories.",
+      "pitfall": "饼图概述句不需要写百分比，留到正文写。",
+      "category": "task1_overview"
+    },
+    {
+      "num": "18",
+      "title": "流程图 / 地图概述句",
+      "scene": "Process / Map 题型",
+      "sentence": "Overall, the process / transformation involves ___ key stages, beginning with ___ and ending with ___.",
+      "how": "流程图 / 地图概述固定套这一句，考官想看的就是'几步、起点、终点'。",
+      "example": "Overall, the process involves five key stages, beginning with raw material collection and ending with packaging for delivery.",
+      "pitfall": "stages 数量必须数对，地图题改成 major changes。",
+      "category": "task1_overview"
+    },
+    {
+      "num": "19",
+      "title": "反差对比句",
+      "scene": "图表里两个数据差距很大",
+      "sentence": "The most striking contrast lies between ___ and ___, with the former far exceeding the latter throughout the period.",
+      "how": "The most striking contrast 是非常高分的开头方式。the former / the latter 体现你掌握指代用法。",
+      "example": "The most striking contrast lies between urban and rural areas, with the former far exceeding the latter throughout the period.",
+      "pitfall": "the former 一定指前面提到的那一项，the latter 一定指后面那一项，不要搞反。",
+      "category": "task1_detail"
+    },
+    {
+      "num": "20",
+      "title": "数据上升 / 下降句",
+      "scene": "描述具体的数字变化",
+      "sentence": "The figure for ___ rose / fell sharply from ___ to ___, marking a ___ % increase / decrease over the decade.",
+      "how": "The figure for ___ 是描述具体数字的安全表达。marking a ___% 把变化幅度量化。",
+      "example": "The figure for online shopping rose sharply from 12% to 48%, marking a 36 percentage point increase over the decade.",
+      "pitfall": "百分比和百分点是两回事：20% 涨到 30% 是 50% 增长，但只是 10 个百分点的增长。",
+      "category": "task1_detail"
+    },
+    {
+      "num": "21",
+      "title": "拐点 / 峰值句",
+      "scene": "图表里有最高点 / 转折点",
+      "sentence": "The figure peaked at ___ in ___, before gradually leveling off in the following years.",
+      "how": "peaked at ___ in ___ 是描述峰值的标准句式。leveling off 表示'趋于平稳'，比 not change much 高级。",
+      "example": "The figure peaked at 320 million in 2018, before gradually leveling off in the following years.",
+      "pitfall": "leveling off 用于'先涨后稳'，不要用于'先稳后涨'。",
+      "category": "task1_detail"
+    },
+    {
+      "num": "22",
+      "title": "稳定 / 波动句",
+      "scene": "描述某项数据没什么变化或小幅波动",
+      "sentence": "By contrast, ___ remained relatively stable, fluctuating slightly within a narrow range of ___ to ___.",
+      "how": "remained relatively stable 表示'基本稳定但不是完全不变'，fluctuating slightly within a narrow range 把'稳定中的波动'写清楚。",
+      "example": "By contrast, the consumption of tea remained relatively stable, fluctuating slightly within a narrow range of 50 to 60 kilograms per capita.",
+      "pitfall": "如果数据完全没变，用 remained unchanged at ___，不要叠加 fluctuating。",
+      "category": "task1_detail"
+    },
+    {
+      "num": "23",
+      "title": "流程 / 地图阶段连接句",
+      "scene": "Process / Map 题型的中段过渡",
+      "sentence": "Once ___ has been completed, the next stage involves ___, which prepares the ___ for the subsequent step.",
+      "how": "Once ___ has been completed 是流程图过渡的安全句式。subsequent step 比 next step 更地道。",
+      "example": "Once the dough has been kneaded, the next stage involves leaving it to rise, which prepares the mixture for the subsequent baking step.",
+      "pitfall": "流程图全文用一般现在时被动态，不要用过去时。",
+      "category": "task1_detail"
+    }
+  ],
+  "checklist": [
+    {
+      "category": "TR \u00b7 任务回应",
+      "items": [
+        "题目问的核心点，每段是否都正面回应了？",
+        "我的立场（同意 / 不同意 / 部分同意）有没有写清楚？",
+        "题目里的关键词，主体段里有没有展开？"
+      ]
+    },
+    {
+      "category": "CC \u00b7 连贯衔接",
+      "items": [
+        "每段开头有没有主题句？",
+        "段落之间的过渡，是用逻辑（because, therefore）还是堆词（and, also）？",
+        "代词指代清楚吗？this / that / it 指的是哪一个？"
+      ]
+    },
+    {
+      "category": "LR \u00b7 词汇资源",
+      "items": [
+        "有没有重复词没换（people / individuals / citizens）？",
+        "有没有口语词没改（lots of, a lot of, get）？",
+        "学术词用得对不对（搭配是否成立）？"
+      ]
+    },
+    {
+      "category": "GRA \u00b7 语法多样性",
+      "items": [
+        "有没有至少 2 个复合句 + 1 个虚拟语气 / 倒装？",
+        "时态有没有混用（小作文要统一）？",
+        "主谓一致、单复数有没有错？"
+      ]
+    }
+  ]
+}
