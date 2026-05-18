@@ -183,11 +183,11 @@ html, body {
 
 
 /* =========================================================
-   音乐按钮
+   音乐按钮（左上角）
    ========================================================= */
 .music-btn {
     position: fixed;
-    top: 18px; right: 18px;
+    top: 18px; left: 18px;
     width: 38px; height: 38px;
     border-radius: 50%;
     border: 1.5px solid var(--gold);
@@ -374,6 +374,29 @@ html, body {
 @keyframes float {
     0%,100% { transform: translateY(0); }
     50%     { transform: translateY(-6px); }
+}
+
+/* 诗句标题：9 字 + 逗号，自动换行，字号略收 */
+.cover-title-poem {
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 28px;
+    letter-spacing: 1px;
+    line-height: 1.4;
+    padding: 0 4px;
+}
+.cover-title-poem span:nth-child(5) { animation-delay: 0.8s; }
+.cover-title-poem span:nth-child(6) { animation-delay: 1s; }
+.cover-title-poem span:nth-child(7) { animation-delay: 1.2s; }
+.cover-title-poem span:nth-child(8) { animation-delay: 1.4s; }
+.cover-title-poem span:nth-child(9) { animation-delay: 1.6s; }
+.cover-title-poem .poem-comma {
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    flex-basis: 100%;
 }
 
 .cover-sub {

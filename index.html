@@ -41,19 +41,11 @@
     </div>
 
     <!-- 背景音乐 -->
-    <audio id="bgMusic" loop preload="auto">
+    <audio id="bgMusic" loop preload="auto" autoplay playsinline>
         <source src="./%E6%AF%95%E4%B8%9Abgm.mp3" type="audio/mpeg" />
     </audio>
 
-    <!-- 音乐引导弹层（首次触屏播放） -->
-    <div class="music-overlay" id="musicOverlay">
-        <div class="music-overlay-box">
-            <div class="play-icon" id="playIcon"></div>
-            <p>点击播放背景音乐</p>
-        </div>
-    </div>
-
-    <!-- 音乐按钮 -->
+    <!-- 音乐按钮（左上角开关） -->
     <button id="musicBtn" class="music-btn" aria-label="背景音乐开关">
         <span class="note">♪</span>
     </button>
@@ -102,8 +94,8 @@
                     </svg>
                 </div>
 
-                <h1 class="cover-title">
-                    <span>毕</span><span>业</span><span>典</span><span>礼</span>
+                <h1 class="cover-title cover-title-poem">
+                    <span>夏</span><span>风</span><span>予</span><span>信</span><span class="poem-comma">，</span><span>共</span><span>赴</span><span>云</span><span>天</span>
                 </h1>
                 <div class="cover-sub">GRADUATION CEREMONY</div>
 

@@ -10,25 +10,34 @@
 
     // =====================================================
     // 1. 背景音乐控制
+    //    - 进入页面立即尝试自动播放
+    //    - 被浏览器拦截时，监听首次用户交互再播放
+    //    - 左上角按钮可手动暂停/恢复
     // =====================================================
-    const bgMusic      = document.getElementById('bgMusic');
-    const musicBtn     = document.getElementById('musicBtn');
-    const musicOverlay = document.getElementById('musicOverlay');
-    const playIcon     = document.getElementById('playIcon');
+    const bgMusic  = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
 
     let isPlaying = false;
+    let userInteracted = false;
 
-    function playMusic() {
+    function setBtnState(on) {
+        if (!musicBtn) return;
+        if (on) musicBtn.classList.add('on');
+        else    musicBtn.classList.remove('on');
+    }
+
+    function tryPlay() {
         if (!bgMusic) return;
         bgMusic.volume = 0.4;
-        const promise = bgMusic.play();
-        if (promise !== undefined) {
-            promise.then(() => {
+        const p = bgMusic.play();
+        if (p !== undefined) {
+            p.then(() => {
                 isPlaying = true;
-                if (musicBtn) musicBtn.classList.add('on');
+                setBtnState(true);
             }).catch(() => {
-                // 浏览器阻止了自动播放，保持overlay可见
-                if (musicOverlay) musicOverlay.classList.remove('hidden');
+                // 自动播放被拦截，等用户首次交互
+                isPlaying = false;
+                setBtnState(false);
             });
         }
     }
@@ -37,55 +46,38 @@
         if (!bgMusic) return;
         bgMusic.pause();
         isPlaying = false;
-        if (musicBtn) musicBtn.classList.remove('on');
+        setBtnState(false);
     }
 
     function toggleMusic() {
-        if (isPlaying) {
-            pauseMusic();
-        } else {
-            playMusic();
-        }
+        if (isPlaying) pauseMusic();
+        else tryPlay();
     }
 
-    // 音乐引导弹层：点击播放按钮
-    if (playIcon && musicOverlay) {
-        playIcon.addEventListener('click', function () {
-            musicOverlay.classList.add('hidden');
-            playMusic();
-        });
-        // 点击弹层任意位置也可关闭并播放
-        musicOverlay.addEventListener('click', function (e) {
-            if (e.target === musicOverlay) {
-                musicOverlay.classList.add('hidden');
-                playMusic();
-            }
-        });
-    }
-
-    // 音乐按钮切换
+    // 按钮：手动开关
     if (musicBtn) {
         musicBtn.addEventListener('click', toggleMusic);
     }
 
-    // 尝试自动播放（部分浏览器允许静音自动播放后取消静音）
-    // 大多移动浏览器需要用户交互，所以展示overlay
+    // 进入页面立即尝试播放
     if (bgMusic) {
-        // 先尝试播放
-        bgMusic.volume = 0.4;
-        const autoPlayPromise = bgMusic.play();
-        if (autoPlayPromise !== undefined) {
-            autoPlayPromise.then(() => {
-                // 自动播放成功，隐藏overlay
-                isPlaying = true;
-                if (musicBtn) musicBtn.classList.add('on');
-                if (musicOverlay) musicOverlay.classList.add('hidden');
-            }).catch(() => {
-                // 自动播放被阻止，显示overlay让用户点击
-                if (musicOverlay) musicOverlay.classList.remove('hidden');
-            });
-        }
+        tryPlay();
     }
+
+    // 浏览器拦截了？监听首次用户交互（点击/触摸/滚动/键盘）后自动播放
+    function onFirstInteract() {
+        if (userInteracted) return;
+        userInteracted = true;
+        if (bgMusic && bgMusic.paused) {
+            tryPlay();
+        }
+        ['click', 'touchstart', 'keydown', 'scroll'].forEach(ev =>
+            window.removeEventListener(ev, onFirstInteract, true)
+        );
+    }
+    ['click', 'touchstart', 'keydown', 'scroll'].forEach(ev =>
+        window.addEventListener(ev, onFirstInteract, { capture: true, passive: true })
+    );
 
     // =====================================================
     // 2. 滚动进入动画 (IntersectionObserver)
