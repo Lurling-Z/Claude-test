@@ -1,0 +1,11 @@
+# 缩略图目录（仅用于 AI 助手读取，不提交到仓库）
+cover-page/thumbs/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
