@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.pyo
+mcd_site_analyzer/output/
+.DS_Store
+.idea/
+.vscode/
