@@ -1,6 +1,6 @@
 /* =========================================================
    渊学通杭州校区 · 毕业典礼邀请函 交互脚本
-   - 背景音乐自动播放 (用户触屏后)
+   - 背景音乐：点击弹层后播放（解决浏览器自动播放拦截）
    - 滚动入场动画
    - RSVP 交互
    ========================================================= */
@@ -9,16 +9,14 @@
     'use strict';
 
     // =====================================================
-    // 1. 背景音乐控制
-    //    - 进入页面立即尝试自动播放
-    //    - 被浏览器拦截时，监听首次用户交互再播放
-    //    - 左上角按钮可手动暂停/恢复
+    // 1. 背景音乐控制 — 通过用户主动点击弹层启动
     // =====================================================
-    const bgMusic  = document.getElementById('bgMusic');
-    const musicBtn = document.getElementById('musicBtn');
+    const bgMusic      = document.getElementById('bgMusic');
+    const musicBtn     = document.getElementById('musicBtn');
+    const musicOverlay = document.getElementById('musicOverlay');
+    const playIcon     = document.getElementById('playIcon');
 
     let isPlaying = false;
-    let userInteracted = false;
 
     function setBtnState(on) {
         if (!musicBtn) return;
@@ -26,7 +24,7 @@
         else    musicBtn.classList.remove('on');
     }
 
-    function tryPlay() {
+    function playMusic() {
         if (!bgMusic) return;
         bgMusic.volume = 0.4;
         const p = bgMusic.play();
@@ -35,7 +33,6 @@
                 isPlaying = true;
                 setBtnState(true);
             }).catch(() => {
-                // 自动播放被拦截，等用户首次交互
                 isPlaying = false;
                 setBtnState(false);
             });
@@ -51,33 +48,28 @@
 
     function toggleMusic() {
         if (isPlaying) pauseMusic();
-        else tryPlay();
+        else playMusic();
     }
 
-    // 按钮：手动开关
+    // 音乐启动弹层：点击后播放音乐并关闭弹层
+    function dismissOverlay() {
+        if (musicOverlay) {
+            musicOverlay.classList.add('hidden');
+        }
+        playMusic();
+    }
+
+    if (playIcon) {
+        playIcon.addEventListener('click', dismissOverlay);
+    }
+    if (musicOverlay) {
+        musicOverlay.addEventListener('click', dismissOverlay);
+    }
+
+    // 左上角按钮：手动开关
     if (musicBtn) {
         musicBtn.addEventListener('click', toggleMusic);
     }
-
-    // 进入页面立即尝试播放
-    if (bgMusic) {
-        tryPlay();
-    }
-
-    // 浏览器拦截了？监听首次用户交互（点击/触摸/滚动/键盘）后自动播放
-    function onFirstInteract() {
-        if (userInteracted) return;
-        userInteracted = true;
-        if (bgMusic && bgMusic.paused) {
-            tryPlay();
-        }
-        ['click', 'touchstart', 'keydown', 'scroll'].forEach(ev =>
-            window.removeEventListener(ev, onFirstInteract, true)
-        );
-    }
-    ['click', 'touchstart', 'keydown', 'scroll'].forEach(ev =>
-        window.addEventListener(ev, onFirstInteract, { capture: true, passive: true })
-    );
 
     // =====================================================
     // 2. 滚动进入动画 (IntersectionObserver)

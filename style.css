@@ -9,7 +9,7 @@ html, body {
     width: 100%;
     background: #0a1a33;
     color: #f5e6b8;
-    font-family: "PingFang SC", "Microsoft YaHei", "Noto Serif SC", serif;
+    font-family: "ZCOOL XiaoWei", "PingFang SC", "Microsoft YaHei", "Noto Serif SC", serif;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
 }
@@ -313,12 +313,24 @@ html, body {
     letter-spacing: 4px;
     color: var(--gold);
     margin-bottom: 4px;
+    font-family: "Ma Shan Zheng", "ZCOOL XiaoWei", cursive;
 }
 .brand-en {
     font-size: 10px;
     letter-spacing: 2px;
     color: var(--gold-soft);
     margin-bottom: 28px;
+}
+
+/* 渊学通 Logo */
+.brand-logo {
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 14px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(217, 184, 106, 0.4));
+    border-radius: 8px;
 }
 
 /* 学士帽 (SVG inline 替代) */
@@ -345,6 +357,7 @@ html, body {
     color: var(--gold-light);
     text-shadow: 0 0 16px rgba(217, 184, 106, 0.6);
     margin: 8px 0 10px;
+    font-family: "Ma Shan Zheng", "ZCOOL XiaoWei", cursive;
 }
 .cover-title span {
     display: inline-block;
@@ -465,6 +478,7 @@ html, body {
     letter-spacing: 4px;
     margin-bottom: 28px;
     position: relative;
+    font-family: "Ma Shan Zheng", "ZCOOL XiaoWei", cursive;
 }
 .chapter::before, .chapter::after {
     content: "✦";
@@ -530,6 +544,7 @@ html, body {
     display: flex; align-items: center; justify-content: center;
     gap: 10px;
     margin-bottom: 30px;
+    font-family: "Ma Shan Zheng", "ZCOOL XiaoWei", cursive;
 }
 .deco-line {
     width: 34px; height: 1px;
@@ -717,6 +732,7 @@ html, body {
     color: var(--gold-light);
     text-shadow: 0 0 16px rgba(217, 184, 106, 0.5);
     margin-bottom: 6px;
+    font-family: "Ma Shan Zheng", "ZCOOL XiaoWei", cursive;
 }
 .end-en {
     font-size: 11px;

@@ -6,6 +6,10 @@
     <meta name="theme-color" content="#0b1d3a" />
     <title>渊学通杭州校区 · 毕业典礼邀请函</title>
     <link rel="stylesheet" href="./style.css" />
+    <!-- 艺术感字体：ZCOOL XiaoWei (站酷小薇) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
 </head>
 <body>
 
@@ -68,6 +72,7 @@
                 <div class="corner corner-br"></div>
 
                 <div class="cover-top">
+                    <img class="brand-logo" src="./cover-page/yuanxuetong-logo.png" alt="渊学通 Logo" />
                     <div class="brand">渊 学 通 · 杭 州 校 区</div>
                     <div class="brand-en">YUAN XUE TONG · HANGZHOU</div>
                 </div>
@@ -355,6 +360,15 @@
             <p>我们已收到您的出席意向，</p>
             <p>期待 6 月 13 日与您相聚。</p>
             <button class="modal-close" id="modalClose">好 的</button>
+        </div>
+    </div>
+
+    <!-- 音乐启动弹层：需要用户点击才能播放音频 -->
+    <div class="music-overlay" id="musicOverlay">
+        <div class="music-overlay-box">
+            <div class="play-icon" id="playIcon"></div>
+            <p>点击播放音乐</p>
+            <p style="font-size:12px; opacity:0.6; margin-top:8px; letter-spacing:2px;">开启毕业典礼之旅</p>
         </div>
     </div>
 
