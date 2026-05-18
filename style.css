@@ -227,11 +227,52 @@ html, body {
 }
 
 /* 每屏独立渐变叠加 */
-.page-cover  { background: radial-gradient(ellipse at 50% 30%, rgba(26, 48, 102, 0.4) 0%, transparent 70%); }
+.page-cover  { background: radial-gradient(ellipse at 50% 30%, rgba(26, 48, 102, 0.4) 0%, transparent 70%); position: relative; overflow: hidden; }
 .page-words  { background: radial-gradient(ellipse at 50% 50%, rgba(255, 183, 197, 0.05) 0%, transparent 60%); }
 .page-when   { background: radial-gradient(ellipse at 50% 60%, rgba(100, 180, 255, 0.06) 0%, transparent 60%); }
 .page-agenda { background: radial-gradient(ellipse at 30% 50%, rgba(217, 184, 106, 0.04) 0%, transparent 60%); }
 .page-end    { background: radial-gradient(ellipse at 50% 40%, rgba(255, 183, 197, 0.06) 0%, transparent 50%); }
+
+/* =========================================================
+   封面主视觉：图片轮播（铺满屏幕的背景层）
+   - 9 张图淡入淡出循环
+   - 上方叠加深蓝半透明蒙版，确保金色文字可读
+   ========================================================= */
+.cover-hero {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+.cover-hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.4s ease-in-out;
+    transform: scale(1.04);
+    animation: heroZoom 12s ease-in-out infinite alternate;
+    will-change: opacity, transform;
+}
+.cover-hero-slide.active {
+    opacity: 1;
+}
+@keyframes heroZoom {
+    from { transform: scale(1.04); }
+    to   { transform: scale(1.12); }
+}
+
+/* 蒙版：让金色文字 / 深色调性保持原有氛围 */
+.cover-hero-mask {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 50% 30%, rgba(10, 26, 51, 0.35) 0%, rgba(10, 26, 51, 0.7) 100%),
+        linear-gradient(180deg, rgba(5, 13, 31, 0.55) 0%, rgba(10, 26, 51, 0.45) 50%, rgba(5, 13, 31, 0.75) 100%);
+}
 
 /* =========================================================
    滚动进入动画
@@ -255,9 +296,12 @@ html, body {
     padding: 48px 20px 40px;
     border: 1px solid var(--gold-soft);
     position: relative;
+    z-index: 2;
     text-align: center;
-    background: rgba(10, 26, 51, 0.3);
-    backdrop-filter: blur(2px);
+    background: rgba(10, 26, 51, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
 }
 .cover-frame::before,
 .cover-frame::after {

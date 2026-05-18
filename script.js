@@ -142,4 +142,29 @@
         s.style.animationDuration = randomDur + 's, ' + (3 + Math.random() * 2).toFixed(2) + 's';
     });
 
+    // =====================================================
+    // 5. 封面主视觉：9 张图淡入淡出轮播
+    // =====================================================
+    const heroSlides = document.querySelectorAll('.cover-hero-slide');
+    if (heroSlides.length > 1) {
+        let heroIndex = 0;
+        const SLIDE_INTERVAL = 5000; // 5s 切换一张
+
+        // 预加载后续图片，避免轮播时白闪
+        heroSlides.forEach((slide, i) => {
+            if (i === 0) return; // 首张已通过 <link rel="preload"> 加载
+            const url = slide.style.backgroundImage.replace(/^url\(['"]?/, '').replace(/['"]?\)$/, '');
+            if (url) {
+                const img = new Image();
+                img.src = url;
+            }
+        });
+
+        setInterval(() => {
+            heroSlides[heroIndex].classList.remove('active');
+            heroIndex = (heroIndex + 1) % heroSlides.length;
+            heroSlides[heroIndex].classList.add('active');
+        }, SLIDE_INTERVAL);
+    }
+
 })();

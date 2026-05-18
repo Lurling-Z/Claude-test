@@ -9,6 +9,9 @@
 </head>
 <body>
 
+    <!-- 预加载首张主视觉，避免首屏白底 -->
+    <link rel="preload" as="image" href="./cover-page/1.png" />
+
     <!-- 背景星空 -->
     <div class="sky">
         <div class="stars"></div>
@@ -59,6 +62,20 @@
 
         <!-- ========== 第 1 屏：封面 ========== -->
         <section class="page page-cover">
+            <!-- 主视觉图片轮播（背景层） -->
+            <div class="cover-hero" id="coverHero" aria-hidden="true">
+                <div class="cover-hero-slide active" style="background-image: url('./cover-page/1.png');"></div>
+                <div class="cover-hero-slide" style="background-image: url('./cover-page/2.png');"></div>
+                <div class="cover-hero-slide" style="background-image: url('./cover-page/3.png');"></div>
+                <div class="cover-hero-slide" style="background-image: url('./cover-page/4.png');"></div>
+                <div class="cover-hero-slide" style="background-image: url('./cover-page/5.png');"></div>
+                <div class="cover-hero-slide" style="background-image: url('./cover-page/6.png');"></div>
+                <div class="cover-hero-slide" style="background-image: url('./cover-page/7.png');"></div>
+                <div class="cover-hero-slide" style="background-image: url('./cover-page/8.png');"></div>
+                <div class="cover-hero-slide" style="background-image: url('./cover-page/9.png');"></div>
+                <div class="cover-hero-mask"></div>
+            </div>
+
             <div class="cover-frame">
                 <!-- 四角装饰 -->
                 <div class="corner corner-tl"></div>
