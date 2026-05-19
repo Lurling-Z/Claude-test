@@ -1,22 +1,33 @@
 # -*- coding: utf-8 -*-
+"""Professional IELTS Writing Template PDF Generator - Yuanxuetong"""
 import json
+import os
 from fpdf import FPDF
+
+_DIR = os.path.dirname(os.path.abspath(__file__))
 
 FONT_R = "/tmp/fonts/NotoSansSC-Regular.ttf"
 FONT_B = "/tmp/fonts/NotoSansSC-Bold.ttf"
-OUTPUT = "projects/sandbox/Claude-test/yuanxuetong-ielts-writing-templates.pdf"
+LOGO = os.path.join(_DIR, "cover-page/yuanxuetong-logo.png")
+OUTPUT = os.path.join(_DIR, "yuanxuetong-ielts-writing-templates.pdf")
 
-with open("projects/sandbox/Claude-test/pdf_data.json", "r", encoding="utf-8") as f:
+with open(os.path.join(_DIR, "pdf_data.json"), "r", encoding="utf-8") as f:
     DATA = json.load(f)
 
-# Colors
+# --- Color Palette ---
+BRAND_DARK = (10, 54, 92)
 BRAND = (15, 76, 129)
+BRAND_LIGHT = (220, 235, 248)
 ACCENT = (230, 57, 70)
-SOFT_BG = (244, 246, 249)
+ACCENT_LIGHT = (255, 240, 241)
+GOLD = (212, 175, 55)
+SOFT_BG = (247, 249, 252)
+CARD_BG = (250, 251, 253)
 TEXT_C = (31, 41, 55)
 SUB_C = (107, 114, 128)
 WHITE = (255, 255, 255)
-LINE_C = (209, 213, 219)
+LINE_C = (220, 225, 232)
+SUCCESS = (16, 185, 129)
 
 
 class PDF(FPDF):
@@ -24,117 +35,212 @@ class PDF(FPDF):
         super().__init__()
         self.add_font("CN", "", FONT_R)
         self.add_font("CN", "B", FONT_B)
-        self.set_auto_page_break(auto=True, margin=20)
+        self.set_auto_page_break(auto=True, margin=18)
+        self._is_cover = True
 
     def header(self):
-        if self.page_no() > 1:
-            self.set_fill_color(*BRAND)
-            self.rect(0, 0, 210, 7, style="F")
-            self.set_font("CN", "B", 8)
-            self.set_text_color(*WHITE)
-            self.set_xy(10, 1.5)
-            self.cell(0, 4, "\u6e0a\u5b66\u901a \u00b7 \u96c5\u601d\u5199\u4f5c\u6a21\u677f\u5408\u96c6", align="L")
-            self.set_font("CN", "", 8)
-            self.set_xy(10, 1.5)
-            self.cell(0, 4, "\u516c\u4f17\u53f7 / \u5c0f\u7ea2\u4e66\uff1a\u6e0a\u5b66\u901a\u676d\u5dde", align="R")
-            self.set_text_color(*TEXT_C)
-            self.set_y(10)
+        if self._is_cover:
+            return
+        # Top brand bar
+        self.set_fill_color(*BRAND_DARK)
+        self.rect(0, 0, 210, 8, style="F")
+        # Gold accent line
+        self.set_fill_color(*GOLD)
+        self.rect(0, 8, 210, 0.6, style="F")
+        # Header text
+        self.set_font("CN", "B", 7.5)
+        self.set_text_color(*WHITE)
+        self.set_xy(12, 1.8)
+        self.cell(0, 4.5, "\u6e0a\u5b66\u901a \u00b7 \u96c5\u601d\u5199\u4f5c\u6a21\u677f\u5408\u96c6", align="L")
+        self.set_font("CN", "", 7.5)
+        self.set_xy(12, 1.8)
+        self.cell(0, 4.5, "\u516c\u4f17\u53f7 / \u5c0f\u7ea2\u4e66\uff1a\u6e0a\u5b66\u901a\u676d\u5dde", align="R")
+        self.set_text_color(*TEXT_C)
+        self.set_y(12)
 
     def footer(self):
-        self.set_y(-12)
-        self.set_font("CN", "", 7.5)
+        if self._is_cover:
+            return
+        self.set_y(-14)
+        # Footer line
+        self.set_draw_color(*LINE_C)
+        self.line(15, self.get_y(), 195, self.get_y())
+        self.ln(2)
+        self.set_font("CN", "", 7)
         self.set_text_color(*SUB_C)
-        self.cell(0, 8, "\u7b2c %d \u9875    |    \u6e0a\u5b66\u901a \u00b7 \u96c5\u601d\u66a8\u671f\u5c01\u95ed\u8425" % self.page_no(), align="C")
+        self.cell(0, 5, "\u7b2c %d \u9875" % self.page_no(), align="L")
+        self.set_xy(self.l_margin, self.get_y())
+        self.cell(0, 5, "\u6e0a\u5b66\u901a\u676d\u5dde \u00b7 \u96c5\u601d\u6559\u7814\u7ec4 \u00b7 \u4ec5\u9650\u5185\u90e8\u4f7f\u7528", align="R")
+
+    def draw_rounded_rect(self, x, y, w, h, r, fill_color=None, border_color=None, left_accent=None):
+        """Draw a rectangle with optional colored left border accent."""
+        if fill_color:
+            self.set_fill_color(*fill_color)
+            self.rect(x, y, w, h, style="F")
+        if left_accent:
+            self.set_fill_color(*left_accent)
+            self.rect(x, y, 3, h, style="F")
+        if border_color:
+            self.set_draw_color(*border_color)
+            self.rect(x, y, w, h, style="D")
 
     def section_divider(self, text):
-        self.ln(4)
-        self.set_fill_color(*BRAND)
-        self.set_font("CN", "B", 12)
+        self.ln(6)
+        y = self.get_y()
+        # Full width gradient bar
+        self.set_fill_color(*BRAND_DARK)
+        self.rect(10, y, 190, 11, style="F")
+        # Gold left accent
+        self.set_fill_color(*GOLD)
+        self.rect(10, y, 4, 11, style="F")
+        # Text
+        self.set_font("CN", "B", 11.5)
         self.set_text_color(*WHITE)
-        x = self.get_x()
-        self.cell(0, 9, "  " + text, fill=True, new_x="LMARGIN", new_y="NEXT")
+        self.set_xy(18, y + 2)
+        self.cell(0, 7, text)
         self.set_text_color(*TEXT_C)
-        self.ln(4)
+        self.set_y(y + 15)
 
     def h2(self, text):
-        self.ln(4)
-        self.set_font("CN", "B", 13)
-        self.set_text_color(*BRAND)
+        self.ln(5)
+        y = self.get_y()
+        # Left accent bar
+        self.set_fill_color(*BRAND)
+        self.rect(10, y, 3, 8, style="F")
+        self.set_font("CN", "B", 12.5)
+        self.set_text_color(*BRAND_DARK)
+        self.set_xy(16, y)
         self.cell(0, 8, text, new_x="LMARGIN", new_y="NEXT")
         self.set_text_color(*TEXT_C)
-        self.ln(1)
+        self.ln(2)
 
     def sub_text(self, text):
+        self.set_x(16)
         self.set_font("CN", "", 9)
         self.set_text_color(*SUB_C)
-        self.multi_cell(0, 5, text)
+        self.multi_cell(178, 4.8, text)
         self.set_text_color(*TEXT_C)
-        self.ln(3)
+        self.ln(4)
 
     def template_card(self, t):
-        # Check if we need a new page (estimate card height ~60mm)
-        if self.get_y() > 230:
+        """Draw a professional template card with background and left accent."""
+        # Estimate height - if near bottom, new page
+        if self.get_y() > 215:
             self.add_page()
 
-        x0 = self.get_x()
-        y0 = self.get_y()
-        w = 190
+        card_x = 12
+        card_w = 186
+        pad = 5
+        content_w = card_w - pad * 2 - 3  # account for left accent
 
-        # Draw card content first to measure height
-        self.set_x(x0 + 3)
+        # --- Measure content height by drawing invisibly ---
+        start_y = self.get_y()
 
-        # Title
+        # We'll draw content first, then overlay background behind it
+        # fpdf2 doesn't support z-ordering, so we draw background first with estimated height
+        # Estimate: title(7) + scene(10) + sentence(12) + how(15) + example(15) + pitfall(10) + spacing = ~75
+        # Better: draw to temp, measure, then draw for real
+
+        # Save position
+        sy = self.get_y()
+
+        # --- Draw the card background ---
+        # First pass: estimate height
+        self.set_font("CN", "", 9)
+        lines_scene = len(t["scene"]) // 42 + 1
+        lines_sent = len(t["sentence"]) // 38 + 1
+        lines_how = len(t["how"]) // 42 + 1
+        lines_ex = len(t["example"]) // 42 + 1
+        lines_pit = len(t["pitfall"]) // 42 + 1
+        est_h = 8 + lines_scene*5 + 3 + lines_sent*5.5 + 3 + lines_how*5 + 3 + lines_ex*5 + 3 + lines_pit*5 + 8
+        est_h = max(est_h, 55)
+
+        if sy + est_h > 275:
+            self.add_page()
+            sy = self.get_y()
+
+        # Draw card background
+        self.draw_rounded_rect(card_x, sy, card_w, est_h, 2, fill_color=CARD_BG, border_color=LINE_C, left_accent=BRAND)
+
+        # --- Number badge ---
+        badge_x = card_x + 6
+        badge_y = sy + 3
+        self.set_fill_color(*BRAND)
+        self.rect(badge_x, badge_y, 18, 7, style="F")
+        self.set_font("CN", "B", 8)
+        self.set_text_color(*WHITE)
+        self.set_xy(badge_x, badge_y + 0.5)
+        self.cell(18, 6, "No.%s" % t["num"], align="C")
+
+        # Title next to badge
         self.set_font("CN", "B", 11)
-        self.set_text_color(*BRAND)
-        self.cell(0, 6, "%s. %s" % (t["num"], t["title"]), new_x="LMARGIN", new_y="NEXT")
-        self.ln(1)
+        self.set_text_color(*BRAND_DARK)
+        self.set_xy(badge_x + 21, badge_y + 0.5)
+        self.cell(0, 6, t["title"])
+        self.set_y(sy + 12)
 
         # Scene
-        self.set_x(x0 + 3)
-        self.set_font("CN", "", 9)
+        self.set_x(card_x + pad + 3)
+        self.set_font("CN", "", 8.5)
         self.set_text_color(*SUB_C)
-        self.multi_cell(w - 6, 4.5, "\u9002\u7528\u573a\u666f\uff1a" + t["scene"])
-        self.ln(1)
+        self.multi_cell(content_w, 4.5, "\u9002\u7528\u573a\u666f\uff1a" + t["scene"])
+        self.ln(2)
 
-        # Sentence
-        self.set_x(x0 + 3)
-        self.set_font("CN", "B", 10)
-        self.set_text_color(*BRAND)
-        self.multi_cell(w - 6, 5, t["sentence"])
-        self.ln(1)
+        # Sentence highlight box
+        sent_y = self.get_y()
+        self.set_fill_color(*BRAND_LIGHT)
+        sent_lines = len(t["sentence"]) // 36 + 1
+        self.rect(card_x + pad + 3, sent_y, content_w, sent_lines * 5.5 + 4, style="F")
+        self.set_xy(card_x + pad + 5, sent_y + 2)
+        self.set_font("CN", "B", 9.5)
+        self.set_text_color(*BRAND_DARK)
+        self.multi_cell(content_w - 4, 5.5, t["sentence"])
+        self.ln(2)
 
         # How to use
-        self.set_x(x0 + 3)
-        self.set_font("CN", "", 9)
+        self.set_x(card_x + pad + 3)
+        self.set_font("CN", "B", 8.5)
+        self.set_text_color(*ACCENT)
+        self.cell(18, 4.5, "\u600e\u4e48\u7528\uff1a")
+        self.set_font("CN", "", 8.5)
         self.set_text_color(*TEXT_C)
-        self.multi_cell(w - 6, 4.5, "\u600e\u4e48\u7528\uff1a" + t["how"])
-        self.ln(1)
+        self.set_x(card_x + pad + 3)
+        self.multi_cell(content_w, 4.5, "\u600e\u4e48\u7528\uff1a" + t["how"])
+        self.ln(1.5)
 
         # Example
-        self.set_x(x0 + 3)
+        self.set_x(card_x + pad + 3)
+        self.set_font("CN", "", 8.5)
         self.set_text_color(*SUB_C)
-        self.multi_cell(w - 6, 4.5, "\u586b\u7a7a\u793a\u8303\uff1a" + t["example"])
-        self.ln(1)
+        self.multi_cell(content_w, 4.5, "\u586b\u7a7a\u793a\u8303\uff1a" + t["example"])
+        self.ln(1.5)
 
-        # Pitfall
-        self.set_x(x0 + 3)
+        # Pitfall with warning color
+        self.set_x(card_x + pad + 3)
+        self.set_font("CN", "B", 8.5)
         self.set_text_color(*ACCENT)
-        self.multi_cell(w - 6, 4.5, "\u5bb9\u6613\u8e29\u7684\u5751\uff1a" + t["pitfall"])
+        pit_y = self.get_y()
+        # Small warning background
+        self.set_fill_color(*ACCENT_LIGHT)
+        pit_lines = len(t["pitfall"]) // 42 + 1
+        self.rect(card_x + pad + 3, pit_y, content_w, pit_lines * 4.5 + 3, style="F")
+        self.set_xy(card_x + pad + 5, pit_y + 1)
+        self.set_font("CN", "", 8.5)
+        self.multi_cell(content_w - 4, 4.5, "\u26a0 " + t["pitfall"])
 
-        y1 = self.get_y()
+        # Update position to end of card
+        actual_end = self.get_y() + 4
+        card_actual_h = actual_end - sy
+        # Redraw border to correct height
+        self.set_draw_color(*LINE_C)
+        self.rect(card_x, sy, card_w, card_actual_h, style="D")
+        # Redraw left accent to correct height
+        self.set_fill_color(*BRAND)
+        self.rect(card_x, sy, 3, card_actual_h, style="F")
+
+        self.set_y(actual_end + 4)
         self.set_text_color(*TEXT_C)
 
-        # Draw background rectangle
-        self.set_fill_color(*SOFT_BG)
-        self.set_draw_color(*LINE_C)
-        # Use rect behind the content (we draw it after measuring)
-        # Actually fpdf draws on top, so we need a different approach
-        # Let's just add spacing
-        self.ln(5)
-        # Draw a subtle line separator
-        self.set_draw_color(*LINE_C)
-        self.line(self.l_margin, self.get_y(), self.l_margin + w, self.get_y())
-        self.ln(4)
 
 
 def build():
@@ -143,53 +249,154 @@ def build():
     pdf.l_margin = 10
     pdf.r_margin = 10
 
-    # === COVER PAGE ===
+    # ============================================================
+    # COVER PAGE
+    # ============================================================
     pdf.add_page()
-    pdf.ln(50)
-    pdf.set_font("CN", "B", 28)
-    pdf.set_text_color(*BRAND)
-    pdf.cell(0, 14, "\u96c5\u601d\u5199\u4f5c\u6a21\u677f\u5408\u96c6", align="C", new_x="LMARGIN", new_y="NEXT")
-    pdf.ln(4)
-    pdf.set_font("CN", "", 12)
-    pdf.set_text_color(*SUB_C)
-    pdf.cell(0, 8, "23 \u4e2a\u9ad8\u9891\u53e5\u578b \uff5c \u6309\u529f\u80fd\u5206\u7c7b \uff5c \u9644\u4f7f\u7528\u573a\u666f\u4e0e\u8e29\u5751\u63d0\u793a", align="C", new_x="LMARGIN", new_y="NEXT")
-    pdf.ln(15)
+    pdf._is_cover = True
 
-    # Cover box
-    pdf.set_fill_color(*SOFT_BG)
-    pdf.set_draw_color(*BRAND)
-    bx = 30
-    bw = 150
-    by = pdf.get_y()
-    pdf.rect(bx, by, bw, 50, style="FD")
-    pdf.set_xy(bx + 8, by + 6)
+    # Full-page background
+    pdf.set_fill_color(*BRAND_DARK)
+    pdf.rect(0, 0, 210, 297, style="F")
+
+    # Decorative top band
+    pdf.set_fill_color(*GOLD)
+    pdf.rect(0, 0, 210, 3, style="F")
+
+    # Logo
+    pdf.image(LOGO, x=55, y=30, w=100)
+
+    # Main title
+    pdf.set_y(80)
+    pdf.set_font("CN", "B", 32)
+    pdf.set_text_color(*WHITE)
+    pdf.cell(0, 16, "\u96c5\u601d\u5199\u4f5c\u6a21\u677f\u5408\u96c6", align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.ln(2)
+    pdf.set_font("CN", "", 13)
+    pdf.set_text_color(*GOLD)
+    pdf.cell(0, 8, "IELTS Writing Template Collection", align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.ln(6)
+
+    # Subtitle line
+    pdf.set_draw_color(*GOLD)
+    pdf.set_line_width(0.4)
+    pdf.line(60, pdf.get_y(), 150, pdf.get_y())
+    pdf.ln(8)
+
+    pdf.set_font("CN", "", 11)
+    pdf.set_text_color(200, 210, 225)
+    pdf.cell(0, 7, "23 \u4e2a\u9ad8\u9891\u53e5\u578b  |  \u6309\u529f\u80fd\u5206\u7c7b  |  \u9644\u4f7f\u7528\u573a\u666f\u4e0e\u8e29\u5751\u63d0\u793a", align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.ln(20)
+
+    # Cover info box
+    box_x, box_w = 35, 140
+    box_y = pdf.get_y()
+    pdf.set_fill_color(20, 65, 105)
+    pdf.set_draw_color(*GOLD)
+    pdf.set_line_width(0.6)
+    pdf.rect(box_x, box_y, box_w, 58, style="FD")
+    pdf.set_line_width(0.2)
+
+    pdf.set_xy(box_x + 10, box_y + 7)
     pdf.set_font("CN", "B", 10.5)
-    pdf.set_text_color(*TEXT_C)
+    pdf.set_text_color(*GOLD)
     pdf.cell(0, 6, "\u8c01\u9002\u5408\u7528\u8fd9\u4efd\u8d44\u6599\uff1a", new_x="LMARGIN", new_y="NEXT")
+    pdf.ln(2)
+
     items = [
-        "\u00b7 \u96c5\u601d\u5199\u4f5c\u5361\u5728 5.5-6\uff0c\u60f3\u51b2 6.5 \u4ee5\u4e0a",
-        "\u00b7 \u5927\u4f5c\u6587\u4e0d\u77e5\u9053\u600e\u4e48\u5f00\u5934\u3001\u4e3e\u4f8b\u3001\u6536\u5c3e",
-        "\u00b7 \u5c0f\u4f5c\u6587\u4e00\u4e0a\u6765\u5c31\u5806\u6570\u636e\uff0c\u5206\u6570\u4e0a\u4e0d\u53bb",
-        "\u00b7 \u6a21\u677f\u80cc\u4e86\u4e00\u5806\uff0c\u5957\u4e0a\u53bb\u8fd8\u662f\u6ca1\u903b\u8f91",
+        "\u96c5\u601d\u5199\u4f5c\u5361\u5728 5.5-6\uff0c\u60f3\u51b2 6.5 \u4ee5\u4e0a",
+        "\u5927\u4f5c\u6587\u4e0d\u77e5\u9053\u600e\u4e48\u5f00\u5934\u3001\u4e3e\u4f8b\u3001\u6536\u5c3e",
+        "\u5c0f\u4f5c\u6587\u4e00\u4e0a\u6765\u5c31\u5806\u6570\u636e\uff0c\u5206\u6570\u4e0a\u4e0d\u53bb",
+        "\u6a21\u677f\u80cc\u4e86\u4e00\u5806\uff0c\u5957\u4e0a\u53bb\u8fd8\u662f\u6ca1\u903b\u8f91",
     ]
     pdf.set_font("CN", "", 10)
+    pdf.set_text_color(200, 215, 230)
     for item in items:
-        pdf.set_x(bx + 8)
-        pdf.cell(0, 6.5, item, new_x="LMARGIN", new_y="NEXT")
+        pdf.set_x(box_x + 12)
+        pdf.cell(0, 7.5, "\u00bb  " + item, new_x="LMARGIN", new_y="NEXT")
 
-    pdf.set_y(by + 60)
-    pdf.ln(20)
+    # Footer on cover
+    pdf.set_y(255)
     pdf.set_font("CN", "", 9)
-    pdf.set_text_color(*SUB_C)
+    pdf.set_text_color(150, 165, 180)
     pdf.cell(0, 5, "\u6574\u7406\uff1a\u6e0a\u5b66\u901a\u676d\u5dde \u00b7 \u96c5\u601d\u6559\u7814\u7ec4", align="C", new_x="LMARGIN", new_y="NEXT")
-    pdf.cell(0, 5, "\u4ec5\u9650\u5b66\u5458\u5185\u90e8\u4f7f\u7528\uff0c\u8bf7\u52ff\u5916\u4f20", align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(0, 5, "2025 \u66a8\u671f\u7248  |  \u4ec5\u9650\u5185\u90e8\u5b66\u5458\u4f7f\u7528", align="C", new_x="LMARGIN", new_y="NEXT")
 
-    # === INTRO PAGE ===
+    # Bottom gold bar
+    pdf.set_fill_color(*GOLD)
+    pdf.rect(0, 294, 210, 3, style="F")
+
+    # ============================================================
+    # TABLE OF CONTENTS
+    # ============================================================
+    pdf._is_cover = False
     pdf.add_page()
-    pdf.set_font("CN", "B", 20)
-    pdf.set_text_color(*BRAND)
-    pdf.cell(0, 10, "\u5199\u5728\u524d\u9762 \u00b7 \u6a21\u677f\u600e\u4e48\u7528\u624d\u6709\u5206", new_x="LMARGIN", new_y="NEXT")
-    pdf.ln(4)
+
+    pdf.set_font("CN", "B", 18)
+    pdf.set_text_color(*BRAND_DARK)
+    pdf.cell(0, 10, "\u76ee\u5f55  CONTENTS", new_x="LMARGIN", new_y="NEXT")
+    pdf.ln(2)
+    pdf.set_draw_color(*GOLD)
+    pdf.set_line_width(0.5)
+    pdf.line(10, pdf.get_y(), 80, pdf.get_y())
+    pdf.set_line_width(0.2)
+    pdf.ln(8)
+
+    toc_items = [
+        ("\u5199\u5728\u524d\u9762 \u00b7 \u6a21\u677f\u600e\u4e48\u7528\u624d\u6709\u5206", ""),
+        ("", ""),
+        ("PART 1  \u5927\u4f5c\u6587\uff08Task 2\uff09", ""),
+        ("    \u4e00\u3001\u8ba9\u6b65\u6bb5\u5f00\u5934", "No.1 - No.4"),
+        ("    \u4e8c\u3001\u4e3e\u4f8b\u5c55\u5f00", "No.5 - No.8"),
+        ("    \u4e09\u3001\u5bf9\u6bd4\u8f6c\u6298", "No.9 - No.11"),
+        ("    \u56db\u3001\u7ed3\u5c3e\u89c2\u70b9\u91cd\u7533", "No.12 - No.14"),
+        ("", ""),
+        ("PART 2  \u5c0f\u4f5c\u6587\uff08Task 1\uff09", ""),
+        ("    \u4e94\u3001\u603b\u4f53\u8d8b\u52bf / \u6982\u8ff0\u53e5", "No.15 - No.18"),
+        ("    \u516d\u3001\u7ec6\u8282\u63cf\u8ff0", "No.19 - No.23"),
+        ("", ""),
+        ("PART 3  \u5199\u5b8c\u524d\u7684\u68c0\u67e5\u6e05\u5355", "12 \u6761\u81ea\u67e5\u9879"),
+    ]
+
+    for title, detail in toc_items:
+        if not title:
+            pdf.ln(3)
+            continue
+        if title.startswith("PART") or title.startswith("\u5199\u5728"):
+            pdf.set_font("CN", "B", 11)
+            pdf.set_text_color(*BRAND_DARK)
+        elif title.startswith("    "):
+            pdf.set_font("CN", "", 10)
+            pdf.set_text_color(*TEXT_C)
+        else:
+            pdf.set_font("CN", "", 10)
+            pdf.set_text_color(*TEXT_C)
+
+        pdf.cell(130, 7.5, title)
+        if detail:
+            pdf.set_font("CN", "", 9)
+            pdf.set_text_color(*SUB_C)
+            pdf.cell(0, 7.5, detail, align="R")
+        pdf.ln(7.5)
+
+    # ============================================================
+    # INTRO PAGE
+    # ============================================================
+    pdf.add_page()
+
+    # Section header with decorative element
+    pdf.set_font("CN", "B", 18)
+    pdf.set_text_color(*BRAND_DARK)
+    pdf.cell(0, 10, "\u5199\u5728\u524d\u9762", new_x="LMARGIN", new_y="NEXT")
+    pdf.set_font("CN", "", 11)
+    pdf.set_text_color(*SUB_C)
+    pdf.cell(0, 6, "\u6a21\u677f\u600e\u4e48\u7528\u624d\u6709\u5206", new_x="LMARGIN", new_y="NEXT")
+    pdf.ln(2)
+    pdf.set_draw_color(*GOLD)
+    pdf.set_line_width(0.4)
+    pdf.line(10, pdf.get_y(), 60, pdf.get_y())
+    pdf.set_line_width(0.2)
+    pdf.ln(8)
 
     pdf.set_font("CN", "", 10)
     pdf.set_text_color(*TEXT_C)
@@ -202,49 +409,64 @@ def build():
     ]
     for line in intro_lines:
         if line:
-            pdf.multi_cell(0, 5.5, line)
+            pdf.multi_cell(0, 5.8, line)
         else:
             pdf.ln(3)
-    pdf.ln(4)
+    pdf.ln(6)
 
+    # Steps with numbered circles
     steps = [
-        "1. \u5148\u6309\u529f\u80fd\u627e\u5230\u5bf9\u5e94\u6a21\u677f\uff08\u8ba9\u6b65 / \u4e3e\u4f8b / \u8f6c\u6298 / \u7ed3\u5c3e / \u8d8b\u52bf / \u5bf9\u6bd4\uff09",
-        "2. \u770b\u2018\u600e\u4e48\u7528\u2019\u548c\u2018\u586b\u7a7a\u793a\u8303\u2019\uff0c\u7406\u89e3\u8fd9\u4e00\u53e5\u7684\u903b\u8f91\u4f5c\u7528",
-        "3. \u7528\u81ea\u5df1\u7684\u8bdd\u9898\u586b\u7a7a 3 \u6b21\uff0c\u5efa\u7acb\u808c\u8089\u8bb0\u5fc6",
-        "4. \u5199\u5b8c\u68c0\u67e5\uff1a\u6a21\u677f\u586b\u8fdb\u53bb\u4e4b\u540e\uff0c\u610f\u601d\u6709\u6ca1\u6709\u8d70\u6837",
+        "\u5148\u6309\u529f\u80fd\u627e\u5230\u5bf9\u5e94\u6a21\u677f\uff08\u8ba9\u6b65 / \u4e3e\u4f8b / \u8f6c\u6298 / \u7ed3\u5c3e / \u8d8b\u52bf / \u5bf9\u6bd4\uff09",
+        "\u770b\u2018\u600e\u4e48\u7528\u2019\u548c\u2018\u586b\u7a7a\u793a\u8303\u2019\uff0c\u7406\u89e3\u8fd9\u4e00\u53e5\u7684\u903b\u8f91\u4f5c\u7528",
+        "\u7528\u81ea\u5df1\u7684\u8bdd\u9898\u586b\u7a7a 3 \u6b21\uff0c\u5efa\u7acb\u808c\u8089\u8bb0\u5fc6",
+        "\u5199\u5b8c\u68c0\u67e5\uff1a\u6a21\u677f\u586b\u8fdb\u53bb\u4e4b\u540e\uff0c\u610f\u601d\u6709\u6ca1\u6709\u8d70\u6837",
     ]
-    for s in steps:
-        pdf.set_font("CN", "B", 10)
-        pdf.set_text_color(*ACCENT)
-        pdf.cell(6, 6, s[0:2])
+    for i, s in enumerate(steps, 1):
+        y = pdf.get_y()
+        # Number circle
+        cx, cy = 16, y + 3.5
+        pdf.set_fill_color(*BRAND)
+        pdf.ellipse(cx - 3.5, cy - 3.5, 7, 7, style="F")
+        pdf.set_font("CN", "B", 8)
+        pdf.set_text_color(*WHITE)
+        pdf.set_xy(cx - 3.5, cy - 2.5)
+        pdf.cell(7, 5, str(i), align="C")
+        # Step text
         pdf.set_font("CN", "", 10)
         pdf.set_text_color(*TEXT_C)
-        pdf.multi_cell(0, 6, s[2:])
-        pdf.ln(1)
+        pdf.set_xy(24, y)
+        pdf.multi_cell(170, 6, s)
+        pdf.ln(3)
 
     pdf.ln(6)
-    # Warning box
-    pdf.set_fill_color(255, 245, 245)
-    pdf.set_draw_color(*ACCENT)
+
+    # Warning box - professional style
     wy = pdf.get_y()
-    pdf.rect(10, wy, 190, 30, style="FD")
-    pdf.set_xy(14, wy + 4)
+    pdf.set_fill_color(*ACCENT_LIGHT)
+    pdf.rect(12, wy, 186, 34, style="F")
+    pdf.set_fill_color(*ACCENT)
+    pdf.rect(12, wy, 3, 34, style="F")
+
+    pdf.set_xy(20, wy + 5)
     pdf.set_font("CN", "B", 10)
-    pdf.set_text_color(*TEXT_C)
-    pdf.cell(0, 5.5, "\u63d0\u9192\u4e00\u4e0b\uff1a", new_x="LMARGIN", new_y="NEXT")
+    pdf.set_text_color(*ACCENT)
+    pdf.cell(0, 5.5, "\u26a0  \u4f7f\u7528\u63d0\u9192", new_x="LMARGIN", new_y="NEXT")
     pdf.set_font("CN", "", 9.5)
+    pdf.set_text_color(*TEXT_C)
     warns = [
-        "\u00b7 \u4e0d\u8981\u6574\u6bb5\u7167\u642c\u6a21\u677f\uff0c\u8003\u5b98\u4f1a\u8bc6\u522b",
-        "\u00b7 \u4e00\u7bc7\u5927\u4f5c\u6587\u7528 2-3 \u4e2a\u6a21\u677f\u5c31\u591f\u4e86\uff0c\u8fc7\u591a\u53cd\u800c\u6263\u5206",
-        "\u00b7 \u6a21\u677f\u662f\u9aa8\u67b6\uff0c\u8bba\u70b9\u548c\u4f8b\u5b50\u624d\u662f\u8089\uff0c\u4e24\u4e2a\u90fd\u5f97\u7ec3",
+        "\u4e0d\u8981\u6574\u6bb5\u7167\u642c\u6a21\u677f\uff0c\u8003\u5b98\u4f1a\u8bc6\u522b",
+        "\u4e00\u7bc7\u5927\u4f5c\u6587\u7528 2-3 \u4e2a\u6a21\u677f\u5c31\u591f\u4e86\uff0c\u8fc7\u591a\u53cd\u800c\u6263\u5206",
+        "\u6a21\u677f\u662f\u9aa8\u67b6\uff0c\u8bba\u70b9\u548c\u4f8b\u5b50\u624d\u662f\u8089\uff0c\u4e24\u4e2a\u90fd\u5f97\u7ec3",
     ]
     for w in warns:
-        pdf.set_x(14)
-        pdf.cell(0, 5.5, w, new_x="LMARGIN", new_y="NEXT")
+        pdf.set_x(20)
+        pdf.cell(0, 6, "\u2022  " + w, new_x="LMARGIN", new_y="NEXT")
 
-    # === PART 1 ===
+    # ============================================================
+    # PART 1: TASK 2
+    # ============================================================
     pdf.add_page()
-    pdf.section_divider("PART 1 \uff5c \u5927\u4f5c\u6587\uff08Task 2\uff09")
+    pdf.section_divider("PART 1  |  \u5927\u4f5c\u6587\uff08Task 2\uff09")
 
     sections = [
         ("concession", "\u4e00\u3001\u8ba9\u6b65\u6bb5\u5f00\u5934",
@@ -264,9 +486,11 @@ def build():
             if t["category"] == cat_key:
                 pdf.template_card(t)
 
-    # === PART 2 ===
+    # ============================================================
+    # PART 2: TASK 1
+    # ============================================================
     pdf.add_page()
-    pdf.section_divider("PART 2 \uff5c \u5c0f\u4f5c\u6587\uff08Task 1\uff09")
+    pdf.section_divider("PART 2  |  \u5c0f\u4f5c\u6587\uff08Task 1\uff09")
 
     sections2 = [
         ("task1_overview", "\u4e94\u3001\u603b\u4f53\u8d8b\u52bf / \u6982\u8ff0\u53e5",
@@ -282,54 +506,95 @@ def build():
             if t["category"] == cat_key:
                 pdf.template_card(t)
 
-    # === PART 3: CHECKLIST ===
+    # ============================================================
+    # PART 3: CHECKLIST
+    # ============================================================
     pdf.add_page()
-    pdf.section_divider("PART 3 \uff5c \u5199\u5b8c\u524d\u7684\u68c0\u67e5\u6e05\u5355")
+    pdf.section_divider("PART 3  |  \u5199\u5b8c\u524d\u7684\u68c0\u67e5\u6e05\u5355")
+    pdf.ln(2)
 
     pdf.set_font("CN", "B", 13)
-    pdf.set_text_color(*ACCENT)
+    pdf.set_text_color(*BRAND_DARK)
     pdf.cell(0, 8, "\u5199\u4f5c\u771f\u6b63\u8981\u7ec3\u7684\uff0c\u662f\u68c0\u67e5\u80fd\u529b\u3002", new_x="LMARGIN", new_y="NEXT")
     pdf.ln(2)
-    pdf.set_font("CN", "", 10)
+    pdf.set_font("CN", "", 9.5)
     pdf.set_text_color(*TEXT_C)
-    pdf.multi_cell(0, 5.5,
-        "\u4e0b\u9762\u8fd9 12 \u4e2a\u95ee\u9898\uff0c\u5efa\u8bae\u4f60\u5199\u5b8c\u4e4b\u540e\u9010\u6761\u8fc7\u4e00\u904d\u3002"
+    pdf.multi_cell(0, 5.2,
+        "\u4e0b\u9762\u8fd9 12 \u4e2a\u95ee\u9898\uff0c\u5efa\u8bae\u5199\u5b8c\u4e4b\u540e\u9010\u6761\u8fc7\u4e00\u904d\u3002"
         "\u524d\u671f\u53ef\u80fd\u8981\u82b1 5-8 \u5206\u949f\uff0c\u7b49\u6210\u4e60\u60ef\u4e4b\u540e 2 \u5206\u949f\u5c31\u80fd\u626b\u5b8c\u3002")
     pdf.ln(6)
 
-    for chk in DATA["checklist"]:
-        pdf.set_font("CN", "B", 11)
-        pdf.set_text_color(*ACCENT)
-        pdf.cell(0, 7, chk["category"], new_x="LMARGIN", new_y="NEXT")
+    chk_colors = [BRAND, (59, 130, 246), (139, 92, 246), SUCCESS]
+    for idx, chk in enumerate(DATA["checklist"]):
+        y = pdf.get_y()
+        c = chk_colors[idx % len(chk_colors)]
+
+        # Category header with colored bar
+        pdf.set_fill_color(*c)
+        pdf.rect(12, y, 186, 7.5, style="F")
+        pdf.set_font("CN", "B", 9.5)
+        pdf.set_text_color(*WHITE)
+        pdf.set_xy(16, y + 1)
+        pdf.cell(0, 5.5, chk["category"])
+        pdf.set_y(y + 9)
+
+        # Items
         pdf.set_font("CN", "", 9.5)
         pdf.set_text_color(*TEXT_C)
         for item in chk["items"]:
-            pdf.cell(0, 6, "[ ]  " + item, new_x="LMARGIN", new_y="NEXT")
-        pdf.ln(4)
+            iy = pdf.get_y()
+            # Checkbox
+            pdf.set_draw_color(*c)
+            pdf.rect(16, iy + 0.5, 4, 4, style="D")
+            pdf.set_x(23)
+            pdf.cell(0, 5.5, item, new_x="LMARGIN", new_y="NEXT")
+        pdf.ln(5)
 
-    # Final box
-    pdf.ln(8)
+    # ============================================================
+    # FINAL PAGE
+    # ============================================================
+    pdf.ln(6)
+    fy = pdf.get_y()
+    if fy > 220:
+        pdf.add_page()
+        fy = pdf.get_y() + 5
+
+    # Final professional box
     pdf.set_fill_color(*SOFT_BG)
     pdf.set_draw_color(*BRAND)
-    fy = pdf.get_y()
-    pdf.rect(10, fy, 190, 35, style="FD")
-    pdf.set_xy(16, fy + 5)
-    pdf.set_font("CN", "B", 10.5)
-    pdf.set_text_color(*TEXT_C)
+    pdf.set_line_width(0.5)
+    pdf.rect(12, fy, 186, 40, style="FD")
+    pdf.set_fill_color(*BRAND)
+    pdf.rect(12, fy, 3, 40, style="F")
+    pdf.set_line_width(0.2)
+
+    pdf.set_xy(20, fy + 6)
+    pdf.set_font("CN", "B", 11)
+    pdf.set_text_color(*BRAND_DARK)
     pdf.cell(0, 6, "\u6700\u540e\u4e00\u53e5\u8bdd\u9001\u7ed9\u4f60\uff1a", new_x="LMARGIN", new_y="NEXT")
+    pdf.ln(2)
     pdf.set_font("CN", "", 10)
-    pdf.set_x(16)
-    pdf.multi_cell(170, 5.5,
+    pdf.set_text_color(*TEXT_C)
+    pdf.set_x(20)
+    pdf.multi_cell(172, 5.8,
         "\u6a21\u677f\u8ba9\u4f60\u5199\u5f97\u5feb\uff0c\u903b\u8f91\u8ba9\u4f60\u5199\u5f97\u7a33\u3002"
         "\u60f3\u4ece 5.5 \u8d70\u5230 6.5\uff0c\u628a\u8fd9\u4efd\u8d44\u6599\u91cc\u7684 23 \u53e5\u8bdd\u7ec3\u5230\u80fd\u95ed\u7740\u773c\u775b\u586b\u7a7a\uff0c"
         "\u518d\u52a0\u4e0a\u6bcf\u5468 2 \u7bc7\u88ab\u6279\u6539\u8fc7\u7684\u4f5c\u6587\uff0c\u4e00\u4e2a\u66a8\u5047\u5c31\u80fd\u770b\u5230\u53d8\u5316\u3002")
 
-    pdf.set_y(fy + 45)
-    pdf.set_font("CN", "", 9)
+    pdf.set_y(fy + 50)
+    pdf.set_draw_color(*GOLD)
+    pdf.set_line_width(0.3)
+    pdf.line(70, pdf.get_y(), 140, pdf.get_y())
+    pdf.set_line_width(0.2)
+    pdf.ln(6)
+
+    pdf.set_font("CN", "", 9.5)
     pdf.set_text_color(*SUB_C)
-    pdf.cell(0, 5, "\u2014\u2014", align="C", new_x="LMARGIN", new_y="NEXT")
     pdf.cell(0, 5, "\u6e0a\u5b66\u901a\u676d\u5dde \u00b7 \u96c5\u601d\u6559\u7814\u7ec4", align="C", new_x="LMARGIN", new_y="NEXT")
-    pdf.cell(0, 5, "\u60f3\u8981\u4f5c\u6587\u4eba\u5de5\u6279\u6539 / \u5165\u8425\u524d\u8bca\u65ad / \u66a8\u671f\u5c01\u95ed\u8425\u8be6\u60c5\uff0c\u53ef\u5728\u5c0f\u7ea2\u4e66\u79c1\u4fe1\u6211\u4eec\u3002", align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(0, 5, "\u60f3\u8981\u4f5c\u6587\u4eba\u5de5\u6279\u6539 / \u5165\u8425\u524d\u8bca\u65ad / \u66a8\u671f\u5c01\u95ed\u8425\u8be6\u60c5", align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.set_font("CN", "B", 9.5)
+    pdf.set_text_color(*BRAND)
+    pdf.cell(0, 5, "\u53ef\u5728\u5c0f\u7ea2\u4e66\u79c1\u4fe1\u6211\u4eec  @\u6e0a\u5b66\u901a\u676d\u5dde", align="C", new_x="LMARGIN", new_y="NEXT")
 
     pdf.output(OUTPUT)
     print("OK:", OUTPUT)
