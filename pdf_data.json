@@ -229,11 +229,131 @@
       "example": "Once the dough has been kneaded, the next stage involves leaving it to rise, which prepares the mixture for the subsequent baking step.",
       "pitfall": "流程图全文用一般现在时被动态，不要用过去时。",
       "category": "task1_detail"
+    },
+    {
+      "num": "24",
+      "category": "concession",
+      "title": "弱化反对方开头",
+      "scene": "对方观点被夸大或泛化时使用",
+      "sentence": "Although it is widely believed that ___, this assumption rests on a rather narrow understanding of ___.",
+      "how": "rests on a narrow understanding of 暗示对方思路有局限。比 I disagree 更有学术感，能直接拉档次。",
+      "example": "Although it is widely believed that strict laws automatically reduce crime rates, this assumption rests on a rather narrow understanding of how social behavior is actually shaped.",
+      "pitfall": "narrow understanding of 后面必须接抽象概念（mechanism / nature / role），不要接具体名词。"
+    },
+    {
+      "num": "25",
+      "category": "example",
+      "title": "历史 / 事实佐证句",
+      "scene": "想用历史趋势 / 时代背景作为论据",
+      "sentence": "History has repeatedly shown that ___, with the recent shift towards ___ being a clear example.",
+      "how": "History has repeatedly shown that 是非常稳的开头。recent shift towards 把抽象的'历史规律'落到具体趋势上。",
+      "example": "History has repeatedly shown that technological progress reshapes the labor market, with the recent shift towards remote work being a clear example.",
+      "pitfall": "不要乱编历史事件，最好用泛化的'近年趋势'代替具体年份。"
+    },
+    {
+      "num": "26",
+      "category": "example",
+      "title": "权威机构引用句",
+      "scene": "想引用 WHO / UN / 政府报告等权威来源",
+      "sentence": "According to figures released by ___, ___ has reached an unprecedented level, raising serious concerns about ___.",
+      "how": "released by + 机构名 让来源显得真实。unprecedented level 是高分词。raising concerns about 自然引出后续论证。",
+      "example": "According to figures released by the World Health Organization, childhood obesity has reached an unprecedented level, raising serious concerns about long-term public health.",
+      "pitfall": "机构名要拼对（WHO / UN / OECD），不要瞎编。Bureau / Department of ___ 是相对安全的虚指。"
+    },
+    {
+      "num": "27",
+      "category": "contrast",
+      "title": "条件假设句",
+      "scene": "想表达'如果……就会……'的因果",
+      "sentence": "Were ___ to be implemented without proper safeguards, the outcome could prove counterproductive.",
+      "how": "倒装虚拟（Were ___ to）是 GRA（语法）拉满分的标志结构。counterproductive 比 bad 高级得多。",
+      "example": "Were artificial intelligence to be deployed in classrooms without proper safeguards, the outcome could prove counterproductive for students' independent thinking.",
+      "pitfall": "Were ___ to 后面动词必须用原形 + 过去式语气，不要写成现在时。"
+    },
+    {
+      "num": "28",
+      "category": "contrast",
+      "title": "利弊权衡句",
+      "scene": "段落需要先承认优势再指出代价",
+      "sentence": "While the immediate gains of ___ are undeniable, the hidden costs—ranging from ___ to ___—deserve equal attention.",
+      "how": "ranging from ___ to ___ 这种插入语让句子立刻拉长拉高级。deserve equal attention 比 are also important 学术感强。",
+      "example": "While the immediate gains of urban expansion are undeniable, the hidden costs—ranging from environmental degradation to community displacement—deserve equal attention.",
+      "pitfall": "ranging from A to B 里 A 和 B 必须是同类词性（都是名词或都是动名词）。"
+    },
+    {
+      "num": "29",
+      "category": "conclusion",
+      "title": "原则升华式结尾",
+      "scene": "想把具体话题升华到普遍原则",
+      "sentence": "Ultimately, the issue boils down to ___: a society that values ___ will inevitably ___.",
+      "how": "boils down to 把复杂问题归到一个核心。a society that ___ will inevitably ___ 这种结构非常出彩。",
+      "example": "Ultimately, the issue boils down to priorities: a society that values short-term profits over public welfare will inevitably face deeper inequalities in the long run.",
+      "pitfall": "Ultimately 后面接的核心要和文章主线一致，不要凭空冒新词。"
+    },
+    {
+      "num": "30",
+      "category": "task1_overview",
+      "title": "时间跨度强调句",
+      "scene": "图表跨度长（10年以上），需要强调时间维度",
+      "sentence": "Over the ___-year period, the data reveal a clear shift in ___, particularly in the latter half.",
+      "how": "Over the ___-year period 直接点出时间跨度。reveal a clear shift 比 show a change 高级。particularly in the latter half 暗示你抓到了关键阶段。",
+      "example": "Over the 30-year period, the data reveal a clear shift in household energy consumption patterns, particularly in the latter half.",
+      "pitfall": "用了 particularly in the latter half 之后，正文必须真的展开后半段的细节。"
+    },
+    {
+      "num": "31",
+      "category": "task1_detail",
+      "title": "倍数对比句",
+      "scene": "两项数据存在明显倍数关系",
+      "sentence": "By the end of the period, the figure for ___ was nearly ___ times that of ___, indicating a widening gap.",
+      "how": "nearly ___ times that of ___ 是描述倍数关系的标准句式。indicating a widening gap 自然引出趋势判断。",
+      "example": "By the end of the period, the figure for online sales was nearly three times that of in-store purchases, indicating a widening gap between digital and physical retail.",
+      "pitfall": "倍数算错就翻车。two times = 2倍 = doubled；three times = 3倍 = tripled。"
+    },
+    {
+      "num": "32",
+      "category": "task1_detail",
+      "title": "起伏波动句",
+      "scene": "数据先涨后跌或多次起伏",
+      "sentence": "The figure for ___ followed an irregular pattern, climbing to ___ in ___ before plunging back to ___ within just ___ years.",
+      "how": "irregular pattern 是描述非线性变化的关键词。climbing to / plunging back 这对动词比 went up / went down 鲜活很多。",
+      "example": "The figure for international tourist arrivals followed an irregular pattern, climbing to 320 million in 2019 before plunging back to 80 million within just two years.",
+      "pitfall": "用了 plunge（暴跌），跌幅必须够大（30%以上），否则用 declined / dropped 即可。"
+    },
+    {
+      "num": "33",
+      "category": "task1_detail",
+      "title": "百分比聚合句",
+      "scene": "饼图 / 表格中需要把几项小数据合并描述",
+      "sentence": "Together, ___ and ___ accounted for over ___% of the total, leaving the remaining categories with only marginal shares.",
+      "how": "Together, A and B accounted for over X% 是聚合分析的高分句式。marginal shares 比 small parts 学术感强。",
+      "example": "Together, electricity and gas accounted for over 70% of total household energy use, leaving renewable sources with only marginal shares.",
+      "pitfall": "百分比相加不能超过 100%，最好留出 5% 缓冲（写 over 65% 而不是 exactly 70%）。"
+    },
+    {
+      "num": "34",
+      "category": "topic_sentence",
+      "title": "主体段主题句 · 经济视角",
+      "scene": "Task 2 主体段开头，从经济角度切入",
+      "sentence": "From an economic standpoint, ___ generates substantial benefits that extend well beyond the individual level.",
+      "how": "From an economic standpoint 是非常专业的视角切换信号。extend well beyond 暗示影响有外溢效应。",
+      "example": "From an economic standpoint, investing in early childhood education generates substantial benefits that extend well beyond the individual level.",
+      "pitfall": "用了 economic standpoint 之后，本段必须真的从经济角度论证（成本 / 效益 / 增长 / 就业），不要混入社会论点。"
+    },
+    {
+      "num": "35",
+      "category": "topic_sentence",
+      "title": "主体段主题句 · 社会视角",
+      "scene": "Task 2 主体段开头，从社会角度切入",
+      "sentence": "On a broader social level, ___ plays a pivotal role in shaping ___, with consequences felt across generations.",
+      "how": "On a broader social level 视角拉到社会层面。plays a pivotal role 是高分词组。consequences felt across generations 体现时间深度。",
+      "example": "On a broader social level, public transportation plays a pivotal role in shaping urban equality, with consequences felt across generations of city dwellers.",
+      "pitfall": "across generations 这种宏大表达，后续段落要真的有跨代论证（年轻人 / 老人 / 子女），否则显得空。"
     }
   ],
   "checklist": [
     {
-      "category": "TR \u00b7 任务回应",
+      "category": "TR · 任务回应",
       "items": [
         "题目问的核心点，每段是否都正面回应了？",
         "我的立场（同意 / 不同意 / 部分同意）有没有写清楚？",
@@ -241,7 +361,7 @@
       ]
     },
     {
-      "category": "CC \u00b7 连贯衔接",
+      "category": "CC · 连贯衔接",
       "items": [
         "每段开头有没有主题句？",
         "段落之间的过渡，是用逻辑（because, therefore）还是堆词（and, also）？",
@@ -249,7 +369,7 @@
       ]
     },
     {
-      "category": "LR \u00b7 词汇资源",
+      "category": "LR · 词汇资源",
       "items": [
         "有没有重复词没换（people / individuals / citizens）？",
         "有没有口语词没改（lots of, a lot of, get）？",
@@ -257,12 +377,254 @@
       ]
     },
     {
-      "category": "GRA \u00b7 语法多样性",
+      "category": "GRA · 语法多样性",
       "items": [
         "有没有至少 2 个复合句 + 1 个虚拟语气 / 倒装？",
         "时态有没有混用（小作文要统一）？",
         "主谓一致、单复数有没有错？"
       ]
+    }
+  ],
+  "vocab_upgrade": [
+    {
+      "basic": "important",
+      "level1": "significant / crucial",
+      "level2": "indispensable / pivotal",
+      "note": "用于强调重要性的递进"
+    },
+    {
+      "basic": "good",
+      "level1": "beneficial / favorable",
+      "level2": "advantageous / instrumental",
+      "note": "形容事物有利时使用"
+    },
+    {
+      "basic": "bad",
+      "level1": "negative / harmful",
+      "level2": "detrimental / counterproductive",
+      "note": "describing negative effects"
+    },
+    {
+      "basic": "many",
+      "level1": "numerous / a wide range of",
+      "level2": "a multitude of / a host of",
+      "note": "表示数量多"
+    },
+    {
+      "basic": "people",
+      "level1": "individuals / citizens",
+      "level2": "the general public / the populace",
+      "note": "避免重复 people 的最常用替换"
+    },
+    {
+      "basic": "show",
+      "level1": "indicate / demonstrate",
+      "level2": "illustrate / underscore",
+      "note": "图表 / 数据描述高频"
+    },
+    {
+      "basic": "think",
+      "level1": "argue / maintain",
+      "level2": "contend / hold the view that",
+      "note": "表达观点时用"
+    },
+    {
+      "basic": "cause",
+      "level1": "lead to / result in",
+      "level2": "give rise to / trigger",
+      "note": "因果论证高频替换"
+    },
+    {
+      "basic": "solve",
+      "level1": "address / tackle",
+      "level2": "alleviate / mitigate",
+      "note": "解决问题时用，mitigate 暗示'缓解'更准确"
+    },
+    {
+      "basic": "use",
+      "level1": "utilize / employ",
+      "level2": "harness / capitalize on",
+      "note": "使用资源 / 工具时高分词"
+    },
+    {
+      "basic": "increase",
+      "level1": "rise / grow",
+      "level2": "surge / escalate",
+      "note": "小作文必备替换"
+    },
+    {
+      "basic": "decrease",
+      "level1": "decline / drop",
+      "level2": "plunge / dwindle",
+      "note": "小作文必备替换"
+    },
+    {
+      "basic": "get",
+      "level1": "obtain / acquire",
+      "level2": "attain / secure",
+      "note": "口语词 get 一律替换"
+    },
+    {
+      "basic": "big",
+      "level1": "substantial / considerable",
+      "level2": "monumental / profound",
+      "note": "形容规模大"
+    },
+    {
+      "basic": "small",
+      "level1": "modest / limited",
+      "level2": "negligible / marginal",
+      "note": "形容规模小"
+    }
+  ],
+  "collocations": [
+    {
+      "category": "经济类",
+      "items": [
+        "boost economic growth (推动经济增长)",
+        "drive innovation (驱动创新)",
+        "alleviate poverty (减轻贫困)",
+        "narrow the income gap (缩小收入差距)",
+        "stimulate consumer demand (刺激消费需求)",
+        "secure financial stability (保障财务稳定)"
+      ]
+    },
+    {
+      "category": "社会类",
+      "items": [
+        "foster social cohesion (促进社会凝聚力)",
+        "bridge cultural differences (弥合文化差异)",
+        "reshape social norms (重塑社会规范)",
+        "perpetuate inequality (延续不平等)",
+        "raise public awareness (提高公众意识)",
+        "uphold human dignity (维护人格尊严)"
+      ]
+    },
+    {
+      "category": "教育类",
+      "items": [
+        "cultivate critical thinking (培养批判性思维)",
+        "enhance academic performance (提升学业表现)",
+        "foster lifelong learning (培养终身学习习惯)",
+        "broaden one's horizons (开阔视野)",
+        "instill core values (灌输核心价值观)",
+        "address learning disparities (解决学习差距)"
+      ]
+    },
+    {
+      "category": "环境类",
+      "items": [
+        "curb carbon emissions (遏制碳排放)",
+        "preserve biodiversity (保护生物多样性)",
+        "transition to renewable energy (向可再生能源转型)",
+        "mitigate climate change (缓解气候变化)",
+        "promote sustainable development (推动可持续发展)",
+        "deplete natural resources (耗尽自然资源)"
+      ]
+    },
+    {
+      "category": "科技类",
+      "items": [
+        "harness the power of AI (利用人工智能的力量)",
+        "automate repetitive tasks (自动化重复任务)",
+        "raise privacy concerns (引发隐私担忧)",
+        "bridge the digital divide (弥合数字鸿沟)",
+        "transform traditional industries (改造传统行业)",
+        "safeguard data security (保障数据安全)"
+      ]
+    }
+  ],
+  "topic_bank": [
+    {
+      "topic": "环境与可持续发展",
+      "for_args": [
+        "气候变化已成为全球性危机，个人行动是政策落地的基础",
+        "短期减排带来的产业转型，长期看会创造绿色就业",
+        "教育能改变下一代的消费习惯，效果比单纯立法更深远"
+      ],
+      "against_args": [
+        "完全依赖个人很难解决系统性问题，需要政府强制立法",
+        "发展中国家承担同等减排压力，可能加剧全球不平等",
+        "技术进步本身可以解决很多环境问题，无需牺牲经济发展"
+      ]
+    },
+    {
+      "topic": "科技对生活的影响",
+      "for_args": [
+        "互联网让优质教育资源跨越地理限制，促进了教育公平",
+        "远程办公提升了工作灵活度和家庭生活质量",
+        "医疗 AI 在疾病早筛和精准治疗上展现出巨大潜力"
+      ],
+      "against_args": [
+        "社交媒体加剧了焦虑和注意力碎片化，对青少年尤其不利",
+        "算法推荐让人陷入信息茧房，独立思考能力下降",
+        "技术替代低技能岗位，加剧了就业市场的结构性失业"
+      ]
+    },
+    {
+      "topic": "教育与个人发展",
+      "for_args": [
+        "通识教育拓宽视野，让学生在快速变化的就业市场中更有韧性",
+        "实践类课程比纯理论更能培养解决问题的能力",
+        "国际化教育经历能塑造跨文化沟通能力，是 21 世纪核心竞争力"
+      ],
+      "against_args": [
+        "应试教育让学生失去了独立思考和创造性的空间",
+        "过度竞争导致学生心理健康问题日益严重",
+        "学历贬值使大学教育的投资回报率持续下降"
+      ]
+    },
+    {
+      "topic": "城市化与生活方式",
+      "for_args": [
+        "城市集聚效应能高效配置资源，推动经济发展",
+        "城市提供更多就业、教育和医疗机会，改善民生",
+        "公共交通发达的大城市，反而比郊区生活更环保"
+      ],
+      "against_args": [
+        "过度城市化加剧空气污染、噪音和心理压力",
+        "高房价和拥堵让普通人很难真正享受城市便利",
+        "乡村人口流失导致传统文化和社区结构瓦解"
+      ]
+    },
+    {
+      "topic": "政府政策与个人选择",
+      "for_args": [
+        "公共健康问题（吸烟、肥胖）需要政府干预才能见效",
+        "市场失灵的领域（环保、教育公平）需要政策矫正",
+        "强制性法规比道德倡导更能改变长期行为"
+      ],
+      "against_args": [
+        "过度干预会限制个人自由，形成保姆式国家",
+        "政策一刀切容易脱离地方实际，反而效率低下",
+        "教育和文化引导的长期效果好于强制立法"
+      ]
+    }
+  ],
+  "score_comparison": [
+    {
+      "dimension": "TR · 任务回应",
+      "low": "题目问 'to what extent agree'，但开头就写 'Nowadays, education is very important...'，没正面回应同意还是不同意。",
+      "high": "开头第二句就明确立场：'I largely agree with this view, particularly when it comes to ___, although certain reservations remain regarding ___.'",
+      "key": "立场必须早出现 + 必须 specific（largely / partly / strongly），不要笼统说 agree。"
+    },
+    {
+      "dimension": "CC · 连贯衔接",
+      "low": "段落之间用 'Also' / 'Besides' / 'In addition' 这种最弱的连接词，每段都用一遍。",
+      "high": "段落过渡用逻辑词：'Building on the previous point...' / 'A counterpoint worth considering is...' / 'This brings us to a deeper question...'",
+      "key": "连接词的多样性 + 真正体现逻辑（递进 / 转折 / 因果 / 对照），而不是简单罗列。"
+    },
+    {
+      "dimension": "LR · 词汇资源",
+      "low": "people / important / good / bad 在一篇文章里反复出现，搭配也是基础的（very important / a lot of people）。",
+      "high": "替换为 individuals / pivotal / advantageous / detrimental，搭配用 a wide range of / play a pivotal role / pose a serious threat。",
+      "key": "不是堆砌生僻词，而是替换基础词 + 用对搭配。一篇文章重复词不超过 2 次。"
+    },
+    {
+      "dimension": "GRA · 语法多样性",
+      "low": "全文都是 'I think...' / 'It is...' / 'There are...' 这种简单句，时态偶尔混用。",
+      "high": "穿插使用：让步从句（Although...）+ 定语从句（which / that）+ 倒装虚拟（Were ___ to）+ 插入语（——）+ 被动语态。",
+      "key": "至少 2 个复合句 + 1 个虚拟 / 倒装 + 1 个分词作状语，时态严格统一。"
     }
   ]
 }

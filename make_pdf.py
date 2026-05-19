@@ -345,17 +345,22 @@ def build():
     toc_items = [
         ("\u5199\u5728\u524d\u9762 \u00b7 \u6a21\u677f\u600e\u4e48\u7528\u624d\u6709\u5206", ""),
         ("", ""),
-        ("PART 1  \u5927\u4f5c\u6587\uff08Task 2\uff09", ""),
-        ("    \u4e00\u3001\u8ba9\u6b65\u6bb5\u5f00\u5934", "No.1 - No.4"),
-        ("    \u4e8c\u3001\u4e3e\u4f8b\u5c55\u5f00", "No.5 - No.8"),
-        ("    \u4e09\u3001\u5bf9\u6bd4\u8f6c\u6298", "No.9 - No.11"),
-        ("    \u56db\u3001\u7ed3\u5c3e\u89c2\u70b9\u91cd\u7533", "No.12 - No.14"),
+        ("PART 1  \u5927\u4f5c\u6587\uff08Task 2\uff09", "20 \u53e5"),
+        ("    \u4e00\u3001\u8ba9\u6b65\u6bb5\u5f00\u5934", "No.1 - No.4, No.24"),
+        ("    \u4e8c\u3001\u4e3e\u4f8b\u5c55\u5f00", "No.5 - No.8, No.25-26"),
+        ("    \u4e09\u3001\u5bf9\u6bd4\u8f6c\u6298", "No.9 - No.11, No.27-28"),
+        ("    \u56db\u3001\u7ed3\u5c3e\u89c2\u70b9\u91cd\u7533", "No.12 - No.14, No.29"),
+        ("    \u4e94\u3001\u4e3b\u4f53\u6bb5\u4e3b\u9898\u53e5", "No.34 - No.35"),
         ("", ""),
-        ("PART 2  \u5c0f\u4f5c\u6587\uff08Task 1\uff09", ""),
-        ("    \u4e94\u3001\u603b\u4f53\u8d8b\u52bf / \u6982\u8ff0\u53e5", "No.15 - No.18"),
-        ("    \u516d\u3001\u7ec6\u8282\u63cf\u8ff0", "No.19 - No.23"),
+        ("PART 2  \u5c0f\u4f5c\u6587\uff08Task 1\uff09", "9 \u53e5"),
+        ("    \u516d\u3001\u603b\u4f53\u8d8b\u52bf / \u6982\u8ff0\u53e5", "No.15 - No.18, No.30"),
+        ("    \u4e03\u3001\u7ec6\u8282\u63cf\u8ff0", "No.19 - No.23, No.31-33"),
         ("", ""),
-        ("PART 3  \u5199\u5b8c\u524d\u7684\u68c0\u67e5\u6e05\u5355", "12 \u6761\u81ea\u67e5\u9879"),
+        ("PART 3  \u9ad8\u5206\u8bcd\u6c47\u5347\u7ea7\u8868", "15 \u7ec4\u9ad8\u9891\u66ff\u6362"),
+        ("PART 4  \u4e94\u5927\u8bdd\u9898\u9ad8\u5206\u642d\u914d", "30+ \u5730\u9053\u8868\u8fbe"),
+        ("PART 5  \u70ed\u95e8\u8bdd\u9898\u8bba\u70b9\u5e93", "5 \u5927\u8bdd\u9898 \u00d7 \u6b63\u53cd\u5404 3 \u4e2a\u8bba\u70b9"),
+        ("PART 6  7\u5206 vs 5.5\u5206 \u5b9e\u4f8b\u5bf9\u6bd4", "4 \u4e2a\u8bc4\u5206\u7ef4\u5ea6"),
+        ("PART 7  \u5199\u5b8c\u524d\u7684\u68c0\u67e5\u6e05\u5355", "12 \u6761\u81ea\u67e5\u9879"),
     ]
 
     for title, detail in toc_items:
@@ -477,6 +482,8 @@ def build():
          "\u4e2d\u95f4\u6bb5\u4e07\u80fd\u8fc7\u6e21\u3002\u8003\u5b98\u7279\u522b\u770b\u91cd long-term / short-term \u8fd9\u79cd\u65f6\u95f4\u7ef4\u5ea6\u7684\u8bba\u8bc1\u3002"),
         ("conclusion", "\u56db\u3001\u7ed3\u5c3e\u89c2\u70b9\u91cd\u7533",
          "\u7ed3\u5c3e\u4e0d\u8981\u518d\u5199 In conclusion, I think... \u8fd9\u79cd\u5c0f\u5b66\u4f5c\u6587\u5473\u7684\u5f00\u5934\u3002"),
+        ("topic_sentence", "\u4e94\u3001\u4e3b\u4f53\u6bb5\u4e3b\u9898\u53e5",
+         "\u6bcf\u6bb5\u5f00\u5934\u7684\u7b2c\u4e00\u53e5\u5176\u5b9e\u662f\u62c9\u5206\u6700\u9ad8\u7684\u4f4d\u7f6e\u3002\u4ece\u7ecf\u6d4e / \u793e\u4f1a / \u73af\u5883 \u7b49\u4e0d\u540c\u89d2\u5ea6\u5207\u5165\uff0c\u80fd\u8ba9\u4f5c\u6587\u8d70\u5411\u7acb\u523b\u660e\u6717\u3002"),
     ]
 
     for cat_key, title, desc in sections:
@@ -493,9 +500,9 @@ def build():
     pdf.section_divider("PART 2  |  \u5c0f\u4f5c\u6587\uff08Task 1\uff09")
 
     sections2 = [
-        ("task1_overview", "\u4e94\u3001\u603b\u4f53\u8d8b\u52bf / \u6982\u8ff0\u53e5",
+        ("task1_overview", "\u516d\u3001\u603b\u4f53\u8d8b\u52bf / \u6982\u8ff0\u53e5",
          "\u5c0f\u4f5c\u6587\u4e00\u4e0a\u6765\u4e0d\u8981\u5806\u6570\u636e\u3002\u5148\u7528\u4e00\u53e5\u6982\u62ec\u5168\u5c40\u8d8b\u52bf\uff0c\u8003\u5b98\u5728\u7b2c\u4e00\u773c\u5c31\u7ed9\u4f60 TR\uff08\u4efb\u52a1\u56de\u5e94\uff09\u7684\u5206\u3002"),
-        ("task1_detail", "\u516d\u3001\u5c0f\u4f5c\u6587 \u00b7 \u7ec6\u8282\u63cf\u8ff0",
+        ("task1_detail", "\u4e03\u3001\u5c0f\u4f5c\u6587 \u00b7 \u7ec6\u8282\u63cf\u8ff0",
          "\u4e2d\u95f4\u6bb5\u62c9\u5206\u5173\u952e\u3002\u627e\u51fa\u53cd\u5dee\u6700\u5927\u3001\u6700\u6709\u4fe1\u606f\u91cf\u7684\u5bf9\u6bd4\uff0c\u518d\u5c55\u5f00\u3002"),
     ]
 
@@ -507,10 +514,261 @@ def build():
                 pdf.template_card(t)
 
     # ============================================================
-    # PART 3: CHECKLIST
+    # PART 3: VOCABULARY UPGRADE TABLE
     # ============================================================
     pdf.add_page()
-    pdf.section_divider("PART 3  |  \u5199\u5b8c\u524d\u7684\u68c0\u67e5\u6e05\u5355")
+    pdf.section_divider("PART 3  |  \u9ad8\u5206\u8bcd\u6c47\u5347\u7ea7\u8868")
+    pdf.ln(2)
+
+    pdf.set_font("CN", "", 9.5)
+    pdf.set_text_color(*TEXT_C)
+    pdf.multi_cell(0, 5.2,
+        "\u96c5\u601d\u5199\u4f5c\u8003\u5b98\u4f1a\u5728\u51e0\u79d2\u5185\u8bc6\u522b\u51fa\u4f60\u662f\u4e0d\u662f\u91cd\u590d\u4f7f\u7528\u57fa\u7840\u8bcd\u3002"
+        "\u4e0b\u9762\u8fd9 15 \u7ec4\u9ad8\u9891\u66ff\u6362\u5efa\u8bae\u80cc\u4e0b\u6765\u3002\u4e2d\u7ea7\u8bcd\u6c47\u9002\u7528\u4e8e\u6240\u6709\u573a\u5408\uff0c\u9ad8\u7ea7\u8bcd\u6c47\u9009\u6027\u4f7f\u7528\uff083-5 \u4e2a/\u7bc7\u5373\u53ef\uff09\u3002")
+    pdf.ln(5)
+
+    # Table header
+    th_y = pdf.get_y()
+    pdf.set_fill_color(*BRAND_DARK)
+    pdf.rect(12, th_y, 186, 8, style="F")
+    pdf.set_font("CN", "B", 9.5)
+    pdf.set_text_color(*WHITE)
+    pdf.set_xy(14, th_y + 1.5)
+    pdf.cell(28, 5, "\u57fa\u7840\u8bcd")
+    pdf.cell(50, 5, "\u4e2d\u7ea7\u66ff\u6362")
+    pdf.cell(54, 5, "\u9ad8\u7ea7\u66ff\u6362")
+    pdf.cell(50, 5, "\u4f7f\u7528\u63d0\u793a")
+    pdf.set_y(th_y + 9)
+
+    # Table rows
+    pdf.set_text_color(*TEXT_C)
+    for i, row in enumerate(DATA["vocab_upgrade"]):
+        ry = pdf.get_y()
+        if ry > 270:
+            pdf.add_page()
+            ry = pdf.get_y()
+        # Alternating row background
+        if i % 2 == 0:
+            pdf.set_fill_color(*SOFT_BG)
+            pdf.rect(12, ry, 186, 7.5, style="F")
+        pdf.set_xy(14, ry + 1.5)
+        pdf.set_font("CN", "B", 9)
+        pdf.set_text_color(*ACCENT)
+        pdf.cell(28, 5, row["basic"])
+        pdf.set_font("CN", "", 9)
+        pdf.set_text_color(*TEXT_C)
+        pdf.cell(50, 5, row["level1"])
+        pdf.set_font("CN", "B", 9)
+        pdf.set_text_color(*BRAND)
+        pdf.cell(54, 5, row["level2"])
+        pdf.set_font("CN", "", 8.5)
+        pdf.set_text_color(*SUB_C)
+        pdf.cell(50, 5, row["note"])
+        pdf.set_y(ry + 7.5)
+    pdf.ln(4)
+
+    # ============================================================
+    # PART 4: COLLOCATIONS
+    # ============================================================
+    pdf.add_page()
+    pdf.section_divider("PART 4  |  \u4e94\u5927\u8bdd\u9898\u9ad8\u5206\u642d\u914d")
+    pdf.ln(2)
+
+    pdf.set_font("CN", "", 9.5)
+    pdf.set_text_color(*TEXT_C)
+    pdf.multi_cell(0, 5.2,
+        "\u4e0b\u9762\u8fd9\u4e9b\u662f\u96c5\u601d\u5199\u4f5c\u4e94\u5927\u70ed\u95e8\u8bdd\u9898\u4e0b\u7684\u9ad8\u5206\u8868\u8fbe\u3002"
+        "\u80cc\u8bf5\u662f\u4e00\u56de\u4e8b\uff0c\u80fd\u5728\u4f5c\u6587\u4e2d\u51c6\u786e\u7528\u51fa\u624d\u7b97\u771f\u638c\u63e1\u3002\u5efa\u8bae\u6bcf\u4e2a\u8bdd\u9898\u81f3\u5c11\u8bb0\u4f4f 3-4 \u4e2a\u3002")
+    pdf.ln(5)
+
+    coll_colors = [BRAND, (59, 130, 246), (139, 92, 246), SUCCESS, (245, 158, 11)]
+    for idx, group in enumerate(DATA["collocations"]):
+        if pdf.get_y() > 235:
+            pdf.add_page()
+        c = coll_colors[idx % len(coll_colors)]
+        gy = pdf.get_y()
+        # Category header
+        pdf.set_fill_color(*c)
+        pdf.rect(12, gy, 186, 8, style="F")
+        pdf.set_font("CN", "B", 10)
+        pdf.set_text_color(*WHITE)
+        pdf.set_xy(16, gy + 1.5)
+        pdf.cell(0, 5, group["category"])
+        pdf.set_y(gy + 9)
+
+        # Two-column layout for items
+        items = group["items"]
+        col_w = 92
+        for i in range(0, len(items), 2):
+            iy = pdf.get_y()
+            pdf.set_font("CN", "", 9)
+            pdf.set_text_color(*TEXT_C)
+            pdf.set_xy(14, iy)
+            pdf.multi_cell(col_w, 5, "\u2022 " + items[i])
+            end1 = pdf.get_y()
+            if i + 1 < len(items):
+                pdf.set_xy(14 + col_w + 2, iy)
+                pdf.multi_cell(col_w, 5, "\u2022 " + items[i + 1])
+                end2 = pdf.get_y()
+                pdf.set_y(max(end1, end2))
+            else:
+                pdf.set_y(end1)
+        pdf.ln(4)
+
+    # ============================================================
+    # PART 5: TOPIC ARGUMENT BANK
+    # ============================================================
+    pdf.add_page()
+    pdf.section_divider("PART 5  |  \u70ed\u95e8\u8bdd\u9898\u8bba\u70b9\u5e93")
+    pdf.ln(2)
+
+    pdf.set_font("CN", "", 9.5)
+    pdf.set_text_color(*TEXT_C)
+    pdf.multi_cell(0, 5.2,
+        "\u96c5\u601d\u5199\u4f5c\u5361\u4f4f\u7684\u4e00\u5927\u539f\u56e0\u662f\u201c\u4e0d\u77e5\u9053\u8be5\u8bb2\u4ec0\u4e48\u201d\u3002"
+        "\u4e0b\u9762\u8fd9\u4e9b\u8bba\u70b9\u6db5\u76d6\u4e94\u5927\u9ad8\u9891\u8bdd\u9898\uff0c\u4e0d\u8981\u80cc\u53e5\u5b50\uff0c\u80cc\u601d\u8def\u3002\u5230\u8003\u573a\u4e0a\u6839\u636e\u9898\u76ee\u9009\u5408\u9002\u7684\u8bba\u70b9\u5957\u8fdb\u53bb\u5373\u53ef\u3002")
+    pdf.ln(5)
+
+    for idx, topic in enumerate(DATA["topic_bank"]):
+        if pdf.get_y() > 215:
+            pdf.add_page()
+        ty = pdf.get_y()
+        # Topic title with badge
+        pdf.set_fill_color(*BRAND_DARK)
+        pdf.rect(12, ty, 186, 8, style="F")
+        pdf.set_fill_color(*GOLD)
+        pdf.rect(12, ty, 4, 8, style="F")
+        pdf.set_font("CN", "B", 10.5)
+        pdf.set_text_color(*WHITE)
+        pdf.set_xy(20, ty + 1.5)
+        pdf.cell(0, 5, "\u8bdd\u9898 %d  |  %s" % (idx + 1, topic["topic"]))
+        pdf.set_y(ty + 10)
+
+        # FOR arguments
+        fy = pdf.get_y()
+        pdf.set_fill_color(220, 252, 231)  # green tint
+        h_for = len(topic["for_args"]) * 6 + 8
+        pdf.rect(12, fy, 92, h_for, style="F")
+        pdf.set_fill_color(*SUCCESS)
+        pdf.rect(12, fy, 3, h_for, style="F")
+        pdf.set_font("CN", "B", 9.5)
+        pdf.set_text_color(*SUCCESS)
+        pdf.set_xy(18, fy + 1.5)
+        pdf.cell(0, 5, "\u2713 \u652f\u6301\u8bba\u70b9")
+        pdf.set_font("CN", "", 8.5)
+        pdf.set_text_color(*TEXT_C)
+        pdf.set_y(fy + 7)
+        for arg in topic["for_args"]:
+            pdf.set_x(18)
+            pdf.multi_cell(82, 5, "\u00b7 " + arg)
+
+        # AGAINST arguments
+        ay = fy
+        pdf.set_fill_color(254, 226, 226)  # red tint
+        h_ag = len(topic["against_args"]) * 6 + 8
+        pdf.rect(106, ay, 92, h_ag, style="F")
+        pdf.set_fill_color(*ACCENT)
+        pdf.rect(106, ay, 3, h_ag, style="F")
+        pdf.set_font("CN", "B", 9.5)
+        pdf.set_text_color(*ACCENT)
+        pdf.set_xy(112, ay + 1.5)
+        pdf.cell(0, 5, "X \u53cd\u5bf9\u8bba\u70b9")
+        pdf.set_font("CN", "", 8.5)
+        pdf.set_text_color(*TEXT_C)
+        pdf.set_y(ay + 7)
+        for arg in topic["against_args"]:
+            pdf.set_x(112)
+            pdf.multi_cell(82, 5, "\u00b7 " + arg)
+
+        pdf.set_y(max(fy + h_for, ay + h_ag) + 5)
+
+    # ============================================================
+    # PART 6: 7分 vs 5.5分
+    # ============================================================
+    pdf.add_page()
+    pdf.section_divider("PART 6  |  7\u5206 vs 5.5\u5206  \u5b9e\u4f8b\u5bf9\u6bd4")
+    pdf.ln(2)
+
+    pdf.set_font("CN", "", 9.5)
+    pdf.set_text_color(*TEXT_C)
+    pdf.multi_cell(0, 5.2,
+        "\u540c\u6837\u7684\u9898\u76ee\uff0c5.5 \u5206\u548c 7 \u5206\u5230\u5e95\u5dee\u5728\u54ea\u91cc\uff1f"
+        "\u4e0b\u9762\u4ece\u96c5\u601d\u5b98\u65b9\u8bc4\u5206\u7684\u56db\u4e2a\u7ef4\u5ea6\uff0c\u6bcf\u4e2a\u90fd\u7ed9\u4f60\u4e00\u4e2a\u771f\u5b9e\u5bf9\u6bd4\u3002\u770b\u5b8c\u4f60\u5c31\u4f1a\u77e5\u9053\u81ea\u5df1\u54ea\u91cc\u53ef\u4ee5\u5feb\u901f\u63d0\u5206\u3002")
+    pdf.ln(5)
+
+    for idx, comp in enumerate(DATA["score_comparison"]):
+        if pdf.get_y() > 215:
+            pdf.add_page()
+        cy = pdf.get_y()
+        # Dimension title
+        pdf.set_fill_color(*BRAND)
+        pdf.rect(12, cy, 186, 7.5, style="F")
+        pdf.set_font("CN", "B", 10.5)
+        pdf.set_text_color(*WHITE)
+        pdf.set_xy(16, cy + 1.2)
+        pdf.cell(0, 5, comp["dimension"])
+        pdf.set_y(cy + 9)
+
+        # Low score example
+        ly = pdf.get_y()
+        pdf.set_fill_color(254, 226, 226)
+        # Estimate height
+        low_lines = len(comp["low"]) // 75 + 1
+        h_low = low_lines * 5 + 8
+        pdf.rect(12, ly, 186, h_low, style="F")
+        pdf.set_fill_color(*ACCENT)
+        pdf.rect(12, ly, 3, h_low, style="F")
+        pdf.set_font("CN", "B", 9)
+        pdf.set_text_color(*ACCENT)
+        pdf.set_xy(18, ly + 1.5)
+        pdf.cell(0, 5, "5.5\u5206\u5199\u6cd5\uff1a")
+        pdf.set_font("CN", "", 9)
+        pdf.set_text_color(*TEXT_C)
+        pdf.set_xy(18, ly + 7)
+        pdf.multi_cell(176, 5, comp["low"])
+        end_low = pdf.get_y() + 2
+
+        # High score example
+        hy = end_low
+        pdf.set_fill_color(220, 252, 231)
+        high_lines = len(comp["high"]) // 75 + 1
+        h_high = high_lines * 5 + 8
+        pdf.rect(12, hy, 186, h_high, style="F")
+        pdf.set_fill_color(*SUCCESS)
+        pdf.rect(12, hy, 3, h_high, style="F")
+        pdf.set_font("CN", "B", 9)
+        pdf.set_text_color(*SUCCESS)
+        pdf.set_xy(18, hy + 1.5)
+        pdf.cell(0, 5, "7\u5206\u5199\u6cd5\uff1a")
+        pdf.set_font("CN", "", 9)
+        pdf.set_text_color(*TEXT_C)
+        pdf.set_xy(18, hy + 7)
+        pdf.multi_cell(176, 5, comp["high"])
+        end_high = pdf.get_y() + 2
+
+        # Key takeaway
+        ky = end_high
+        pdf.set_fill_color(*BRAND_LIGHT)
+        key_lines = len(comp["key"]) // 75 + 1
+        h_key = key_lines * 5 + 8
+        pdf.rect(12, ky, 186, h_key, style="F")
+        pdf.set_fill_color(*BRAND)
+        pdf.rect(12, ky, 3, h_key, style="F")
+        pdf.set_font("CN", "B", 9)
+        pdf.set_text_color(*BRAND_DARK)
+        pdf.set_xy(18, ky + 1.5)
+        pdf.cell(0, 5, "\u62c9\u5206\u5173\u952e\uff1a")
+        pdf.set_font("CN", "", 9)
+        pdf.set_text_color(*TEXT_C)
+        pdf.set_xy(18, ky + 7)
+        pdf.multi_cell(176, 5, comp["key"])
+        pdf.ln(6)
+
+    # ============================================================
+    # PART 7: CHECKLIST
+    # ============================================================
+    pdf.add_page()
+    pdf.section_divider("PART 7  |  \u5199\u5b8c\u524d\u7684\u68c0\u67e5\u6e05\u5355")
     pdf.ln(2)
 
     pdf.set_font("CN", "B", 13)
