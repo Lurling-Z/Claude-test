@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>渊学通雅思暑假封闭营 项目介绍</title>
+<style>
+@font-face { font-family: 'NotoSansSC'; src: url('../fonts/NotoSansSC-Regular.otf') format('opentype'); font-weight: normal; }
+@font-face { font-family: 'NotoSansSC'; src: url('../fonts/NotoSansSC-Bold.otf') format('opentype'); font-weight: bold; }
+@font-face { font-family: 'NotoSerifSC'; src: url('../fonts/NotoSerifSC-Bold.otf') format('opentype'); font-weight: bold; }
+
+@page {
+  size: A4;
+  margin: 20mm 18mm 22mm 18mm;
+  @bottom-center {
+    content: "渊学通杭州  /  IELTS Summer Camp 2026  /  第 " counter(page) " 页";
+    font-family: 'NotoSansSC';
+    font-size: 9pt;
+    color: #999;
+  }
+}
+@page :first { margin: 0; @bottom-center { content: ""; } }
+@page cover { margin: 0; @bottom-center { content: ""; } }
+section.cover-page { page: cover; }
+
+* { box-sizing: border-box; }
+html, body {
+  font-family: 'NotoSansSC', sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.9;
+  color: #2d3748;
+  margin: 0; padding: 0;
+}
+
+/* 封面 */
+.cover {
+  page-break-after: always;
+  height: 297mm; width: 210mm;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(212,175,55,0.22) 0%, rgba(212,175,55,0) 50%),
+    linear-gradient(155deg, #0e2a47 0%, #1a4380 60%, #2563a8 100%);
+  color: #fff;
+  position: relative;
+  padding: 30mm 20mm;
+  overflow: hidden;
+}
+.cover .brand-row {
+  display: flex; align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+  padding-bottom: 6mm; margin-bottom: 22mm;
+}
+.cover .brand-cn {
+  font-family: 'NotoSerifSC', serif;
+  font-size: 14pt; letter-spacing: 8px;
+}
+.cover .brand-en {
+  margin-left: auto;
+  font-size: 9pt; color: #cbd5e1; letter-spacing: 4px;
+}
+.cover .badge {
+  display: inline-block;
+  background: #d4af37; color: #0e2a47;
+  padding: 2mm 6mm;
+  font-size: 11pt; font-weight: bold;
+  letter-spacing: 3px; border-radius: 1mm;
+  margin-bottom: 10mm;
+}
+.cover h1 {
+  font-family: 'NotoSerifSC', serif;
+  font-size: 38pt; font-weight: bold;
+  line-height: 1.3; margin: 0 0 8mm 0;
+  letter-spacing: 3px;
+}
+.cover .subtitle {
+  font-size: 13pt; color: #e2e8f0;
+  letter-spacing: 4px;
+  margin: 0 0 25mm 0;
+}
+.cover .tagline {
+  font-family: 'NotoSerifSC', serif;
+  font-size: 18pt; color: #d4af37;
+  border-left: 3mm solid #d4af37;
+  padding-left: 6mm;
+  letter-spacing: 3px;
+  line-height: 1.6;
+  margin-bottom: 25mm;
+}
+.cover .highlights {
+  display: flex; flex-wrap: wrap;
+  gap: 6mm; margin-bottom: 18mm;
+}
+.cover .hl {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(212,175,55,0.4);
+  padding: 4mm 6mm;
+  font-size: 10pt;
+  letter-spacing: 1px;
+  border-radius: 1mm;
+}
+.cover .hl b { color: #d4af37; font-size: 13pt; margin-right: 2mm; }
+.cover .footer-info {
+  position: absolute;
+  bottom: 18mm; left: 20mm; right: 20mm;
+  border-top: 1px solid rgba(212,175,55,0.4);
+  padding-top: 6mm;
+  font-size: 9.5pt;
+  color: #e2e8f0;
+  letter-spacing: 1px;
+  line-height: 2;
+}
+.cover .footer-info b { color: #d4af37; margin-right: 3mm; letter-spacing: 2px; }
+
+/* 板块头 */
+.section-head {
+  margin: 0 0 8mm 0;
+  position: relative;
+}
+.section-head .num {
+  font-family: 'NotoSerifSC', serif;
+  font-size: 36pt;
+  color: #d4af37;
+  font-weight: bold;
+  line-height: 1;
+}
+.section-head h2 {
+  font-family: 'NotoSerifSC', serif;
+  font-size: 18pt;
+  color: #0e2a47;
+  margin: -4mm 0 2mm 0;
+  letter-spacing: 2px;
+}
+.section-head .en {
+  color: #94a3b8; font-size: 9pt;
+  letter-spacing: 4px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 3mm;
+}
+
+section.page { page-break-before: always; }
+
+/* 卡片 */
+.card {
+  background: #fafafa;
+  border: 1px solid #e5e7eb;
+  border-left: 4mm solid #0e2a47;
+  padding: 5mm 7mm;
+  margin: 4mm 0;
+  border-radius: 1mm;
+}
+.card.gold { border-left-color: #d4af37; }
+.card h3 {
+  margin: 0 0 3mm 0;
+  font-size: 12.5pt;
+  color: #0e2a47;
+  letter-spacing: 1px;
+}
+.card h3 .icon {
+  display: inline-block;
+  width: 7mm; height: 7mm;
+  background: #d4af37; color: #0e2a47;
+  font-weight: bold; text-align: center;
+  line-height: 7mm; border-radius: 50%;
+  margin-right: 3mm; font-size: 10pt;
+  vertical-align: middle;
+}
+.card p { margin: 0; text-align: justify; }
+.card p + p { margin-top: 2mm; }
+
+/* 数据条 */
+.stats {
+  display: flex;
+  gap: 4mm;
+  margin: 6mm 0;
+}
+.stats .stat {
+  flex: 1;
+  text-align: center;
+  padding: 5mm 2mm;
+  background: linear-gradient(180deg, #0e2a47 0%, #1a4380 100%);
+  color: #fff;
+  border-radius: 1mm;
+}
+.stats .stat .v {
+  display: block;
+  font-family: 'NotoSerifSC', serif;
+  font-size: 22pt; font-weight: bold;
+  color: #d4af37;
+  letter-spacing: 1px;
+}
+.stats .stat .l {
+  font-size: 9.5pt;
+  letter-spacing: 1px;
+  color: #cbd5e1;
+}
+
+/* 班型表 */
+.tier-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 1mm;
+  padding: 4mm 6mm;
+  margin: 3mm 0;
+  background: #fff;
+  position: relative;
+}
+.tier-card::before {
+  content: ""; position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2mm;
+}
+.tier-card.t1::before { background: #94a3b8; }
+.tier-card.t2::before { background: #60a5fa; }
+.tier-card.t3::before { background: #2563a8; }
+.tier-card.t4::before { background: #d4af37; }
+
+.tier-card .title {
+  font-size: 12pt;
+  color: #0e2a47;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 1mm;
+}
+.tier-card .title .level {
+  display: inline-block;
+  font-size: 9pt; font-weight: normal;
+  background: #f1f5f9; color: #475569;
+  padding: 0.5mm 2mm;
+  border-radius: 1mm;
+  margin-left: 2mm;
+}
+.tier-card .meta {
+  font-size: 10pt;
+  color: #475569;
+  line-height: 1.7;
+}
+.tier-card .meta b { color: #0e2a47; }
+
+/* 4V1 */
+.team {
+  display: flex; gap: 4mm; flex-wrap: wrap;
+  margin: 4mm 0;
+}
+.team .role {
+  flex: 1 1 calc(50% - 4mm);
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  padding: 4mm 5mm;
+  border-radius: 1mm;
+}
+.team .role .head {
+  display: flex; align-items: center;
+  margin-bottom: 2mm;
+}
+.team .role .badge {
+  background: #0e2a47; color: #d4af37;
+  font-size: 9pt; font-weight: bold;
+  padding: 1mm 3mm;
+  border-radius: 1mm;
+  margin-right: 3mm;
+  letter-spacing: 1px;
+}
+.team .role .name {
+  font-size: 11.5pt; font-weight: bold;
+  color: #0e2a47;
+}
+.team .role .desc {
+  font-size: 10pt;
+  color: #475569;
+  line-height: 1.7;
+}
+
+/* 时间线 */
+.timeline {
+  position: relative;
+  margin: 5mm 0 5mm 5mm;
+  padding-left: 6mm;
+  border-left: 2px solid #d4af37;
+}
+.timeline .step {
+  position: relative;
+  margin-bottom: 5mm;
+}
+.timeline .step::before {
+  content: "";
+  position: absolute;
+  left: -8mm;
+  top: 1mm;
+  width: 4mm; height: 4mm;
+  background: #d4af37;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px #d4af37;
+  border-radius: 50%;
+}
+.timeline .step .t {
+  font-weight: bold;
+  color: #0e2a47;
+  font-size: 11pt;
+  letter-spacing: 1px;
+}
+.timeline .step .d {
+  font-size: 10pt;
+  color: #475569;
+  margin-top: 1mm;
+}
+
+/* 一日时间表 */
+.schedule {
+  margin: 4mm 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 1mm;
+  overflow: hidden;
+}
+.schedule .row {
+  display: flex;
+  border-bottom: 1px solid #f1f5f9;
+}
+.schedule .row:last-child { border-bottom: none; }
+.schedule .row.head {
+  background: #0e2a47; color: #fff;
+  font-weight: bold; letter-spacing: 2px;
+}
+.schedule .row.alt { background: #fafafa; }
+.schedule .col-time {
+  width: 40mm;
+  padding: 3mm 4mm;
+  color: #d4af37;
+  font-weight: bold;
+  border-right: 1px solid #e2e8f0;
+  letter-spacing: 1px;
+}
+.schedule .row.head .col-time { color: #d4af37; }
+.schedule .col-content {
+  flex: 1;
+  padding: 3mm 5mm;
+  color: #2d3748;
+}
+.schedule .row.head .col-content { color: #fff; }
+
+/* 招生&报名 */
+.cta-box {
+  margin-top: 8mm;
+  background: linear-gradient(135deg, #0e2a47 0%, #1a4380 100%);
+  color: #fff;
+  padding: 8mm 8mm;
+  border-radius: 2mm;
+  text-align: center;
+}
+.cta-box .price-tag {
+  display: inline-block;
+  background: #d4af37; color: #0e2a47;
+  padding: 2mm 8mm;
+  font-size: 16pt; font-weight: bold;
+  letter-spacing: 4px;
+  margin-bottom: 4mm;
+  border-radius: 1mm;
+}
+.cta-box h3 {
+  font-family: 'NotoSerifSC', serif;
+  font-size: 22pt; font-weight: bold;
+  margin: 0 0 4mm 0;
+  letter-spacing: 3px;
+}
+.cta-box p {
+  margin: 2mm 0;
+  font-size: 11pt;
+  color: #e2e8f0;
+  letter-spacing: 1px;
+}
+.cta-box .deadline {
+  display: inline-block;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  padding: 2mm 6mm;
+  margin-top: 4mm;
+  letter-spacing: 2px;
+  font-size: 10pt;
+}
+
+/* 招生对象 */
+.who {
+  background: #fff8e1;
+  border: 1px solid #fde68a;
+  padding: 5mm 6mm;
+  border-radius: 1mm;
+  margin: 4mm 0;
+}
+.who h3 {
+  margin: 0 0 3mm 0;
+  color: #92400e;
+  font-size: 12pt;
+  letter-spacing: 1px;
+}
+.who ul { margin: 0; padding-left: 6mm; }
+.who li { margin: 1.5mm 0; color: #422006; }
+
+/* 引言段 */
+.intro {
+  font-family: 'NotoSerifSC', serif;
+  font-size: 13pt;
+  color: #0e2a47;
+  line-height: 1.9;
+  text-align: justify;
+  border-left: 3mm solid #d4af37;
+  padding: 3mm 6mm;
+  background: #fefcf3;
+  margin: 5mm 0;
+  letter-spacing: 1px;
+}
+
+/* 末页 */
+.endpage {
+  page-break-before: always;
+  text-align: center;
+  padding-top: 60mm;
+}
+.endpage .gold-line {
+  width: 28mm; height: 2px; background: #d4af37;
+  margin: 8mm auto;
+}
+.endpage h2 {
+  font-family: 'NotoSerifSC', serif;
+  color: #0e2a47;
+  font-size: 22pt;
+  letter-spacing: 4px;
+}
+.endpage p {
+  color: #64748b;
+  letter-spacing: 2px;
+  margin-top: 6mm;
+  font-size: 11pt;
+}
+.contact-block {
+  margin: 14mm auto;
+  max-width: 130mm;
+  padding: 8mm;
+  border: 1px solid #e2e8f0;
+  border-top: 3mm solid #0e2a47;
+  text-align: left;
+  border-radius: 1mm;
+}
+.contact-block .row {
+  margin: 3mm 0;
+  font-size: 10.5pt;
+  letter-spacing: 1px;
+  color: #2d3748;
+}
+.contact-block .label {
+  display: inline-block;
+  width: 30mm;
+  color: #0e2a47;
+  font-weight: bold;
+}
+
+ul.feature-list { padding-left: 6mm; margin: 3mm 0; }
+ul.feature-list li {
+  margin: 2mm 0;
+  list-style: none;
+  position: relative;
+  padding-left: 6mm;
+}
+ul.feature-list li::before {
+  content: "◆";
+  color: #d4af37;
+  position: absolute;
+  left: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- 封面 -->
+<div class="cover">
+  <div class="brand-row">
+    <span class="brand-cn">渊  学  通</span>
+    <span class="brand-en">YUANXUETONG  ·  HANGZHOU</span>
+  </div>
+
+  <div class="badge">2026 暑期·限时早鸟价7折</div>
+  <h1>雅思暑假<br>封闭营</h1>
+  <div class="subtitle">15天全程陪伴 · 132小时学练闭环</div>
+
+  <div class="tagline">
+    不是靠鸡血提分<br>
+    而是用环境把人托起来
+  </div>
+
+  <div class="highlights">
+    <div class="hl"><b>15</b>天全封闭</div>
+    <div class="hl"><b>80</b>小时正课</div>
+    <div class="hl"><b>52</b>小时督导自习</div>
+    <div class="hl"><b>4V1</b>专属服务</div>
+    <div class="hl"><b>4</b>大班型分层</div>
+  </div>
+
+  <div class="footer-info">
+    <span><b>营地地点</b>上海市闵行区淀南路159号（上海诺美国际学校）</span><br>
+    <span><b>招生对象</b>国际课程在读 / 留学预备 / 雅思冲分学员</span><br>
+    <span><b>特惠节点</b>早鸟价7折，截止2026年5月1日前</span>
+  </div>
+</div>
+
+<!-- 第1页：写在前面 -->
+<section class="page">
+  <div class="section-head">
+    <div class="num">01</div>
+    <h2>写在前面 · 关于这个夏天</h2>
+    <div class="en">A LETTER TO PARENTS &amp; STUDENTS</div>
+  </div>
+
+  <div class="intro">
+    我们见过太多这样的暑假——孩子在家学十天，家长盯三天，回头分数还是原地。<br><br>
+    问题不在孩子不够努力，而在没有一个能让他真正"沉下来"的环境。<br><br>
+    渊学通雅思暑假封闭营做的，不是一门课、一份计划表，<br>
+    而是一整个能把孩子"托起来"的15天 —— <br>
+    吃住学一体、四大班型分层、4V1全程陪伴，<br>
+    让短期沉浸真正变成一段可被记住、能出分数的成长经历。
+  </div>
+
+  <p>这份资料将带您完整了解：</p>
+  <ul class="feature-list">
+    <li>这个夏天的封闭营在哪里、谁来教、怎么学</li>
+    <li>四大班型如何根据孩子真实水平精准分层</li>
+    <li>15天里每一天孩子都在做什么、谁在陪着他</li>
+    <li>结营之后，渊学通如何继续陪伴孩子的留学路径</li>
+    <li>2026年早鸟价具体优惠政策与报名窗口期</li>
+  </ul>
+
+  <div class="card gold">
+    <h3><span class="icon">!</span>为什么是封闭营，而不是补习班？</h3>
+    <p>普通补习班解决的是"知识缺口"，封闭营解决的是"环境缺口"。当一个孩子从早到晚被放在一个只有学习、只有同伴、只有老师陪着的物理空间里，他不需要靠意志力对抗手机和惰性——环境本身就替他完成了大部分自律。</p>
+    <p>这就是我们坚持把封闭营办在国际学校真实校园场景中的原因：完整的教室、自习室、图书馆、练习室和宿舍区，让"学习"成为这15天里唯一自然的事。</p>
+  </div>
+</section>
+
+<!-- 第2页：项目核心 -->
+<section class="page">
+  <div class="section-head">
+    <div class="num">02</div>
+    <h2>项目核心 · 一组数字看懂</h2>
+    <div class="en">PROGRAM AT A GLANCE</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><span class="v">15</span><span class="l">天全封闭</span></div>
+    <div class="stat"><span class="v">132</span><span class="l">小时学练闭环</span></div>
+    <div class="stat"><span class="v">80</span><span class="l">小时正课</span></div>
+    <div class="stat"><span class="v">52</span><span class="l">小时督导自习</span></div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><span class="v">4</span><span class="l">大分层班型</span></div>
+    <div class="stat"><span class="v">4V1</span><span class="l">服务配比</span></div>
+    <div class="stat"><span class="v">8年+</span><span class="l">师资平均教龄</span></div>
+    <div class="stat"><span class="v">600h+</span><span class="l">老师年教研投入</span></div>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">A</span>全维度封闭式校园环境</h3>
+    <p>项目落地于上海市闵行区淀南路159号（上海诺美国际学校）。完整国际学校校园场景，配备多功能教室、自习室、图书馆、练习室、宿舍及食堂，吃住学一体、全封闭管理，从环境物理层面切断手机与外界干扰，营造真正的沉浸式学习氛围。</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">B</span>定制化课程体系，分层精准授课</h3>
+    <p>设入门班、基础班、强化班、冲刺班四大班型，覆盖从零基础到目标7分以上的完整跨度。所有学员入营前必须经过精准雅思水平测试，全面评估能力短板，根据测试结果科学分班，并量身定制专属学习计划。</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">C</span>15天全程陪伴，132小时高密度学练</h3>
+    <p>80小时正课覆盖听说读写四项分项突破，52小时督导自习确保学练结合，每日随时答疑。配套写作批改、口语陪练、阶段性评估模考，从学到练到反馈完整闭环。</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">D</span>实力派师资坐镇</h3>
+    <p>核心师资团队平均教龄8年以上，每年授课超过1000小时，对雅思考点和题型有深度肌肉记忆。每位老师每年额外投入600+小时进行教研，持续追踪雅思官方题型变化与考点更新，从机制上保障教学内容紧跟最新趋势。</p>
+  </div>
+</section>
+
+<!-- 第3页：班型 -->
+<section class="page">
+  <div class="section-head">
+    <div class="num">03</div>
+    <h2>四大班型 · 找到属于孩子的那一档</h2>
+    <div class="en">FOUR-TIER PRECISION TEACHING</div>
+  </div>
+
+  <p>不同基础的学员需要不同节奏的课程。我们将所有学员入营前进行精准雅思水平测试，根据真实能力分入对应班型，避免"5.5分的孩子和7分的孩子坐在同一间教室"的低效混班。</p>
+
+  <div class="tier-card t1">
+    <div class="title">入门班<span class="level">零起点 / 初中英语水平</span></div>
+    <div class="meta">
+      <b>核心模块：</b>词汇基础夯实 · 语法体系搭建 · 雅思题型初识<br>
+      <b>教学重点：</b>从听说读写最基础的能力维度搭建框架，帮助学员从"陌生"到"熟悉"
+    </div>
+  </div>
+
+  <div class="tier-card t2">
+    <div class="title">基础班<span class="level">高中英语 / 目标5.0—6.0分</span></div>
+    <div class="meta">
+      <b>核心模块：</b>四项能力分项打磨 · 基础题型解题逻辑 · 应试节奏建立<br>
+      <b>教学重点：</b>从"听懂、看懂"过渡到"答对"，建立稳定的应试反应
+    </div>
+  </div>
+
+  <div class="tier-card t3">
+    <div class="title">强化班<span class="level">已有基础 / 目标6.0—6.5分</span></div>
+    <div class="meta">
+      <b>核心模块：</b>题型技巧深化 · 写作结构与逻辑 · 口语Part 2与Part 3拓展<br>
+      <b>教学重点：</b>从"答对"升级到"答得高分"，攻克写作与口语两大瓶颈
+    </div>
+  </div>
+
+  <div class="tier-card t4">
+    <div class="title">冲刺班<span class="level">目标6.5分以上 / 临考冲分</span></div>
+    <div class="meta">
+      <b>核心模块：</b>高频考点精讲 · 模考冲刺 · 写作高分句式与口语高分话题<br>
+      <b>教学重点：</b>从"高分"逼近"目标分"的临门一脚，针对性打磨剩余薄弱点
+    </div>
+  </div>
+
+  <div class="card gold" style="margin-top:6mm;">
+    <h3><span class="icon">+</span>四班型通用辅助模块</h3>
+    <p><b>写作批改</b> —— 逐篇精批，反馈到句、到逻辑、到结构</p>
+    <p><b>口语陪练</b> —— 一对一或小组陪练，覆盖Part 1—Part 3全题型</p>
+    <p><b>阶段性评估模考</b> —— 按学习节奏穿插，及时校准方向</p>
+    <p><b>全程督学打卡</b> —— 确保学习行为落地，不靠自觉</p>
+  </div>
+</section>
+
+<!-- 第4页：4V1服务 -->
+<section class="page">
+  <div class="section-head">
+    <div class="num">04</div>
+    <h2>4V1服务天团 · 一个孩子身上有四双眼睛</h2>
+    <div class="en">FOUR-TO-ONE COMPANION SYSTEM</div>
+  </div>
+
+  <p>我们认为，封闭营的真正价值不在"上课"，而在"陪伴"。每一位入营学员都拥有由四个专业角色组成的服务团队，从教学、管理、助学到生活全维度托管。</p>
+
+  <div class="team">
+    <div class="role">
+      <div class="head"><span class="badge">01</span><span class="name">授课老师</span></div>
+      <div class="desc">主责教学输出，按班型分项授课。负责听说读写四项的核心讲授、题型技巧拆解、考点路径梳理。</div>
+    </div>
+    <div class="role">
+      <div class="head"><span class="badge">02</span><span class="name">班主任</span></div>
+      <div class="desc">主责学习节奏与日程管理，是孩子在营期间的"管家"，定期与家长沟通学员状态与情绪状况。</div>
+    </div>
+    <div class="role">
+      <div class="head"><span class="badge">03</span><span class="name">助教老师</span></div>
+      <div class="desc">主责课后答疑、作业批改、督学打卡。确保孩子当天的疑问当天解决，学习行为可见可追踪。</div>
+    </div>
+    <div class="role">
+      <div class="head"><span class="badge">04</span><span class="name">生活老师</span></div>
+      <div class="desc">主责食宿安排、情绪疏导、健康管理。让孩子在高强度学习节奏中依然吃得好、睡得好、状态稳。</div>
+    </div>
+  </div>
+
+  <div class="section-head" style="margin-top:12mm;">
+    <h2 style="font-size:14pt; margin-top:4mm;">入营服务流程闭环</h2>
+  </div>
+
+  <div class="timeline">
+    <div class="step">
+      <div class="t">第一步 / 入营前精准摸底</div>
+      <div class="d">入营前进行精准雅思水平测试，全面评估学员能力短板，量身定制专属学习计划。</div>
+    </div>
+    <div class="step">
+      <div class="t">第二步 / 科学分班</div>
+      <div class="d">根据测试结果分入入门 / 基础 / 强化 / 冲刺四档班型，确保教学浓度与学员匹配。</div>
+    </div>
+    <div class="step">
+      <div class="t">第三步 / 专属学习档案</div>
+      <div class="d">为每位学员建立独立学习档案，写作、口语、模考全程留痕，进步可视化。</div>
+    </div>
+    <div class="step">
+      <div class="t">第四步 / 家长定期沟通</div>
+      <div class="d">班主任定期向家长同步学员学习状态、情绪状况、阶段反馈，让家长不再"等结果"。</div>
+    </div>
+    <div class="step">
+      <div class="t">第五步 / 阶段性模考与动态调整</div>
+      <div class="d">阶段性评估模考及时跟踪反馈，动态调整教学策略，确保15天每一天都在朝目标分推进。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 第5页：日程示例 -->
+<section class="page">
+  <div class="section-head">
+    <div class="num">05</div>
+    <h2>沉浸式一日 · 孩子每天都在做什么</h2>
+    <div class="en">A DAY IN THE CAMP</div>
+  </div>
+
+  <p>15天全封闭并不等于"军事化压抑"，渊学通封闭营的节奏是为国际生家庭量身设计的——结构化但不窒息、有强度但讲科学、被托管但被尊重。以下为日常一日参考节奏：</p>
+
+  <div class="schedule">
+    <div class="row head">
+      <div class="col-time">时间段</div>
+      <div class="col-content">内容安排</div>
+    </div>
+    <div class="row">
+      <div class="col-time">07:00 — 08:00</div>
+      <div class="col-content">起床 · 早自习（晨读 / 单词背诵 / 口语热身）</div>
+    </div>
+    <div class="row alt">
+      <div class="col-time">08:00 — 08:45</div>
+      <div class="col-content">早餐 · 生活老师陪同就餐</div>
+    </div>
+    <div class="row">
+      <div class="col-time">09:00 — 12:00</div>
+      <div class="col-content">上午正课（按班型分项授课：听力 / 阅读 / 写作 / 口语）</div>
+    </div>
+    <div class="row alt">
+      <div class="col-time">12:00 — 14:00</div>
+      <div class="col-content">午餐 · 午休 · 助教轻量答疑</div>
+    </div>
+    <div class="row">
+      <div class="col-time">14:00 — 17:00</div>
+      <div class="col-content">下午正课 + 写作批改 / 口语一对一陪练</div>
+    </div>
+    <div class="row alt">
+      <div class="col-time">17:00 — 18:30</div>
+      <div class="col-content">晚餐 · 自由活动（运动 / 阅读 / 散步）</div>
+    </div>
+    <div class="row">
+      <div class="col-time">18:30 — 21:30</div>
+      <div class="col-content">督导自习 · 助教全程在场答疑 · 当日打卡反馈</div>
+    </div>
+    <div class="row alt">
+      <div class="col-time">21:30 — 22:30</div>
+      <div class="col-content">洗漱 · 班主任日终复盘 · 就寝</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:6mm;">
+    <h3><span class="icon">!</span>关于"无手机管理"</h3>
+    <p>入营第一天起，所有学员手机统一交由生活老师集中保管，每日固定时段发还用于与家长联系。这并非"剥夺"，而是为孩子真正屏蔽掉15天里最大的干扰源——让"专注"成为这个夏天唯一的默认状态。</p>
+  </div>
+
+  <div class="card gold">
+    <h3><span class="icon">★</span>阶段性模考与反馈</h3>
+    <p>15天封闭期内安排多轮阶段性评估模考，配合写作精批与口语陪练记录，让每位学员在结营时都能拿到一份完整的进步轨迹与后续学习建议，家长可视化获取孩子真实成长。</p>
+  </div>
+</section>
+
+<!-- 第6页：招生 + 报名 -->
+<section class="page">
+  <div class="section-head">
+    <div class="num">06</div>
+    <h2>招生信息与报名通道</h2>
+    <div class="en">ADMISSION &amp; ENROLLMENT</div>
+  </div>
+
+  <div class="who">
+    <h3>本期适合的学员家庭</h3>
+    <ul>
+      <li>国际高中在读生（A-Level / IGCSE / AP / IB），需在申请季前出雅思分</li>
+      <li>计划本科或硕士留学的高中生与大学生</li>
+      <li>分数长期卡在5.5—6.0段、希望精准诊断与突破的学员</li>
+      <li>自我管理能力较弱、在家备考效率不高、希望进入沉浸式学习环境的孩子</li>
+      <li>暑期希望短期速通雅思、把暑假高质量利用起来的学员</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">i</span>项目基础信息一览</h3>
+    <p><b>项目周期：</b>15天全程封闭</p>
+    <p><b>营地地点：</b>上海市闵行区淀南路159号（上海诺美国际学校）</p>
+    <p><b>课程结构：</b>80小时正课 + 52小时督导自习 = 132小时学练闭环</p>
+    <p><b>分班方式：</b>入营前精准雅思水平测试 → 入门 / 基础 / 强化 / 冲刺 四档分班</p>
+    <p><b>服务配置：</b>4V1专属服务（授课老师 + 班主任 + 助教 + 生活老师）</p>
+    <p><b>结营交付：</b>结营复盘报告 + 后续学习建议 + 实考分数追踪服务</p>
+  </div>
+
+  <div class="cta-box">
+    <div class="price-tag">早鸟价 · 7折</div>
+    <h3>2026 暑假封闭营 · 报名中</h3>
+    <p>名额有限，先到先得 · 建议提早锁定档位与床位</p>
+    <p>欢迎联系渊学通顾问获取个性化课程方案</p>
+    <div class="deadline">特惠截止：2026年5月1日前</div>
+  </div>
+</section>
+
+<!-- 末页：联系方式 -->
+<div class="endpage">
+  <h2>渊  学  通  ·  陪  您  走  完  留  学  全  程</h2>
+  <div class="gold-line"></div>
+  <p>语言培训  ·  国际课程辅导  ·  竞赛规划  ·  封闭营  ·  留学方案</p>
+
+  <div class="contact-block">
+    <div class="row"><span class="label">官方账号</span>渊学通杭州（小红书认证专业号）</div>
+    <div class="row"><span class="label">营地校区</span>上海市闵行区淀南路159号（上海诺美国际学校）</div>
+    <div class="row"><span class="label">咨询方式</span>请联系您对接的渊学通顾问获取报名细则与个性化方案</div>
+    <div class="row"><span class="label">本期主题</span>2026 雅思暑假封闭营 · 早鸟7折 · 5月1日前</div>
+  </div>
+
+  <p style="margin-top:14mm; font-size:9pt; color:#94a3b8;">本资料为项目介绍版本，最终课程安排、师资配置以入营前学员手册及顾问对接方案为准</p>
+</div>
+
+</body>
+</html>
