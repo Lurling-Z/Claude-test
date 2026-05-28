@@ -1,0 +1,816 @@
+/* ================================================================
+   Carol 国际生观察 · 12 张封面图样式
+   尺寸：1242 × 1656 px（小红书竖图标准 3:4）
+   预览缩放：0.5（621 × 828）
+   ================================================================ */
+
+:root {
+  --bg: #FAF6EE;
+  --bg-soft: #F5EFE2;
+  --paper: #FFFCF5;
+  --ink: #2D3D5C;
+  --ink-soft: #4A5A78;
+  --accent: #E85A4F;
+  --accent-soft: #F4A99F;
+  --warm: #FFE9C7;
+  --tan: #8B7355;
+  --line: #D4C8B0;
+  --good: #5C8A6F;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: #2a2620;
+  color: #fff;
+  font-family: 'Noto Sans SC', -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ===== 顶部操作栏 ===== */
+.topbar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(20,18,15,.95);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 28px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.brand {
+  font-size: 16px; font-weight: 600; color: #FAF6EE;
+  display: flex; align-items: center; gap: 10px;
+}
+.brand-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+.brand .muted { color: rgba(250,246,238,.5); font-weight: 400; }
+
+.actions { display: flex; align-items: center; gap: 16px; }
+.actions .hint { font-size: 12px; color: rgba(250,246,238,.5); }
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  border-radius: 24px;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform .15s, background .15s;
+}
+.btn-primary:hover { background: #d04638; transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
+.btn-primary:disabled { opacity: .6; cursor: progress; }
+
+/* ===== 网格容器 ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 621px);
+  gap: 32px;
+  padding: 32px;
+  justify-content: center;
+}
+
+.cover-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+.cover-wrap figcaption {
+  font-size: 13px;
+  color: rgba(250,246,238,.6);
+  letter-spacing: 1px;
+}
+.cover-wrap::after {
+  content: '⬇ 单独下载';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translate(-50%, calc(100% + 28px));
+  font-size: 12px;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 6px 12px;
+  background: rgba(232,90,79,.1);
+  border-radius: 12px;
+  opacity: 0;
+  transition: opacity .15s, transform .15s;
+  pointer-events: auto;
+  z-index: 1;
+}
+.cover-wrap:hover::after { opacity: 1; }
+
+/* ================================================================
+   封面通用样式（1242 × 1656）
+   ================================================================ */
+.cover {
+  width: 1242px;
+  height: 1656px;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255,233,199,.4) 0%, transparent 50%),
+    radial-gradient(circle at 90% 85%, rgba(232,90,79,.06) 0%, transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+  color: var(--ink);
+  position: relative;
+  overflow: hidden;
+  padding: 120px 110px;
+  font-family: 'Noto Sans SC', "PingFang SC", "Microsoft YaHei", sans-serif;
+  /* 缩放预览到 0.5 */
+  transform-origin: top left;
+  transform: scale(0.5);
+  margin-bottom: -828px;  /* 抵消 scale 留下的空白 */
+  margin-right: -621px;
+}
+
+/* 纸纹叠加 */
+.cover::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0, transparent 4px, rgba(139,115,85,.03) 4px, rgba(139,115,85,.03) 5px),
+    repeating-linear-gradient(90deg, transparent 0, transparent 4px, rgba(139,115,85,.025) 4px, rgba(139,115,85,.025) 5px);
+  pointer-events: none;
+}
+/* 边角装饰 */
+.cover::after {
+  content: '';
+  position: absolute;
+  top: 60px; left: 60px; right: 60px; bottom: 60px;
+  border: 2px solid var(--line);
+  border-radius: 6px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* 页码 */
+.page-num {
+  position: absolute;
+  top: 80px; right: 90px;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--tan);
+  letter-spacing: 4px;
+  font-family: 'Noto Serif SC', serif;
+  z-index: 2;
+}
+
+/* 底部品牌 */
+.brand-foot {
+  position: absolute;
+  bottom: 80px; left: 0; right: 0;
+  text-align: center;
+  font-size: 26px;
+  color: var(--tan);
+  letter-spacing: 8px;
+  font-family: 'Ma Shan Zheng', 'Noto Serif SC', serif;
+  z-index: 2;
+}
+.brand-foot::before, .brand-foot::after {
+  content: '·';
+  margin: 0 16px;
+  color: var(--accent);
+}
+
+/* ================================================================
+   01 · 钩封面
+   ================================================================ */
+.c-hook {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.hook-eyebrow {
+  font-size: 32px;
+  color: var(--tan);
+  letter-spacing: 6px;
+  margin-bottom: 80px;
+  font-weight: 500;
+}
+.hook-title {
+  font-size: 110px;
+  font-weight: 900;
+  line-height: 1.45;
+  color: var(--ink);
+  letter-spacing: 2px;
+  font-family: 'Noto Serif SC', serif;
+}
+.hook-title em {
+  font-style: normal;
+  color: var(--accent);
+  background: linear-gradient(180deg, transparent 70%, var(--warm) 70%);
+  padding: 0 8px;
+}
+.hook-tag {
+  margin-top: 80px;
+  font-size: 38px;
+  color: var(--ink-soft);
+  font-weight: 500;
+  line-height: 1.7;
+  letter-spacing: 3px;
+}
+.hook-deco {
+  position: absolute;
+  bottom: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+/* ================================================================
+   通用：卡片型封面（02、03、04、10、11、12 用基础）
+   ================================================================ */
+.card-eyebrow {
+  font-size: 30px;
+  color: var(--accent);
+  letter-spacing: 6px;
+  margin-bottom: 40px;
+  font-weight: 500;
+}
+.card-eyebrow::before {
+  content: '— ';
+}
+.card-eyebrow::after {
+  content: ' —';
+}
+.card-title {
+  font-size: 90px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--ink);
+  letter-spacing: 2px;
+  margin-bottom: 60px;
+  font-family: 'Noto Serif SC', serif;
+}
+.card-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* ================================================================
+   02 · 自我介绍
+   ================================================================ */
+.c-intro { padding-top: 200px; }
+.c-intro .card-body {
+  margin-top: 80px;
+  font-size: 44px;
+  line-height: 2;
+  color: var(--ink-soft);
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+.c-intro .card-body em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 700;
+  background: linear-gradient(180deg, transparent 65%, var(--warm) 65%);
+  padding: 0 6px;
+}
+.c-intro .card-body p { margin-bottom: 14px; }
+.c-intro .card-mark {
+  margin-top: 60px !important;
+  font-size: 50px !important;
+  color: var(--ink) !important;
+  font-weight: 700 !important;
+  border-left: 6px solid var(--accent);
+  padding-left: 30px !important;
+  line-height: 1.7 !important;
+}
+.signature {
+  position: absolute;
+  bottom: 200px;
+  right: 130px;
+  font-size: 48px;
+  font-family: 'Ma Shan Zheng', cursive;
+  color: var(--accent);
+  letter-spacing: 4px;
+  z-index: 2;
+}
+
+/* ================================================================
+   03 · 数据样本
+   ================================================================ */
+.c-data { padding-top: 200px; }
+.data-grid {
+  margin-top: 70px;
+  background: var(--paper);
+  border: 2px dashed var(--line);
+  border-radius: 16px;
+  padding: 50px 60px;
+}
+.data-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 0;
+  border-bottom: 1px dashed var(--line);
+  font-size: 42px;
+  color: var(--ink);
+}
+.data-row:last-child { border-bottom: 0; }
+.data-label { color: var(--tan); font-weight: 500; }
+.data-value { font-weight: 700; }
+.data-row-hl {
+  background: var(--warm);
+  margin: 14px -30px -10px;
+  padding: 28px 30px;
+  border-radius: 8px;
+  border-bottom: 0;
+}
+.data-row-hl .data-label { color: var(--ink); }
+.data-row-hl em {
+  font-style: normal;
+  color: var(--accent);
+  font-size: 56px;
+  font-weight: 900;
+}
+.data-foot {
+  margin-top: 70px;
+  font-size: 44px;
+  line-height: 1.7;
+  text-align: center;
+  color: var(--ink-soft);
+  letter-spacing: 2px;
+}
+.data-foot em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ================================================================
+   04 · 反共识
+   ================================================================ */
+.c-myth { padding-top: 200px; }
+.myth-list {
+  list-style: none;
+  margin-top: 80px;
+}
+.myth-list li {
+  font-size: 60px;
+  font-weight: 600;
+  margin-bottom: 38px;
+  color: var(--tan);
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  letter-spacing: 2px;
+  text-decoration: line-through;
+  text-decoration-color: rgba(139,115,85,.4);
+  text-decoration-thickness: 3px;
+}
+.myth-list .myth-v {
+  color: var(--ink);
+  text-decoration: none;
+  margin-top: 70px;
+  font-size: 70px;
+  font-weight: 900;
+}
+.myth-list .myth-v em {
+  font-style: normal;
+  color: var(--accent);
+  background: linear-gradient(180deg, transparent 68%, var(--warm) 68%);
+  padding: 0 8px;
+}
+.myth-list .x {
+  width: 64px; height: 64px;
+  border: 3px solid var(--tan);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.myth-list .v {
+  width: 64px; height: 64px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ================================================================
+   05–09 · 五个动作（共用 c-step）
+   ================================================================ */
+.c-step { padding-top: 180px; }
+.step-num {
+  font-size: 220px;
+  font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+  font-family: 'Noto Serif SC', serif;
+  opacity: 0.92;
+  margin-bottom: 10px;
+}
+.step-num::after {
+  content: '';
+  display: block;
+  width: 120px; height: 6px;
+  background: var(--accent);
+  margin-top: 16px;
+}
+.step-title {
+  font-size: 84px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--ink);
+  margin-bottom: 70px;
+  letter-spacing: 2px;
+  font-family: 'Noto Serif SC', serif;
+}
+.step-title em {
+  font-style: normal;
+  color: var(--accent);
+  background: linear-gradient(180deg, transparent 68%, var(--warm) 68%);
+  padding: 0 6px;
+}
+.step-foot {
+  position: absolute;
+  bottom: 200px; left: 110px; right: 110px;
+  font-size: 38px;
+  line-height: 1.7;
+  text-align: center;
+  color: var(--ink-soft);
+  letter-spacing: 2px;
+  z-index: 2;
+}
+.step-foot em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* 05 · 对比双栏 */
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+.compare-col {
+  background: var(--paper);
+  border-radius: 14px;
+  padding: 40px 36px;
+  border: 2px solid var(--line);
+}
+.compare-good { border-color: var(--accent); background: #FFF7F4; }
+.compare-tag {
+  display: inline-block;
+  font-size: 28px;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: 18px;
+  background: var(--tan);
+  color: var(--paper);
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+}
+.compare-good .compare-tag { background: var(--accent); }
+.compare-content .line {
+  font-size: 32px;
+  line-height: 1.8;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.compare-content .scribble {
+  font-family: 'Ma Shan Zheng', cursive;
+  color: var(--tan);
+  font-size: 36px;
+  line-height: 1.5;
+}
+.compare-content .dim { color: var(--tan); font-size: 26px; margin-top: 20px; opacity: .7; }
+
+/* 06 · 5 种题型 */
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  margin-bottom: 60px;
+}
+.chart-cell {
+  background: var(--paper);
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  padding: 30px 10px;
+  text-align: center;
+  font-size: 60px;
+}
+.chart-cell span {
+  display: block;
+  margin-top: 14px;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 2px;
+}
+.chart-cell-hl {
+  background: var(--warm);
+  border-color: var(--accent);
+  border-style: solid;
+}
+.bullets {
+  list-style: none;
+  margin-bottom: 40px;
+}
+.bullets li {
+  font-size: 38px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.warn {
+  background: var(--warm);
+  border-left: 6px solid var(--accent);
+  padding: 22px 30px;
+  font-size: 36px;
+  font-weight: 600;
+  border-radius: 6px;
+  margin-top: 30px;
+}
+.warn em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+/* 07 · 论据库 */
+.topic-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 60px;
+}
+.topic {
+  font-size: 44px;
+  font-weight: 700;
+  background: var(--paper);
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  padding: 18px 36px;
+  color: var(--ink);
+  letter-spacing: 4px;
+}
+.topic:nth-child(odd) { background: var(--warm); border-color: var(--accent); }
+.rule-card {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background: var(--paper);
+  border-radius: 16px;
+  padding: 40px 50px;
+  border: 2px dashed var(--accent);
+}
+.rule-num {
+  font-size: 130px;
+  font-weight: 900;
+  color: var(--accent);
+  font-family: 'Noto Serif SC', serif;
+  line-height: 1;
+}
+.rule-text {
+  font-size: 36px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.rule-text strong { font-weight: 800; font-size: 42px; display: block; margin-bottom: 8px; }
+
+/* 08 · 复盘清单 */
+.checklist {
+  background: var(--paper);
+  border: 2px solid var(--line);
+  border-radius: 16px;
+  padding: 50px 60px;
+  margin-bottom: 50px;
+}
+.check-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 36px;
+  letter-spacing: 2px;
+  border-bottom: 2px dashed var(--line);
+  padding-bottom: 22px;
+}
+.checklist ul { list-style: none; }
+.checklist li {
+  font-size: 36px;
+  line-height: 1.7;
+  color: var(--ink);
+  margin-bottom: 22px;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+.checklist .ck {
+  font-size: 36px;
+  color: var(--accent);
+  flex-shrink: 0;
+  font-weight: 700;
+  width: 40px;
+}
+.checklist em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 800;
+  background: var(--warm);
+  padding: 0 6px;
+}
+
+/* 09 · 模考规则 */
+.rule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+.rule-item {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-size: 38px;
+  color: var(--ink);
+  background: var(--paper);
+  border-radius: 12px;
+  padding: 26px 36px;
+  border-left: 6px solid var(--accent);
+}
+.rule-item strong { color: var(--accent); font-weight: 800; margin-right: 14px; }
+.rule-mark { font-size: 44px; flex-shrink: 0; }
+
+/* ================================================================
+   10 · 误区清单
+   ================================================================ */
+.c-warning { padding-top: 200px; }
+.warn-list {
+  list-style: none;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+.warn-list li {
+  font-size: 50px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  letter-spacing: 1px;
+}
+.w-no {
+  width: 56px; height: 56px;
+  background: #fff;
+  color: var(--accent);
+  border: 3px solid var(--accent);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.warn-foot {
+  background: var(--warm);
+  border-radius: 14px;
+  padding: 36px 40px;
+  font-size: 42px;
+  line-height: 1.7;
+  color: var(--ink);
+  text-align: center;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+.warn-foot em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+/* ================================================================
+   11 · 学生原话
+   ================================================================ */
+.c-quote { padding-top: 220px; text-align: center; }
+.c-quote .card-eyebrow { display: block; }
+.c-quote .card-title { text-align: center; margin-bottom: 80px; }
+.quote-box {
+  background: var(--paper);
+  border-radius: 20px;
+  padding: 80px 60px 70px;
+  border: 2px dashed var(--line);
+  position: relative;
+  margin-bottom: 50px;
+}
+.quote-box p {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.7;
+  color: var(--ink);
+  font-family: 'Noto Serif SC', serif;
+  letter-spacing: 4px;
+}
+.q-mark {
+  position: absolute;
+  font-size: 180px;
+  color: var(--accent);
+  opacity: 0.25;
+  font-family: 'Noto Serif SC', serif;
+  line-height: 1;
+}
+.q-mark { top: 20px; left: 40px; }
+.q-mark-end { top: auto; bottom: -20px; left: auto; right: 40px; }
+.quote-by {
+  font-size: 32px;
+  color: var(--tan);
+  letter-spacing: 4px;
+  font-style: italic;
+}
+
+/* ================================================================
+   12 · 收尾互动
+   ================================================================ */
+.c-end { padding-top: 200px; text-align: center; }
+.c-end .card-eyebrow { display: block; margin-bottom: 50px; }
+.end-title {
+  font-size: 78px;
+  font-weight: 900;
+  line-height: 1.6;
+  color: var(--ink);
+  letter-spacing: 2px;
+  font-family: 'Noto Serif SC', serif;
+  margin-bottom: 80px;
+}
+.end-title em {
+  font-style: normal;
+  color: var(--accent);
+  background: linear-gradient(180deg, transparent 70%, var(--warm) 70%);
+  padding: 0 8px;
+}
+.end-cta {
+  background: var(--paper);
+  border-radius: 20px;
+  border: 2px dashed var(--accent);
+  padding: 50px 50px 60px;
+}
+.end-cta p { font-size: 36px; line-height: 1.7; color: var(--ink-soft); margin-bottom: 14px; }
+.end-q {
+  font-size: 56px !important;
+  font-weight: 800;
+  color: var(--accent) !important;
+  letter-spacing: 3px;
+  margin: 14px 0 20px !important;
+  line-height: 1.5 !important;
+}
+.end-small { font-size: 30px !important; color: var(--tan) !important; margin-top: 20px !important; }
+.end-foot {
+  margin-top: 50px;
+  font-size: 30px;
+  color: var(--tan);
+  letter-spacing: 6px;
+}
+
+/* ================================================================
+   使用说明
+   ================================================================ */
+.usage {
+  max-width: 880px;
+  margin: 80px auto 60px;
+  padding: 32px 40px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  color: rgba(250,246,238,.85);
+}
+.usage h3 { color: var(--accent); margin-bottom: 18px; font-size: 18px; }
+.usage ol { padding-left: 22px; }
+.usage li { margin-bottom: 10px; line-height: 1.7; font-size: 14px; }
+.usage code {
+  background: rgba(232,90,79,.15);
+  color: var(--accent-soft);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'SF Mono', Menlo, monospace;
+}
+.usage strong { color: #fff; }
+
+/* 屏幕窄时缩小一点 */
+@media (max-width: 700px) {
+  .grid { grid-template-columns: 1fr; gap: 20px; padding: 16px; }
+  .cover { transform: scale(0.28); margin-bottom: -1192px; margin-right: -894px; }
+  .actions .hint { display: none; }
+  .topbar { padding: 12px 16px; }
+}
