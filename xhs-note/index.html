@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>意外发现了雅思写作7.0的办法 - 小红书</title>
+<meta name="description" content="小红书笔记详情页 H5 复刻（教学/拆解用途）" />
+<link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+<!-- ===== 顶部 Header ===== -->
+<header class="xhs-header">
+  <div class="xhs-header-inner">
+    <a class="xhs-logo" href="javascript:void(0)" aria-label="小红书">
+      <svg viewBox="0 0 205 96" width="102" height="48"><text x="0" y="70" fill="#ff2442" font-size="64" font-weight="900" font-family="'PingFang SC','Microsoft YaHei',sans-serif" letter-spacing="-2">小红书</text></svg>
+    </a>
+    <div class="xhs-search">
+      <input type="text" placeholder="搜索小红书" />
+      <button class="xhs-search-btn" aria-label="搜索">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="#fff"><path d="M11.5 3a8.5 8.5 0 0 1 6.613 13.84l3.023 3.024a.9.9 0 1 1-1.272 1.272l-3.024-3.023A8.5 8.5 0 1 1 11.5 3m0 15.2a6.7 6.7 0 1 0 0-13.4 6.7 6.7 0 0 0 0 13.4"/></svg>
+      </button>
+    </div>
+    <nav class="xhs-header-nav">
+      <a href="javascript:void(0)">创作中心</a>
+      <a href="javascript:void(0)">业务合作</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== 主布局：左 sidebar + 右 detail ===== -->
+<div class="xhs-layout">
+
+  <!-- 左侧导航 -->
+  <aside class="xhs-sidebar">
+    <ul>
+      <li class="active">
+        <span class="ic">🏠</span><span class="lbl">发现</span>
+      </li>
+      <li>
+        <span class="ic">▶︎</span><span class="lbl">RED</span>
+      </li>
+      <li>
+        <span class="ic">🔴</span><span class="lbl">直播</span>
+      </li>
+      <li>
+        <span class="ic">＋</span><span class="lbl">发布</span>
+      </li>
+      <li>
+        <span class="ic">🔔</span><span class="lbl">通知</span>
+      </li>
+      <li>
+        <span class="ic avatar-ic"></span><span class="lbl">我</span>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- 笔记详情主区 -->
+  <main class="xhs-main">
+    <article class="note-card" data-total="12">
+
+      <!-- 左：图片轮播 -->
+      <section class="media">
+        <div class="slider" id="slider">
+          <!--
+            12 张图。优先尝试官方 CDN（受时效令牌限制可能失效），
+            失败后由 onerror 回退到带序号的占位 SVG。
+          -->
+          <div class="slide is-active" data-idx="0">
+            <img alt="封面 1" src="https://sns-webpic-qc.xhscdn.com/202605281604/b9329eaa8102577e2be1ee05ed13d19d/notes_pre_post/1040g3k0320ad8j9b5s005ouhvajpt0tlh0tvdbg!nd_dft_wlteh_webp_3" data-fallback="1" />
+          </div>
+          <div class="slide" data-idx="1">
+            <img alt="图 2" src="https://sns-webpic-qc.xhscdn.com/202605281604/6434eba3c45855b2aea66f288af1d8f5/notes_pre_post/1040g3k0320ad8j9b5s0g5ouhvajpt0tlbdlgt38!nd_dft_wlteh_webp_3" data-fallback="2" />
+          </div>
+          <div class="slide" data-idx="2">
+            <img alt="图 3" src="https://sns-webpic-qc.xhscdn.com/202605281604/801b8f586a419cc9b8778e7f2f2e38a1/notes_pre_post/1040g3k0320ad8j9b5s105ouhvajpt0tldliduqg!nd_dft_wlteh_webp_3" data-fallback="3" />
+          </div>
+          <div class="slide" data-idx="3">
+            <img alt="图 4" src="https://sns-webpic-qc.xhscdn.com/202605281604/3c4a051981dfb5e5abf86a31b3bad700/notes_pre_post/1040g3k0320ad8j9b5s1g5ouhvajpt0tlpog6740!nd_dft_wlteh_webp_3" data-fallback="4" />
+          </div>
+          <div class="slide" data-idx="4">
+            <img alt="图 5" src="https://sns-webpic-qc.xhscdn.com/202605281604/dc99a545e6355d935ea59fac303f8597/notes_pre_post/1040g3k0320ad8j9b5s205ouhvajpt0tl1qqq7h0!nd_dft_wgth_webp_3" data-fallback="5" />
+          </div>
+          <div class="slide" data-idx="5">
+            <img alt="图 6" src="https://sns-webpic-qc.xhscdn.com/202605281604/c6ed7dfcb52e3ffd8130c76599556f95/notes_pre_post/1040g3k0320ad8j9b5s2g5ouhvajpt0tlrjdcd5g!nd_dft_wlteh_webp_3" data-fallback="6" />
+          </div>
+          <div class="slide" data-idx="6">
+            <img alt="图 7" src="https://sns-webpic-qc.xhscdn.com/202605281604/8b6b96c4d6226adc048069969f64463a/notes_pre_post/1040g3k0320ad8j9b5s305ouhvajpt0tlnr15ha8!nd_dft_wlteh_webp_3" data-fallback="7" />
+          </div>
+          <div class="slide" data-idx="7">
+            <img alt="图 8" src="https://sns-webpic-qc.xhscdn.com/202605281604/b2a258fa48f42f06cec7b884c42009ec/notes_pre_post/1040g3k0320ad8j9b5s3g5ouhvajpt0tl7blk9q8!nd_dft_wlteh_webp_3" data-fallback="8" />
+          </div>
+          <div class="slide" data-idx="8">
+            <img alt="图 9" src="https://sns-webpic-qc.xhscdn.com/202605281604/9396933ce087ac9be52f684bcc1738c9/notes_pre_post/1040g3k0320ad8j9b5s405ouhvajpt0tl73vf3vg!nd_dft_wlteh_webp_3" data-fallback="9" />
+          </div>
+          <div class="slide" data-idx="9">
+            <img alt="图 10" src="https://sns-webpic-qc.xhscdn.com/202605281604/bd5494c7e8d99ff6fe1c031e465b06f1/notes_pre_post/1040g3k0320ad8j9b5s4g5ouhvajpt0tl0gdtrs8!nd_dft_wlteh_webp_3" data-fallback="10" />
+          </div>
+          <div class="slide" data-idx="10">
+            <img alt="图 11" src="https://sns-webpic-qc.xhscdn.com/202605281604/a0a14e9bb995898405c5c549b35457a1/notes_pre_post/1040g3k0320ad8j9b5s505ouhvajpt0tlsqmhs6o!nd_dft_wlteh_webp_3" data-fallback="11" />
+          </div>
+          <div class="slide" data-idx="11">
+            <img alt="图 12" src="https://sns-webpic-qc.xhscdn.com/202605281604/640a175b37e94ddfd16361788d0d2300/notes_pre_post/1040g3k0320ad8j9b5s5g5ouhvajpt0tlqgpf750!nd_dft_wlteh_webp_3" data-fallback="12" />
+          </div>
+        </div>
+
+        <!-- 页码 -->
+        <div class="fraction"><span id="cur">1</span>/12</div>
+
+        <!-- 左右箭头 -->
+        <button class="nav-arrow nav-prev" id="prev" aria-label="上一张">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="#fff"><path d="M11.06 13.06 6 8l5.06-5.06a.75.75 0 0 0-1.06-1.06L4.94 7.94a.75.75 0 0 0 0 1.06l5.06 5.12a.75.75 0 0 0 1.06-1.06"/></svg>
+        </button>
+        <button class="nav-arrow nav-next" id="next" aria-label="下一张">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="#fff"><path d="M4.94 13.06 10 8 4.94 2.94a.75.75 0 0 1 1.06-1.06l5.06 5.06a.75.75 0 0 1 0 1.06L6 14.12a.75.75 0 0 1-1.06-1.06"/></svg>
+        </button>
+
+        <!-- 圆点分页器 -->
+        <div class="dots" id="dots">
+          <!-- 12 个点由 JS 渲染 -->
+        </div>
+      </section>
+
+      <!-- 右：作者+正文+评论+互动 -->
+      <section class="info">
+
+        <!-- 作者条 -->
+        <header class="author-bar">
+          <div class="avatar">
+            <img src="https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31hdmt3esjo605ouhvajpt0tlqq3b7t8?imageView2/2/w/120/format/webp" alt="" onerror="this.style.background='linear-gradient(135deg,#ffd1d8,#ff2442)';this.removeAttribute('src')" />
+          </div>
+          <div class="who">
+            <div class="name">小熊没干嘛</div>
+            <div class="rid">小红书号：—</div>
+          </div>
+          <button class="follow-btn">关注</button>
+        </header>
+
+        <!-- 正文滚动区 -->
+        <div class="scroll">
+          <h1 class="title">意外发现了雅思写作7.0的办法</h1>
+
+          <div class="desc">
+            <p>终于想起更新雅思了哈哈哈哈哈，实在抱歉各位，心血来潮写了写，希望有用~</p>
+            <p class="tags">
+              <a href="javascript:void(0)" class="tag">#雅思</a>
+              <a href="javascript:void(0)" class="tag">#雅思备考</a>
+              <a href="javascript:void(0)" class="tag">#雅思作文</a>
+              <a href="javascript:void(0)" class="tag">#考雅经历</a>
+              <a href="javascript:void(0)" class="tag">#雅思考试</a>
+              <a href="javascript:void(0)" class="tag">#雅思作文模板</a>
+              <a href="javascript:void(0)" class="tag">#雅思写作</a>
+            </p>
+          </div>
+
+          <!-- 猜你想搜胶囊 -->
+          <div class="capsule">
+            <span class="cap-icon">🔎</span>
+            <div class="cap-text">
+              <span class="cap-title">猜你想搜</span>
+              <span class="cap-divider"></span>
+              <span class="cap-sub">雅思考试大作文模板</span>
+            </div>
+          </div>
+
+          <div class="meta">
+            <span class="date">05-18 湖北</span>
+            <button class="more-btn" aria-label="更多">⋯</button>
+          </div>
+
+          <div class="hr"></div>
+
+          <!-- 评论区 -->
+          <div class="comments">
+            <div class="comments-total">共 25 条评论</div>
+
+            <div class="comment-list">
+
+              <!-- 1 - 置顶 -->
+              <div class="comment">
+                <img class="c-avatar" src="https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo3204o0m9k480g4a7tia7bg8roeennl5o?imageView2/2/w/120/format/jpg" alt="" onerror="this.style.background='#ffd1d8';this.removeAttribute('src')" />
+                <div class="c-body">
+                  <div class="c-name">我爱吃炸鸡.</div>
+                  <div class="c-text">你说有上写作课方便问问是哪个老师吗</div>
+                  <div class="c-tags"><span class="c-top">置顶评论</span></div>
+                  <div class="c-foot">
+                    <span class="c-date">05-19 贵州</span>
+                    <span class="c-actions">
+                      <span class="c-like">♡ 1</span>
+                      <span class="c-reply">💬 1</span>
+                    </span>
+                  </div>
+
+                  <!-- 子评论 -->
+                  <div class="sub-list">
+                    <div class="comment is-sub">
+                      <img class="c-avatar" src="https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31hdmt3esjo605ouhvajpt0tlqq3b7t8?imageView2/2/w/120/format/jpg" alt="" onerror="this.style.background='linear-gradient(135deg,#ffd1d8,#ff2442)';this.removeAttribute('src')" />
+                      <div class="c-body">
+                        <div class="c-name">小熊没干嘛 <span class="c-author-tag">作者</span></div>
+                        <div class="c-text">啊啊啊啊怎么突然这么多消息 sx💥（ 关于雅思两周就可以写作7.0... ）这个就是我当时跟的 你可以跳转看看，叫momo然后我觉得你可以多看看和你相似基础的例子再看看要不要上这类型的，btw那些个moban啥的等我整理下 确实没想到大家的热情 本人还在堂皇中，重温RM追得我本来有点天地不知何物了这下清醒了</div>
+                        <div class="c-foot">
+                          <span class="c-date">05-19 湖北</span>
+                          <span class="c-actions">
+                            <span class="c-like">♡ 3</span>
+                            <span class="c-reply">💬 回复</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2 -->
+              <div class="comment">
+                <img class="c-avatar" src="https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31vsd5p6r540g5o39qgagbtuhit97fs0?imageView2/2/w/120/format/jpg" alt="" onerror="this.style.background='#ffd1d8';this.removeAttribute('src')" />
+                <div class="c-body">
+                  <div class="c-name">🍊</div>
+                  <div class="c-text">为啥机考几乎没有地图和流程</div>
+                  <div class="c-foot">
+                    <span class="c-date">05-18 福建</span>
+                    <span class="c-actions">
+                      <span class="c-like">♡ 1</span>
+                      <span class="c-reply">💬 9</span>
+                    </span>
+                  </div>
+
+                  <div class="sub-list">
+                    <div class="comment is-sub">
+                      <img class="c-avatar" src="https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo313qacpc3ic005o7miln85qbjg9fhe40?imageView2/2/w/120/format/jpg" alt="" onerror="this.style.background='#ffd1d8';this.removeAttribute('src')" />
+                      <div class="c-body">
+                        <div class="c-name">AAA.Julienne.🎀🎀</div>
+                        <div class="c-text">三年前在北京机考考了三次，两次地图一次流程，从没见过正常图标题……</div>
+                        <div class="c-foot">
+                          <span class="c-date">05-18 荷兰</span>
+                          <span class="c-actions">
+                            <span class="c-like">♡ 7</span>
+                            <span class="c-reply">💬 回复</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="show-more">展开 8 条回复</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3 -->
+              <div class="comment">
+                <img class="c-avatar" src="https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31qs5d28n0a005pqd70un32uqanvcbb0?imageView2/2/w/120/format/jpg" alt="" onerror="this.style.background='#ffd1d8';this.removeAttribute('src')" />
+                <div class="c-body">
+                  <div class="c-name">momo</div>
+                  <div class="c-text">大作文可以详细一点吗</div>
+                  <div class="c-foot">
+                    <span class="c-date">昨天 10:33 尼泊尔</span>
+                    <span class="c-actions">
+                      <span class="c-like">♡ 赞</span>
+                      <span class="c-reply">💬 回复</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4 -->
+              <div class="comment">
+                <img class="c-avatar" src="https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31b6m52m37e105p6qan909so3ierttr8?imageView2/2/w/120/format/jpg" alt="" onerror="this.style.background='#ffd1d8';this.removeAttribute('src')" />
+                <div class="c-body">
+                  <div class="c-name">Julian 拍照爱好者</div>
+                  <div class="c-text">机考一样会碰到地图题。</div>
+                  <div class="c-foot">
+                    <span class="c-date">4天前 北京</span>
+                    <span class="c-actions">
+                      <span class="c-like">♡ 赞</span>
+                      <span class="c-reply">💬 回复</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 5 -->
+              <div class="comment">
+                <img class="c-avatar" src="https://sns-avatar-qc.xhscdn.com/avatar/57bd2b6482ec397c67b262a8.jpg?imageView2/2/w/120/format/jpg" alt="" onerror="this.style.background='#ffd1d8';this.removeAttribute('src')" />
+                <div class="c-body">
+                  <div class="c-name">网络自留地</div>
+                  <div class="c-text">四个7啊，要求好高 😮</div>
+                  <div class="c-foot">
+                    <span class="c-date">6天前 上海</span>
+                    <span class="c-actions">
+                      <span class="c-like">♡ 赞</span>
+                      <span class="c-reply">💬 回复</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 6 -->
+              <div class="comment">
+                <img class="c-avatar" src="https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31ul6adrshm6g5ojr6hu8c4lfh0fa260?imageView2/2/w/120/format/jpg" alt="" onerror="this.style.background='#ffd1d8';this.removeAttribute('src')" />
+                <div class="c-body">
+                  <div class="c-name">限额的海</div>
+                  <div class="c-text">嗯嗯同问写作课 宝宝可以分享模版吗</div>
+                  <div class="c-foot">
+                    <span class="c-date">05-19 江西</span>
+                    <span class="c-actions">
+                      <span class="c-like">♡ 赞</span>
+                      <span class="c-reply">💬 回复</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 7 -->
+              <div class="comment">
+                <img class="c-avatar" src="https://sns-avatar-qc.xhscdn.com/avatar/5db83c020000000001009f06.jpg?imageView2/2/w/120/format/jpg" alt="" onerror="this.style.background='#ffd1d8';this.removeAttribute('src')" />
+                <div class="c-body">
+                  <div class="c-name">夼.✨</div>
+                  <div class="c-text">请问小作文您写总结段吗，我的老师都告诉我不写 🥲</div>
+                  <div class="c-foot">
+                    <span class="c-date">05-20 北京</span>
+                    <span class="c-actions">
+                      <span class="c-like">♡ 赞</span>
+                      <span class="c-reply">💬 回复</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 8 -->
+              <div class="comment">
+                <img class="c-avatar" src="https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31o4hffm54s605pin5d82u7ak7g04s8g?imageView2/2/w/120/format/jpg" alt="" onerror="this.style.background='#ffd1d8';this.removeAttribute('src')" />
+                <div class="c-body">
+                  <div class="c-name">考雅过过小助理</div>
+                  <div class="c-text">厉害</div>
+                  <div class="c-foot">
+                    <span class="c-date">05-19 上海</span>
+                    <span class="c-actions">
+                      <span class="c-like">♡ 1</span>
+                      <span class="c-reply">💬 回复</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 9 -->
+              <div class="comment">
+                <img class="c-avatar" src="https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31up1mv812a005psuvcjinthd085n3ag?imageView2/2/w/120/format/jpg" alt="" onerror="this.style.background='#ffd1d8';this.removeAttribute('src')" />
+                <div class="c-body">
+                  <div class="c-name">哇哒吸</div>
+                  <div class="c-text">求分享</div>
+                  <div class="c-foot">
+                    <span class="c-date">05-19 云南</span>
+                    <span class="c-actions">
+                      <span class="c-like">♡ 1</span>
+                      <span class="c-reply">💬 回复</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 10 -->
+              <div class="comment">
+                <img class="c-avatar" src="https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31qoh8pnu6u6g5nm3od6g8p8c7dhp33g?imageView2/2/w/120/format/jpg" alt="" onerror="this.style.background='#ffd1d8';this.removeAttribute('src')" />
+                <div class="c-body">
+                  <div class="c-name">不是山谷</div>
+                  <div class="c-text">机考两次都是地图题 😩</div>
+                  <div class="c-foot">
+                    <span class="c-date">05-19 江苏</span>
+                    <span class="c-actions">
+                      <span class="c-like">♡ 赞</span>
+                      <span class="c-reply">💬 回复</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="comments-end">— THE END —</div>
+          </div>
+        </div>
+
+        <!-- 底部互动栏 -->
+        <footer class="engage">
+          <div class="engage-input">
+            <span class="ein-avatar"></span>
+            <span class="ein-placeholder">说点什么...</span>
+          </div>
+          <div class="engage-actions">
+            <button class="ea-btn"><span class="ea-icon">♡</span><span>830</span></button>
+            <button class="ea-btn"><span class="ea-icon">⭐</span><span>901</span></button>
+            <button class="ea-btn"><span class="ea-icon">💬</span><span>25</span></button>
+            <button class="ea-btn"><span class="ea-icon">↗</span><span>112</span></button>
+          </div>
+        </footer>
+
+      </section>
+    </article>
+
+    <!-- 拆解面板（折叠） -->
+    <details class="analysis">
+      <summary>📊 文章拆解（点击展开）</summary>
+      <div class="analysis-body">
+        <p><strong>结构：</strong>1 张悬念封面 + 11 张干货分点 + 标签全覆盖</p>
+        <p><strong>钩子：</strong>"意外发现"+具体数字"7.0"，悬念+结果同时出现</p>
+        <p><strong>身份：</strong>"考生分享"，非机构 → 信任感拉满</p>
+        <p><strong>互动：</strong>作者本人在第一条评论刷"啊啊怎么这么多消息"，制造刷爆错觉</p>
+        <p><strong>数据：</strong>收藏(901) > 点赞(830) → 平台判定为高价值工具型笔记，加权推流</p>
+        <p><strong>渊学通可复刻方向：</strong>把"意外发现"换成"带学员从 5.5 → 7.0 用了这套办法"，结果可信化</p>
+      </div>
+    </details>
+
+  </main>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>
