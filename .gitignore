@@ -9,3 +9,6 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# 中文字体（由 pdf-build/build.sh 自动下载，体积较大不入库）
+fonts/

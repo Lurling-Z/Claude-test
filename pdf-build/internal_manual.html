@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>渊学通雅思暑假封闭营 内部培训与产品详解手册</title>
+<style>
+@font-face {
+  font-family: 'NotoSansSC';
+  src: url('../fonts/NotoSansSC-Regular.otf') format('opentype');
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'NotoSansSC';
+  src: url('../fonts/NotoSansSC-Bold.otf') format('opentype');
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'NotoSerifSC';
+  src: url('../fonts/NotoSerifSC-Bold.otf') format('opentype');
+  font-weight: bold;
+}
+
+@page {
+  size: A4;
+  margin: 22mm 18mm 22mm 18mm;
+  @bottom-center {
+    content: "渊学通杭州  /  雅思暑假封闭营  /  内部培训手册  /  第 " counter(page) " 页 / 共 " counter(pages) " 页";
+    font-family: 'NotoSansSC';
+    font-size: 9pt;
+    color: #888;
+  }
+}
+
+@page :first {
+  margin: 0;
+  @bottom-center { content: ""; }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  font-family: 'NotoSansSC', sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.85;
+  color: #1f2937;
+  margin: 0;
+  padding: 0;
+}
+
+/* 封面 */
+.cover {
+  page-break-after: always;
+  height: 297mm;
+  width: 210mm;
+  background: linear-gradient(160deg, #0b2545 0%, #13315c 55%, #1d3557 100%);
+  color: #fff;
+  position: relative;
+  padding: 32mm 22mm;
+  overflow: hidden;
+}
+.cover::before {
+  content: "";
+  position: absolute;
+  right: -80mm;
+  top: -60mm;
+  width: 220mm;
+  height: 220mm;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212,175,55,0.18) 0%, rgba(212,175,55,0) 70%);
+}
+.cover .tag {
+  display: inline-block;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  padding: 3mm 6mm;
+  font-size: 10pt;
+  letter-spacing: 4px;
+  margin-bottom: 18mm;
+}
+.cover h1 {
+  font-family: 'NotoSerifSC', serif;
+  font-size: 34pt;
+  font-weight: bold;
+  line-height: 1.35;
+  margin: 0 0 12mm 0;
+  letter-spacing: 2px;
+}
+.cover h2 {
+  font-size: 16pt;
+  font-weight: normal;
+  color: #cbd5e1;
+  margin: 0 0 60mm 0;
+  letter-spacing: 3px;
+}
+.cover .meta {
+  border-top: 1px solid rgba(212,175,55,0.4);
+  padding-top: 10mm;
+  font-size: 11pt;
+  color: #e2e8f0;
+  letter-spacing: 1px;
+  line-height: 2.2;
+}
+.cover .meta .line { display: block; }
+.cover .meta .label { color: #d4af37; margin-right: 4mm; letter-spacing: 2px; }
+.cover .footer-mark {
+  position: absolute;
+  bottom: 18mm;
+  left: 22mm;
+  right: 22mm;
+  display: flex;
+  justify-content: space-between;
+  font-size: 9pt;
+  color: #94a3b8;
+  letter-spacing: 2px;
+}
+
+/* 目录 */
+.toc {
+  page-break-after: always;
+  padding-top: 4mm;
+}
+.toc h2 {
+  font-family: 'NotoSerifSC', serif;
+  font-size: 22pt;
+  color: #0b2545;
+  border-bottom: 2px solid #d4af37;
+  padding-bottom: 4mm;
+  margin: 0 0 12mm 0;
+  letter-spacing: 2px;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; }
+.toc li {
+  font-size: 12pt;
+  padding: 4mm 0;
+  border-bottom: 1px dashed #cbd5e1;
+  color: #1f2937;
+  letter-spacing: 1px;
+}
+.toc .num {
+  display: inline-block;
+  width: 14mm;
+  color: #d4af37;
+  font-family: 'NotoSerifSC', serif;
+  font-weight: bold;
+  font-size: 14pt;
+}
+
+/* 正文章节 */
+section.chapter { page-break-before: always; }
+
+h1.chapter-title {
+  font-family: 'NotoSerifSC', serif;
+  font-size: 20pt;
+  color: #0b2545;
+  margin: 0 0 6mm 0;
+  letter-spacing: 2px;
+  position: relative;
+  padding-left: 8mm;
+}
+h1.chapter-title::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 8px;
+  width: 4mm; height: 14mm;
+  background: #d4af37;
+}
+.chapter-sub {
+  color: #64748b;
+  font-size: 10pt;
+  letter-spacing: 3px;
+  margin: 0 0 10mm 0;
+  padding-left: 8mm;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 4mm;
+}
+
+h2.section {
+  font-size: 13pt;
+  color: #0b2545;
+  margin: 9mm 0 4mm 0;
+  padding: 2mm 4mm;
+  background: #f1f5f9;
+  border-left: 3mm solid #0b2545;
+  letter-spacing: 1px;
+}
+
+.block {
+  margin: 4mm 0 6mm 0;
+  padding: 4mm 6mm 4mm 6mm;
+  background: #fafafa;
+  border: 1px solid #e5e7eb;
+  border-radius: 1mm;
+}
+
+.block .label {
+  display: inline-block;
+  background: #0b2545;
+  color: #fff;
+  padding: 0.6mm 3mm;
+  font-size: 9.5pt;
+  letter-spacing: 1px;
+  margin-right: 2mm;
+  border-radius: 1mm;
+}
+.block .label.gold { background: #b8860b; }
+.block .label.red  { background: #b91c1c; }
+
+.block p { margin: 2.5mm 0 0 0; text-align: justify; }
+.block .quote {
+  margin-top: 3mm;
+  padding: 3mm 4mm;
+  background: #fff8e1;
+  border-left: 3px solid #d4af37;
+  font-size: 10.5pt;
+  color: #463a14;
+}
+
+/* 对比维度 */
+.compare {
+  margin: 4mm 0 6mm 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 1mm;
+  overflow: hidden;
+}
+.compare .head {
+  background: #0b2545;
+  color: #fff;
+  padding: 2.5mm 5mm;
+  font-size: 11.5pt;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+.compare .row { padding: 3mm 5mm; border-top: 1px solid #f1f5f9; }
+.compare .row.bg { background: #fafafa; }
+.compare .row .k {
+  display: inline-block;
+  min-width: 38mm;
+  color: #475569;
+  font-weight: bold;
+}
+.compare .row.adv .k { color: #166534; }
+.compare .row.bk  .k { color: #b91c1c; }
+
+/* 列表 */
+ul.clean, ol.clean { padding-left: 6mm; margin: 2mm 0 4mm 0; }
+ul.clean li, ol.clean li { margin: 1.5mm 0; }
+
+.spec {
+  border-left: 3px solid #d4af37;
+  padding: 2mm 0 2mm 5mm;
+  margin: 4mm 0;
+}
+.spec .key { color: #0b2545; font-weight: bold; margin-right: 3mm; }
+
+.tier {
+  margin: 3mm 0 3mm 4mm;
+  padding: 3mm 5mm;
+  background: #f8fafc;
+  border-radius: 1mm;
+  border: 1px solid #e2e8f0;
+}
+.tier h3 {
+  margin: 0 0 2mm 0;
+  font-size: 11.5pt;
+  color: #0b2545;
+}
+.tier h3 .num {
+  display: inline-block;
+  background: #0b2545;
+  color: #d4af37;
+  font-size: 9pt;
+  padding: 0.5mm 2mm;
+  border-radius: 1mm;
+  margin-right: 3mm;
+  vertical-align: middle;
+}
+
+/* 末页 */
+.endpage {
+  page-break-before: always;
+  text-align: center;
+  padding-top: 80mm;
+}
+.endpage h2 {
+  font-family: 'NotoSerifSC', serif;
+  color: #0b2545;
+  font-size: 18pt;
+  letter-spacing: 4px;
+}
+.endpage p { color: #64748b; letter-spacing: 2px; margin-top: 8mm; }
+.endpage .gold-line {
+  width: 30mm; height: 2px; background: #d4af37;
+  margin: 8mm auto;
+}
+
+.divider {
+  text-align: center;
+  color: #cbd5e1;
+  margin: 5mm 0;
+  letter-spacing: 4px;
+}
+</style>
+</head>
+<body>
+
+<!-- 封面 -->
+<div class="cover">
+  <div class="tag">YUANXUETONG  /  INTERNAL USE ONLY</div>
+  <h1>雅思暑假封闭营<br>内部培训与产品详解手册</h1>
+  <h2>—— 渊学通杭州校区  顾问销售底册 ——</h2>
+  <div class="meta">
+    <span class="line"><span class="label">产品定位</span>高端国际生雅思短期速通项目</span>
+    <span class="line"><span class="label">营地地点</span>上海市闵行区淀南路159号（上海诺美国际学校）</span>
+    <span class="line"><span class="label">项目周期</span>15天 / 132小时学练闭环</span>
+    <span class="line"><span class="label">特惠节点</span>早鸟价7折，截止2026年5月1日前</span>
+    <span class="line"><span class="label">文档级别</span>内部培训资料 · 严禁外发</span>
+  </div>
+  <div class="footer-mark">
+    <span>YUANXUETONG · IELTS SUMMER CAMP</span>
+    <span>2026 · INTERNAL TRAINING</span>
+  </div>
+</div>
+
+<!-- 目录 -->
+<div class="toc">
+  <h2>目  录</h2>
+  <ol>
+    <li><span class="num">一</span>核心痛点与家长心理画像</li>
+    <li><span class="num">二</span>核心买点与销售话术</li>
+    <li><span class="num">三</span>市面竞品对比与绝对优势</li>
+    <li><span class="num">四</span>完整产品说明书</li>
+    <li><span class="num">五</span>前置 / 同期协同生态产品推荐</li>
+  </ol>
+  <p style="margin-top:18mm;color:#94a3b8;font-size:10pt;letter-spacing:1px;">
+    本手册为渊学通顾问内部使用底册，包含销售话术、竞品对比及产品架构信息，请勿作为对外资料发送给客户。对外咨询请使用《对外意向客户资料》文档。
+  </p>
+</div>
+
+<!-- 一、痛点 -->
+<section class="chapter">
+  <h1 class="chapter-title">一、核心痛点与家长心理画像</h1>
+  <div class="chapter-sub">PAIN POINTS  /  深度洞察家长与学生群体的核心焦虑</div>
+
+  <h2 class="section">（一）痛点一：暑期"放羊式备考"——孩子在家学不进，家长盯不住</h2>
+  <div class="block">
+    <p><span class="label">现状与表现</span>暑期是国际生备考雅思的黄金窗口期，但绝大多数学生在家备考时呈现"三无状态"——无规划、无监督、无反馈。手机不离手，单词背三天弃；网课开着却在刷剧；家长上班无法盯，回家又只能靠吼。两个月暑假过去，分数原地踏步甚至倒退。</p>
+    <p><span class="label gold">深层痛点解析</span>家长真正焦虑的不是"孩子不努力"，而是"我没办法让他努力"。家长清楚孩子需要的是一个"被托起来"的环境，而不是又一份学习计划表。家长愿意为"环境"付费，不愿意为"焦虑"买单。</p>
+    <div class="quote"><b>顾问引流话术：</b>"您是不是也发现，孩子在家学十天，不如在我们这儿学一天？不是孩子不够聪明，是家里没有那个'氛围'。我们做的不是补课，是把整个暑假的学习场景给您搬过来。"</div>
+  </div>
+
+  <h2 class="section">（二）痛点二：分数卡在5.5—6.0段——找不到病灶，盲目刷题反而更挫败</h2>
+  <div class="block">
+    <p><span class="label">现状与表现</span>很多学生考过两三次雅思，分数始终在5.5—6.0徘徊，写作和口语永远是短板。报过线上大班课，做过剑桥真题全套，但每次模考分数飘忽，找不到稳定的提分路径。</p>
+    <p><span class="label gold">深层痛点解析</span>这类学生的问题不是"学得不够"，而是"诊断不准"。线上大班课无法做精准定位，一对一又过于昂贵且缺乏沉浸感。家长想要的是"先扫描、再精修"的医院式备考，而不是"一份药方治所有人"的诊所模式。</p>
+    <div class="quote"><b>顾问引流话术：</b>"孩子卡在6分不是因为不努力，是因为没人告诉他到底卡在哪个题型、哪个能力维度。我们入营前一次精准摸底测试，比孩子刷十套真题都管用——先扫描，再精修。"</div>
+  </div>
+
+  <h2 class="section">（三）痛点三：申请季时间倒计时——家长比孩子更焦虑，但不敢真"逼"</h2>
+  <div class="block">
+    <p><span class="label">现状与表现</span>A-Level、AP、IB体系的学生面临申请季，雅思成绩是硬门槛。家长嘴上说"孩子加油"，心里清楚再不出分就来不及了。但又怕逼太紧导致孩子情绪崩溃，甚至厌学。</p>
+    <p><span class="label gold">深层痛点解析</span>家长需要的是一个"代理人"，把"逼孩子"这件得罪人的事专业地、温柔地、有结果地完成。督导、班主任、助教，本质上是在替家长承担"难当面做"的角色。家庭关系的修复价值，往往比分数本身更打动家长。</p>
+    <div class="quote"><b>顾问引流话术：</b>"您不需要再当那个唱黑脸的人。把孩子交给我们15天，回去您看到的是一个能坐得住、有节奏、出分数的孩子，您们家庭关系也会松一大截。"</div>
+  </div>
+
+  <h2 class="section">（四）痛点四：国际生"散养惯了"——自管能力弱，但传统应试营又太压抑</h2>
+  <div class="block">
+    <p><span class="label">现状与表现</span>国际课程体系的学生（A-Level / IGCSE / AP / IB）从小习惯了相对宽松、自主探索的学习节奏，进了传统军事化封闭营会强烈不适应；但完全放养又出不了分。家长在"严管出分"和"孩子心理"之间两难。</p>
+    <p><span class="label gold">深层痛点解析</span>国际生家庭真正认同的是"结构化的自由"——有规则但不压抑、有督导但讲方法、有强度但讲科学。家长找的不是"衡水模式"，而是"国际生的封闭营版本"。</p>
+    <div class="quote"><b>顾问引流话术：</b>"我们不是衡水模式。孩子在这儿是被'托起来'，不是被'压下去'。环境是封闭的，方法是国际化的——这才是国际生家庭真正能接受的高强度。"</div>
+  </div>
+</section>
+
+<!-- 二、买点 -->
+<section class="chapter">
+  <h1 class="chapter-title">二、核心买点与销售话术</h1>
+  <div class="chapter-sub">SELLING POINTS  /  顾问可直接对家长讲的"大白话销售逻辑"</div>
+
+  <h2 class="section">（一）买点一：15天全封闭沉浸式校园 —— 把"学习场景"整体外包给我们</h2>
+  <div class="block">
+    <div class="quote">"您家最值钱的不是钱，是孩子的暑假时间。15天我们把吃、住、学、练全包了——多功能教室、自习室、图书馆、练习室全配齐，孩子手机一上交，全世界就只剩'雅思'两个字。这不是上课，这是把您家暑假整个学习场景外包给我们。"</div>
+  </div>
+
+  <h2 class="section">（二）买点二：四大班型分层授课 —— 入营先测试，绝不"一锅烩"</h2>
+  <div class="block">
+    <div class="quote">"我们有入门班、基础班、强化班、冲刺班四档，孩子来了先做精准水平测试，根据测试结果分班。5.5分的孩子和7分的孩子坐在一个教室里学同样的内容，那叫浪费钱。我们做的是——他在哪个段位，就给他配哪个段位的老师、教材、节奏。这才叫真正的'量身定做'。"</div>
+  </div>
+
+  <h2 class="section">（三）买点三：80小时正课加52小时自习 —— 132小时高密度学练闭环</h2>
+  <div class="block">
+    <div class="quote">"您算这笔账：15天，80小时正课、52小时督导自习，听说读写逐项突破，每天学练结合、随时答疑，还有写作批改、口语陪练、阶段性模考。这相当于把孩子两三个月在家磨蹭的内容压缩进半个月——浓度上来了，效果自然就出来了。这就是为什么短期能速通。"</div>
+  </div>
+
+  <h2 class="section">（四）买点四：4V1服务天团 —— 授课老师+班主任+助教+生活老师</h2>
+  <div class="block">
+    <div class="quote">"孩子进营，配的不是一个老师，是一个团队：授课老师管教学、班主任管节奏、助教管答疑和督促、生活老师管吃住情绪。4V1的意思是——这一个孩子身上，有4双眼睛、4个角色在同时托着。您在家一个人盯不过来的事，这儿4个人轮班帮您盯。家长真正花钱买的，是这种'盯得住'。"</div>
+  </div>
+
+  <h2 class="section">（五）买点五：硬核师资天团 —— 平均教龄8年+、年授课1000+、年教研600+</h2>
+  <div class="block">
+    <div class="quote">"雅思考点这东西，不是一个新手老师看几本剑桥真题就能教好的。我们的老师平均教龄8年以上，每年授课超过1000小时——意味着她对每一类题型见过的孩子比您家孩子吃过的饭还多。更关键的是，她每年还要花600多小时做教研，专门研究最新考点变化。这一行真正的壁垒，是经验加教研，不是噱头。"</div>
+  </div>
+</section>
+
+<!-- 三、竞品 -->
+<section class="chapter">
+  <h1 class="chapter-title">三、市面竞品对比与绝对优势</h1>
+  <div class="chapter-sub">COMPETITIVE ANALYSIS  /  五大维度逐项打透常规机构短板</div>
+
+  <div class="compare">
+    <div class="head">对比维度一：学习环境与管理强度</div>
+    <div class="row bk"><span class="k">市面常规产品现状</span>多数机构是"走读式"或"半托管式"，孩子下课就回家，回家就刷手机；即使是号称封闭的项目，也往往租用普通酒店或培训楼，缺乏完整学习场景，更没有真正的无手机管理。</div>
+    <div class="row adv bg"><span class="k">本产品绝对优势</span>渊学通暑假封闭营落地于上海闵行区淀南路159号（上海诺美国际学校）的真实校园场景，配备多功能教室、自习室、图书馆、练习室等完整学习空间。吃住学一体、全封闭管理，从环境物理层面切断手机与外界干扰。</div>
+    <div class="row"><span class="k">销售话术突破口</span>"我们的封闭营是真正在国际学校的校园里办的——孩子推开门是教室，转个弯是图书馆，再走两步是自习室。物理环境就决定了他没法分心。"</div>
+  </div>
+
+  <div class="compare">
+    <div class="head">对比维度二：分层教学的颗粒度</div>
+    <div class="row bk"><span class="k">市面常规产品现状</span>多数机构所谓的"分层"，要么只分"基础"和"强化"两档，要么按报名先后混班。结果是5分的学生和6.5分的学生一起上课。</div>
+    <div class="row adv bg"><span class="k">本产品绝对优势</span>设入门班、基础班、强化班、冲刺班四大班型，覆盖从零基础到目标7分以上的完整跨度。所有学员入营前必须经过精准雅思水平测试，全面评估能力短板，根据测试结果科学分班，并量身定制专属学习计划。</div>
+    <div class="row"><span class="k">销售话术突破口</span>"分四档不是凑数，是因为我们把5—7分这条线切得足够细。您家孩子入营第一天先做诊断，老师手里拿着一份属于他个人的能力雷达图来排课。"</div>
+  </div>
+
+  <div class="compare">
+    <div class="head">对比维度三：师资稳定性与教研投入</div>
+    <div class="row bk"><span class="k">市面常规产品现状</span>行业内大量机构依赖兼职老师或新人老师救场，师资流动性极高。老师本身忙于授课，几乎没有教研时间，讲的还是三五年前的考点套路，跟不上雅思官方近年来的题型迭代。</div>
+    <div class="row adv bg"><span class="k">本产品绝对优势</span>核心师资团队平均教龄8年以上，每年授课超过1000小时，对雅思考点和题型有深度肌肉记忆。每位老师每年额外投入600+小时进行教研，持续追踪雅思官方题型变化、考点更新，从机制上保障教学内容不掉队。</div>
+    <div class="row"><span class="k">销售话术突破口</span>"教龄8年加年教研600小时，这是行业里几乎没有第二家能拿出来的硬指标。您找的不是讲过几次课的老师，是把雅思当成长期事业来做的老师。"</div>
+  </div>
+
+  <div class="compare">
+    <div class="head">对比维度四：服务配比与陪伴密度</div>
+    <div class="row bk"><span class="k">市面常规产品现状</span>多数机构是"一师多生"模式，老师上完课就走，课后无人答疑、无人督促。所谓的"班主任"往往是销售转岗，只负责催费和发通知。</div>
+    <div class="row adv bg"><span class="k">本产品绝对优势</span>采用4V1服务模式——授课老师（教学输出）+班主任（学习节奏管理）+助教老师（答疑、批改、督学打卡）+生活老师（食宿、情绪、健康）。四个角色明确分工、协同闭环。</div>
+    <div class="row"><span class="k">销售话术突破口</span>"别家是一个老师管几十个孩子，我们是四个角色管一个孩子。您不是在为'课'付费，是在为这一整套'托起来的系统'付费。"</div>
+  </div>
+
+  <div class="compare">
+    <div class="head">对比维度五：学习反馈与家长可见度</div>
+    <div class="row bk"><span class="k">市面常规产品现状</span>传统培训班几乎是"黑盒"——孩子进去上课，家长完全不知道孩子今天学了什么、薄弱点是什么、有没有进步。等到结营一个分数砸出来，好与不好都已成定局。</div>
+    <div class="row adv bg"><span class="k">本产品绝对优势</span>为每位学员建立专属学习档案，配套写作批改、口语陪练、阶段性评估模考、全程督学打卡机制。班主任定期与家长沟通学员情况，全程学习轨迹可追溯、可视化、可反馈。</div>
+    <div class="row"><span class="k">销售话术突破口</span>"我们最不一样的是——家长能看见学习过程。每天孩子干了什么、错了什么、补了什么，您都收得到反馈。这15天您不再是焦虑地等结果，而是踏实地看着进步在发生。"</div>
+  </div>
+</section>
+
+<!-- 四、说明书 -->
+<section class="chapter">
+  <h1 class="chapter-title">四、完整产品说明书</h1>
+  <div class="chapter-sub">PRODUCT SPECIFICATIONS  /  产品硬核底册，让顾问对细节如数家珍</div>
+
+  <h2 class="section">（一）项目基础信息</h2>
+  <div class="spec"><span class="key">产品名称</span>渊学通雅思暑假封闭营</div>
+  <div class="spec"><span class="key">项目定位</span>高端国际生雅思短期速通项目，以"全封闭沉浸+分层精准教学+4V1陪伴托管"为核心交付模型</div>
+  <div class="spec"><span class="key">招生对象</span>
+    <ul class="clean">
+      <li>第一类：国际高中在读生（A-Level / IGCSE / AP / IB）需在申请季前出分者</li>
+      <li>第二类：计划本科或硕士留学的高中生与大学生</li>
+      <li>第三类：分数长期卡在5.5—6.0段、需精准诊断与突破的学员</li>
+      <li>第四类：自我管理能力弱、家长无暇监督、需要外部环境托管的学生</li>
+    </ul>
+  </div>
+  <div class="spec"><span class="key">项目周期</span>15天全程封闭</div>
+  <div class="spec"><span class="key">营地地点</span>上海市闵行区淀南路159号（上海诺美国际学校）</div>
+  <div class="spec"><span class="key">特惠节点</span>早鸟价7折，特惠截止2026年5月1日前</div>
+  <div class="spec"><span class="key">核心方向</span>听、说、读、写四项能力逐项突破，配套写作批改、口语陪练与阶段性模考</div>
+
+  <h2 class="section">（二）核心课程矩阵</h2>
+  <p><b>总课时结构：</b>15天 / 132小时学练闭环 ——  正课80小时 + 督导自习52小时</p>
+
+  <div class="tier">
+    <h3><span class="num">班型一</span>入门班</h3>
+    <p><b>适合人群：</b>基础薄弱、零起点或仅有初中英语水平学员</p>
+    <p><b>核心模块：</b>词汇基础夯实、语法体系搭建、雅思题型初识</p>
+    <p><b>教学重点：</b>从听说读写最基础的能力维度搭建框架</p>
+  </div>
+  <div class="tier">
+    <h3><span class="num">班型二</span>基础班</h3>
+    <p><b>适合人群：</b>高中英语水平、目标5.0—6.0分学员</p>
+    <p><b>核心模块：</b>四项能力分项打磨、基础题型解题逻辑、应试节奏建立</p>
+    <p><b>教学重点：</b>从"听懂、看懂"过渡到"答对"</p>
+  </div>
+  <div class="tier">
+    <h3><span class="num">班型三</span>强化班</h3>
+    <p><b>适合人群：</b>已有一定基础、目标6.0—6.5分学员</p>
+    <p><b>核心模块：</b>题型技巧深化、写作结构与逻辑、口语Part 2与Part 3拓展</p>
+    <p><b>教学重点：</b>从"答对"升级到"答得高分"</p>
+  </div>
+  <div class="tier">
+    <h3><span class="num">班型四</span>冲刺班</h3>
+    <p><b>适合人群：</b>目标6.5分以上、距离考试时间紧迫学员</p>
+    <p><b>核心模块：</b>高频考点精讲、模考冲刺、写作高分句式与口语高分话题</p>
+    <p><b>教学重点：</b>从"高分"逼近"目标分"的临门一脚</p>
+  </div>
+
+  <p style="margin-top:5mm;"><b>课程辅助模块（四班型通用）：</b></p>
+  <ul class="clean">
+    <li>模块一：写作批改 —— 逐篇精批，反馈到句、到逻辑、到结构</li>
+    <li>模块二：口语陪练 —— 一对一或小组陪练，覆盖Part 1—Part 3</li>
+    <li>模块三：阶段性评估模考 —— 按学习节奏穿插，及时校准方向</li>
+    <li>模块四：全程督学打卡 —— 确保学习行为落地，不靠自觉</li>
+  </ul>
+
+  <h2 class="section">（三）师资与服务配置</h2>
+  <p><b>服务配比：</b>4V1 专属服务天团</p>
+  <ul class="clean">
+    <li>角色一：<b>授课老师</b> —— 主责教学输出，按班型分项授课</li>
+    <li>角色二：<b>班主任</b> —— 主责学习节奏与日程管理，链接学员与家长</li>
+    <li>角色三：<b>助教老师</b> —— 主责课后答疑、作业批改、督学打卡</li>
+    <li>角色四：<b>生活老师</b> —— 主责食宿安排、情绪疏导、健康管理</li>
+  </ul>
+  <p><b>硬核师资底册（行业级硬指标）：</b></p>
+  <ul class="clean">
+    <li>核心师资平均教龄8年以上</li>
+    <li>每位老师年均授课超过1000小时</li>
+    <li>每位老师每年额外投入600+小时进行教研，持续跟踪雅思官方题型与考点变化</li>
+    <li>师资团队对雅思考点、题型有深度肌肉记忆，确保解题路径稳定可复制</li>
+  </ul>
+  <p><b>入营服务流程闭环：</b></p>
+  <ol class="clean">
+    <li>第一步：入营前精准雅思水平测试，全面评估学员能力短板</li>
+    <li>第二步：根据测试结果科学分班，量身定制专属学习计划</li>
+    <li>第三步：建立学员专属学习档案，写作、口语、模考全程留痕</li>
+    <li>第四步：班主任定期与家长沟通学员学习状态与情绪状况</li>
+    <li>第五步：阶段性评估模考，及时跟踪反馈、动态调整教学策略</li>
+  </ol>
+
+  <h2 class="section">（四）后续服务与延伸闭环</h2>
+  <ul class="clean">
+    <li><b>第一层：结营复盘报告</b> —— 输出包含分项能力诊断、薄弱点定位、后续学习建议的复盘档案，家长可视化获取</li>
+    <li><b>第二层：分数追踪机制</b> —— 结营后持续追踪学员实考分数，校准教学有效性，反哺下一期教学优化</li>
+    <li><b>第三层：留学赛道闭环延伸</b> —— 雅思出分后可无缝衔接渊学通国际课程辅导（A-Level / IGCSE / AP / IB）、竞赛辅导、留学规划等下游产品，实现"语言培训→国际教育解决方案"的完整闭环服务</li>
+  </ul>
+</section>
+
+<!-- 五、协同 -->
+<section class="chapter">
+  <h1 class="chapter-title">五、前置 / 同期协同生态产品推荐</h1>
+  <div class="chapter-sub">CROSS-SELLING  /  联动产品矩阵，构建顾问交叉销售生态链</div>
+
+  <h2 class="section">（一）协同产品一：渊学通雅思春季周末班 / 平日班</h2>
+  <div class="block">
+    <p><span class="label">适用场景</span>距离暑假封闭营仍有一段时间、希望孩子提前进入备考状态、夯实词汇语法基础的学员家庭。或入营测试后被分到"入门班 / 基础班"的学员，建议先行就读以减少封闭营期间的基础补课压力。</p>
+    <div class="quote"><b>顺势推介话术：</b>"您家孩子如果直接进暑假封闭营，前三天可能都在补基础——这就浪费了封闭营最贵的高强度时间。我建议您可以先报春季的周末班，让他把词汇语法先垫起来，到了暑假封闭营直接上技巧和模考，这15天的钱花在刀刃上。"</div>
+  </div>
+
+  <h2 class="section">（二）协同产品二：渊学通国际课程辅导（A-Level / IGCSE / AP / IB）</h2>
+  <div class="block">
+    <p><span class="label">适用场景</span>国际高中在读、雅思与学术课程双线并行的学员家庭。雅思是申请的语言门槛，但国际课程的GPA和大考成绩才是申请的核心硬指标。</p>
+    <div class="quote"><b>顺势推介话术：</b>"雅思只是申请的入场券，真正决定您家孩子能进哪个梯队学校的，是A-Level / AP / IB的成绩。我们建议封闭营出分后，您马上把孩子的国际课程线也接上——同一个体系下的辅导，老师之间数据共享，比您再去找一家陌生机构高效得多。这才是真正的留学闭环。"</div>
+  </div>
+
+  <h2 class="section">（三）协同产品三：渊学通寒假封闭营 / 一对一定制课</h2>
+  <div class="block">
+    <p><span class="label">适用场景</span>暑假封闭营结营后实考未达目标分、需要二次冲刺的学员；或时间相对碎片、不适合长封闭周期但希望延续高密度学习的学员家庭。</p>
+    <div class="quote"><b>顺势推介话术：</b>"如果暑假这一波没完全打透，寒假我们还有第二波封闭营可以接力；如果时间不允许长期封闭，我们也有1V1的定制课，专门针对暑假留下来的薄弱点。一句话——只要还没出目标分，渊学通的产品线就会一路接住您家孩子。"</div>
+  </div>
+</section>
+
+<!-- 末页 -->
+<div class="endpage">
+  <h2>渊  学  通  ·  内  部  培  训  手  册</h2>
+  <div class="gold-line"></div>
+  <p>本手册仅供渊学通顾问及销售团队内部使用</p>
+  <p>对外咨询请使用《对外意向客户资料》</p>
+  <p style="margin-top:30mm;color:#94a3b8;font-size:9pt;letter-spacing:3px;">YUANXUETONG  /  HANGZHOU CAMPUS  /  2026 SUMMER</p>
+</div>
+
+</body>
+</html>
