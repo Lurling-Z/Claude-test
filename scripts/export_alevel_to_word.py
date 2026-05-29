@@ -1,0 +1,121 @@
+#!/usr/bin/env python3
+"""将 A-Level 脱产小红书改写导出为 Word 文档"""
+
+from docx import Document
+from docx.shared import Pt, Cm, RGBColor
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+
+doc = Document()
+
+style = doc.styles['Normal']
+font = style.font
+font.name = '微软雅黑'
+font.size = Pt(11)
+
+for section in doc.sections:
+    section.top_margin = Cm(2.5)
+    section.bottom_margin = Cm(2.5)
+    section.left_margin = Cm(2.5)
+    section.right_margin = Cm(2.5)
+
+# 标题页
+title = doc.add_heading('渊学通杭州', level=0)
+title.alignment = WD_ALIGN_PARAGRAPH.CENTER
+subtitle = doc.add_heading('A-Level 脱产全日制 · 小红书改写', level=1)
+subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
+doc.add_paragraph()
+info = doc.add_paragraph()
+info.alignment = WD_ALIGN_PARAGRAPH.CENTER
+run = info.add_run('原文来源：渊学通公众号推文\n改写目标：小红书图文笔记，口语化、去 AI 味、合规')
+run.font.size = Pt(10)
+run.font.color.rgb = RGBColor(100, 100, 100)
+doc.add_page_break()
+
+# 标题选项
+doc.add_heading('标题（3 选 1）', level=1)
+titles = [
+    'A-Level 脱产一天怎么过？沉浸式跟拍告诉你',
+    '"脱产 = 摆烂"？来看看真实的一天',
+    'A-Level 脱产到底有没有人管？实拍回答你',
+]
+for t in titles:
+    p = doc.add_paragraph(f'• {t}')
+    p.paragraph_format.space_after = Pt(4)
+
+doc.add_paragraph()
+p = doc.add_paragraph()
+run = p.add_run('封面文案：')
+run.bold = True
+run = p.add_run('A-Level 脱产 ≠ 没人管 / 沉浸式看真实一天')
+run.font.color.rgb = RGBColor(200, 50, 50)
+
+doc.add_paragraph()
+doc.add_heading('正文', level=1)
+
+# 正文内容
+body_paragraphs = [
+    ('', '很多人对 A-Level 脱产的刻板印象：\n没人管、自由摆烂、自学低效、氛围松散……'),
+    ('', '真的是这样吗？\n今天跟着我们杭州校区学员的镜头，看看脱产生一天到底怎么过。'),
+    ('bold', '先说清楚一个前提：我们的"脱产"是什么模式'),
+    ('', '渊学通的 A-Level 全日制脱产，走的是类学校管理——'),
+    ('', '📋 有校历、有课表、有周测月测\n📊 每两周出一次学情报告\n📵 电子产品有管理制度\n🏫 有完善的学员手册（课程、考勤、处罚制度都明确写在里面）'),
+    ('', '简单说就是：不是把你丢在机构里自学，而是用学校的方式把你管起来。'),
+    ('bold', '一天流程大概长这样 👇'),
+    ('', '🌅 早晨｜按课表到教室，有固定班课时间\n📚 上午｜学科正课（数学 / 经济 / 物理等），小班 3–5 人 or 1v1\n🍱 中午｜午餐 + 休息\n✍️ 下午｜正课继续 + 实验课 / 背景提升活动\n🧠 晚上｜晚自习 + 答疑 + 当日作业'),
+    ('', '每周有周测，每月有模考。\n成绩、作业完成度、自习情况，全部记录在学员小程序里，家长随时能看到。'),
+    ('bold', '家长最关心的几个问题，统一回一下'),
+    ('', '1. 学籍怎么解决？\n渊学通教育集团旗下有 3 所国际高中，脱产学生注册正规国际高中学籍（非挂靠），以"国际高中生"通道申请，合规有保障。'),
+    ('', '2. 考试局能不能自己选？\n可以。我们拿了 Edexcel、AQA、CAIE 三大考试局的官方授权，支持多考试局组合出分，会根据学生基础和学科来定。'),
+    ('', '3. UCAS 预估分怎么开？\n我们是英国 UCAS 申请系统的官方注册中心，有出具预估分的资格。授课老师会结合课堂表现 + 模考成绩 + 学科潜力综合评估，不会乱开虚高分。'),
+    ('', '4. 老师稳不稳定？\n全职师资占比超过 90%，200+ 全职教师，核心教学团队平均司龄 4 年以上。每位导师平均教学经验 8 年 / 10000+ 小时。'),
+    ('', '5. 只管教学，升学呢？\n提供"学术课程 + 竞赛背提 + 语言标化 + 留学申请"一站式全周期服务。\n学制灵活，1–3.5 年都有，适配体制内转轨、国际学校转学等不同情况。'),
+    ('bold', '跟国际学校比，优势在哪？'),
+    ('', '• 班型：1v1 / 3–5 人（国际学校通常 15–30 人）\n• 考试局：三大考试局自由组合（国际学校通常绑定 1 家）\n• 科目：70+ 门覆盖含小众学科（国际学校通常 10–20 门）\n• 学制：1–3.5 年灵活（国际学校固定 3 年）\n• 管理：小程序 + 周测月测 + 家校周报'),
+    ('bold', '总结一下'),
+    ('', 'A-Level 脱产这条路走不走得通，关键看三件事：\n① 有没有正规学籍\n② 教学管理到不到位\n③ 升学服务闭不闭环'),
+    ('', '这三条如果能对齐，脱产跟在国际学校拿到的申请材料含金量一样（包括港校申请也不影响）。'),
+    ('', '如果你家孩子正在考虑体制内转轨、或国际学校想换环境，可以先来了解一下再做决定。'),
+    ('', '评论区留言"脱产"或直接私信，可以领：\n✅ 学科基础测评\n✅ 1v1 备考规划\n✅ 校区实地参观 + 试听课安排'),
+]
+
+for style_type, text in body_paragraphs:
+    if style_type == 'bold':
+        doc.add_paragraph()
+        p = doc.add_paragraph()
+        run = p.add_run(text)
+        run.bold = True
+        run.font.size = Pt(12)
+    else:
+        for line in text.split('\n'):
+            p = doc.add_paragraph(line)
+            p.paragraph_format.space_after = Pt(4)
+
+# 标签
+doc.add_paragraph()
+p = doc.add_paragraph()
+run = p.add_run('标签：')
+run.bold = True
+run.font.size = Pt(9)
+run = p.add_run('#ALevel #国际课程 #A-Level脱产 #国际高中 #留学 #杭州国际学校 #渊学通 #UCAS')
+run.font.size = Pt(9)
+run.font.color.rgb = RGBColor(50, 100, 200)
+
+doc.add_page_break()
+
+# 合规自查
+doc.add_heading('合规自查清单', level=1)
+checklist = [
+    '未出现"保过 / 包出分 / 必上岸 / 命题组 / 押题"等表述',
+    '未制造焦虑（"不读就落后 / 再不转轨就来不及"）',
+    '师资描述用客观数据（司龄 / 教龄 / 全职比例），未夸大为"最强 / 顶级"',
+    '预估分描述强调"真实、综合评估"，未暗示虚高',
+    '未贬低同行学校',
+    '未涉及未成年人姓名 / 露脸 / 具体成绩截图',
+]
+for item in checklist:
+    p = doc.add_paragraph(f'☐ {item}')
+    p.paragraph_format.space_after = Pt(4)
+
+output_path = '/projects/sandbox/Claude-test/content/渊学通杭州_ALevel脱产全日制_小红书改写.docx'
+doc.save(output_path)
+print(f'✅ Word 文件已生成：{output_path}')
