@@ -9,3 +9,10 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+
+# 抓取脚本输出（含可识别 cookie / 个人数据，不入库）
+out/
+tools/out/
+*.csv
+!tools/sample_*.csv
